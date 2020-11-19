@@ -1,0 +1,119 @@
+.navbar-siakad{
+    background-color: #3E65A0 !important;
+}
+.footer-dibawah{
+	position: relative;
+	width: 100%;
+	bottom: 0;
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	background-color: #ddd;
+}
+.footerbawah{
+    color: #fff !important;
+    background-color: #2B4E84;
+}
+.footerkebawah{
+    position: relative;
+	width: 100%;
+	bottom: 0;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	background-color: #ddd;
+}
+
+.bg-utama{
+	color: #fff !important;
+	background-color: #3e65a0;
+}
+
+.card:hover {
+    box-shadow: 0px 2px 20px rgba(0,0,0,0.2);
+}
+
+.tulisan{
+    font-size: 16px;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.text-dashboard{
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.tulisan-logo{
+    font-size: 12px;
+    color: #fff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.teks-hitam{
+    font-size: 17px;
+    color: #3d3e48;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.teks-link{
+    font-size: 16px;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none !important;
+}
+
+.teks-link:hover{
+	font-size: 16px;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline !important;
+}
+
+.h-96{
+    height: 96.5% !important;
+}
+
+.satu{
+    font-size: 14px;
+}
+.right {
+    float: right;
+    }
+
+.judul{
+    font-weight: 700;
+    padding: 7px 0 7px 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+    color: #3e65a0;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.judul-section{
+    font-weight: 700;
+    padding: 7px 0 7px 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+    color: #3d3e48;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.judul-section-putih{
+    font-weight: 700;
+    padding: 7px 0 7px 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+}
+.section1{
+	margin-top: 100px;
+	margin-bottom: 204px;
+}
+
+@media only screen and (max-width: 600px){
+	.section1{
+		margin-top: 0;
+		margin-bottom: 50px;
+	}
+}
