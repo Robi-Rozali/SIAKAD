@@ -221,105 +221,61 @@
               <div class="col-md-2"></div>
               <div class="col-md-8">
                 <div class="card shadow">
-                  <div class="card-header">Tambah Data Mahasiswa</div>
+                  <div class="card-header">Detail Mahasiswa</div>
                   <div class="card-body">
-                    <form action="">
-                      <div class="form-group row ">
-                        <label for="" class="col-sm-3 col-form-label text-right">NIM</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="#" class="form-control">
+                      <div class="row">
+                        <div class="col-md-4">
+                                <img src="<?php echo base_url().'/uploads/'.$brg->gambar ?>" class="card-img-top ">
                         </div>
-                      </div>
-  
-                      <div class="form-group row">
-                        <label for="" class="col-sm-3 col-form-label text-right">Nama</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="#" class="form-control">
+                        <div class="col-md-8">
+                            <table class="table">
+                                <tr>
+                                    <td>NIM</td>
+                                    <td><strong>A3.1700040</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Nama</td>
+                                    <td><strong>Robi Rozali</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Tempat Lahir</td>
+                                    <td><strong>Bandung</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal Lahir</td>
+                                    <td><strong>32 Januari 2050</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Jurusan</td>
+                                    <td><strong>Sistem Informasi</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>No Handphone</td>
+                                    <td><strong>082313443321</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td><strong>Heheboii@gmail.com</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Alamat</td>
+                                    <td><strong>Wakanda timur</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Kota</td>
+                                    <td><strong>Sumedang</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Kode Pos</td>
+                                    <td><strong>123456</strong></td>
+                                </tr>
+                            </table>
                         </div>
-                      </div>
-  
-                      <div class="form-group row">
-                        <label for="" class="col-sm-3 col-form-label text-right">Tempat Lahir</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="#" class="form-control">
-                        </div>
-                      </div>
-  
-                      <div class="form-group row">
-                        <label for="" class="col-sm-3 col-form-label text-right">Tanggal Lahir</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="#" class="form-control">
-                        </div>
-                      </div>
-
-                     <div class="form-group row">
-                        <label for="" class="col-sm-3 col-form-label text-right">Jurusan</label>
-                        <div class="col-sm-9">
-                          <select class="form-control" name="" id="">
-                                    <option nama="#" value="">Teknik Informatika</option>
-                                    <option nama="#" value="">Sistem Informasi</option>
-                                    <option nama="#" value="">Manajemen Informatika</option>
-                          </select>
-                        </div>
-                      </div>
-  
-                      <div class="form-group row">
-                        <label for="" class="col-sm-3 col-form-label text-right">No Handphone</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="#" class="form-control">
-                        </div>
-                      </div>
-  
-                      <div class="form-group row">
-                        <label for="" class="col-sm-3 col-form-label text-right">Email</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="#" class="form-control">
-                        </div>
-                      </div>
-
-                      <div class="form-group row">
-                        <label for="" class="col-sm-3 col-form-label text-right">Password</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="#" class="form-control">
-                        </div>
-                      </div>
-  
-                      <div class="form-group row">
-                        <label for="" class="col-sm-3 col-form-label text-right">Alamat</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="#" class="form-control">
-                        </div>
-                      </div>
-  
-                      <div class="form-group row">
-                        <label for="" class="col-sm-3 col-form-label text-right">Kota</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="#" class="form-control">
-                        </div>
-                      </div>
-  
-                      <div class="form-group row">
-                        <label for="" class="col-sm-3 col-form-label text-right">Kode POS</label>
-                        <div class="col-sm-9">
-                          <input type="text" name="#" class="form-control">
-                        </div>
-                      </div>
-  
-                      <div class="form-group row">
-                        <label for="" class="col-sm-3 col-form-label text-right">Gambar</label>
-                        <div class="col-sm-9">
-                          <input type="file" name="gambar" class="form-control">
-                        </div>
-                      </div>
-  
-                      <hr>
-                      <div class="form-group">
-                         <button type="submit" class="btn btn-primary mb-2">Simpan</button>
-                         <button type="submit" class="btn btn-danger mb-2">Keluar</button>
-                      </div>
-  
-                    </form>
                   </div>
+                    <hr>
+                      <div class="form-group">
+                         <button type="submit" class="btn btn-primary mb-2">Kembali</button>
+                      </div>
                 </div>  
               </div>
               <div class="col-md-2"></div>
