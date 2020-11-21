@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Mahasiswa\Perwaliancontroller;
+use App\Http\Controllers\Mahasiswa\KhsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('mahasiswa.dashboard');
 });
+
+Route::get('/perwalian', [Perwaliancontroller::class, 'index']);
+
+Route::get('/khs', [KhsController::class, 'index']);
