@@ -30,22 +30,14 @@ use App\Http\Controllers\Mahasiswa\ProfilController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-<<<<<<< Updated upstream
-//admin
-Route::get('/admin', [AdminController::class, 'index']);
-=======
-<<<<<<< HEAD
+
+
 // Admin
 Route::get('/adm', [AdminController::class, 'index']);
 
 Route::get('/dosen', [DosenController::class, 'index']);
 
 
-=======
-//admin
-Route::get('/admin', [AdminController::class, 'index']);
->>>>>>> 16fe336dc1a8b85446118eddde34e7b50d58e29c
->>>>>>> Stashed changes
 
 Route::get('/', function () {
     return view('mahasiswa.dashboard');
