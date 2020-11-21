@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DosenController;
 
+//Keuangan
+use App\Http\Controllers\Keuangan\BiayaController;
+use App\Http\Controllers\Keuangan\PembayarankeuController;
 
 //mahasiswa
 use App\Http\Controllers\Mahasiswa\Perwaliancontroller;
@@ -38,7 +41,11 @@ Route::get('/adm', [AdminController::class, 'index']);
 Route::get('/dosen', [DosenController::class, 'index']);
 
 
+//Keuangan
+Route::get('/biaya', [BiayaController::class, 'index']);
+Route::get('/Pembayarankeu', [PembayarankeuController::class, 'index']);
 
+//Mahasiswa
 Route::get('/', function () {
     return view('mahasiswa.dashboard');
 });
