@@ -11,6 +11,7 @@ use App\Http\Controllers\Mahasiswa\PilihkelasController;
 use App\Http\Controllers\Mahasiswa\JadwalkuliahController;
 use App\Http\Controllers\Mahasiswa\JadwalujianController;
 use App\Http\Controllers\Mahasiswa\PembayaranController;
+use App\Http\Controllers\Mahasiswa\ProfilController;
 
 
 /*
@@ -23,6 +24,8 @@ use App\Http\Controllers\Mahasiswa\PembayaranController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//admin
+Route::get('/admin', [AdminController::class, 'index']);
 
 Route::get('/', function () {
     return view('mahasiswa.dashboard');
@@ -46,4 +49,4 @@ Route::get('/jadwalujian', [JadwalujianController::class, 'index']);
 
 Route::get('/pembayaran', [PembayaranController::class, 'index']);
 
-
+Route::get('/profil', [ProfilController::class, 'index']);
