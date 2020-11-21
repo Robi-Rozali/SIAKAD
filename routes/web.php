@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Mahasiswa\Perwaliancontroller;
 use App\Http\Controllers\Mahasiswa\KhsController;
+use App\Http\Controllers\Mahasiswa\KrsController;
+use App\Http\Controllers\Mahasiswa\NilaisementaraController;
+use App\Http\Controllers\Mahasiswa\PerubahanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +26,9 @@ Route::get('/', function () {
 Route::get('/perwalian', [Perwaliancontroller::class, 'index']);
 
 Route::get('/khs', [KhsController::class, 'index']);
+
+Route::get('/krs', [KrsController::class, 'index']);
+
+Route::get('/nilaisementara', [NilaisementaraController::class, 'index']);
+
+Route::get('/perubahan', [PerubahanController::class, 'index']);

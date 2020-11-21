@@ -39,9 +39,9 @@
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="#">Pooling SAT</a>
             <a class="collapse-item" href="\perwalian">FRS(Perwalian)</a>
-            <a class="collapse-item" href="perubahan.html">Perubahan FRS</a>
-            <a class="collapse-item" href="pilihkelas.html">Pilih Kelas</a>
-            <a class="collapse-item" href="krs.html">Kartu Rencana Studi</a>
+            <a class="collapse-item" href="\perubahan">Perubahan FRS</a>
+            <a class="collapse-item" href="\pilihkelas">Pilih Kelas</a>
+            <a class="collapse-item" href="\krs">Kartu Rencana Studi</a>
           </div>
         </div>
       </li>
@@ -56,7 +56,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Nilai:</h6>
             <a class="collapse-item" href="\khs">Nilai Persemester</a>
-            <a class="collapse-item" href="nilaisementara.html">Daftar Nilai Sementara</a>
+            <a class="collapse-item" href="\nilaisementara">Daftar Nilai Sementara</a>
           </div>
         </div>
       </li>
