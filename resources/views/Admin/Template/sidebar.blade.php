@@ -1,10 +1,10 @@
-    
+  <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
-          <img src="img/stmik.png" class="d-inline" style="width: 50px" alt="logo">
+          <img src="../img/stmik.png" class="d-inline" style="width: 50px" alt="logo">
         </div>
         <div class="sidebar-brand-text text-left tulisan-logo">Sistem Informasi Akademik</div>
       </a>
@@ -15,7 +15,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="dashboard.html">
+        <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -32,15 +32,15 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Perwalian</span>
+          <span>Akademik</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="\perwalian">FRS(Perwalian)</a>
-            <a class="collapse-item" href="\perubahan">Perubahan FRS</a>
-            <a class="collapse-item" href="\pilihkelas">Pilih Kelas</a>
-            <a class="collapse-item" href="\krs">Kartu Rencana Studi</a>
+            <a class="collapse-item" href="inputjadwal.html">Jadwal Kuliah</a>
+            <a class="collapse-item" href="khsadm.html">KHS</a>
+            <a class="collapse-item" href="perwalianadm.html">KRS</a>
+            <a class="collapse-item" href="kurikulum.html">Kurikulum</a>
           </div>
         </div>
       </li>
@@ -49,13 +49,15 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Nilai</span>
+          <span>Master Data</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Nilai:</h6>
-            <a class="collapse-item" href="\khs">Nilai Persemester</a>
-            <a class="collapse-item" href="\nilaisementara">Daftar Nilai Sementara</a>
+            <h6 class="collapse-header">Master:</h6>
+            <a class="collapse-item" href="mahasiswa.html">Mahasiswa</a>
+            <a class="collapse-item" href="dosen.html">Dosen</a>
+            <a class="collapse-item" href="prodi.html">Prodi</a>
+            <a class="collapse-item" href="ruang.html">Ruangan</a>
           </div>
         </div>
       </li>
@@ -63,30 +65,23 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Jadwal</span>
+          <span>Keuangan</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Jadwal :</h6>
-            <a class="collapse-item" href="\jadwalkuliah">Jadwal Kuliah</a>
-            <a class="collapse-item" href="\jadwalujian">Jadwal Ujian</a>
+            <a class="collapse-item" href="biaya.html">Biaya Kuliah</a>
+            <a class="collapse-item" href="Pembayaran.html">Form Pembayaran</a>
+            <a class="collapse-item" href="laporan.html">Laporan Keuangan</a>
           </div>
         </div>
       </li>
+            <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsestatuspembayaran" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Status Pembayaran</span>
-        </a>
-        <div id="collapsestatuspembayaran" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Nilai:</h6>
-            <a class="collapse-item" href="\pembayaran">Riwayat Pembayaran </a>
-            <a class="collapse-item" href="utilities-border.html">Tagihan/Invoice</a>
-          </div>
-        </div>
+        <a class="nav-link" href="charts.html">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Pengguna Sistem</span></a>
       </li>
-
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -96,4 +91,4 @@
       </div>
 
     </ul>
-   
+    <!-- End of Sidebar -->
