@@ -28,6 +28,9 @@ use App\Http\Controllers\Mahasiswa\ProfilController;
 |
 */
 
+// Admin
+Route::get('/adm', [AdminController::class, 'index']);
+
 
 Route::get('/', function () {
     return view('mahasiswa.dashboard');
