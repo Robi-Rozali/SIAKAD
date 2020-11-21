@@ -32,7 +32,7 @@ use App\Http\Controllers\Mahasiswa\ProfilController;
 // Admin
 Route::get('/adm', [AdminController::class, 'index']);
 // Dosen
-Route::resource('/dosen', AdminController::class);
+Route::resource('/dosen', DosenController::class);
 
 
 Route::get('/', function () {
