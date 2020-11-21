@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Admin
+use App\Http\Controllers\Admin\AdminController;
+
 use App\Http\Controllers\Mahasiswa\Perwaliancontroller;
 use App\Http\Controllers\Mahasiswa\KhsController;
 use App\Http\Controllers\Mahasiswa\KrsController;
@@ -26,6 +29,10 @@ use App\Http\Controllers\Mahasiswa\ProfilController;
 */
 //admin
 Route::get('/admin', [AdminController::class, 'index']);
+
+// Admin
+Route::get('/adm', [AdminController::class, 'index']);
+
 
 Route::get('/', function () {
     return view('mahasiswa.dashboard');
