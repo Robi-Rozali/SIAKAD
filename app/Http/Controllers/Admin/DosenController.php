@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Dosen;
+
 class DosenController extends Controller
 {
     /**
@@ -14,7 +16,10 @@ class DosenController extends Controller
      */
     public function index()
     {
-        return view('Admin.dosen.dosen');
+        $data = [
+            'dosen' => Dosen::all(),
+        ];
+        return view('Admin.dosen.dosen')->with($data);
     }
 
     /**
@@ -24,7 +29,7 @@ class DosenController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dosen.tambahdosen');
     }
 
     /**
@@ -35,7 +40,38 @@ class DosenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nidn'          => 'required',
+            'namadosen'     => 'required',
+            'keilmuan'      => 'required',
+            'tempat'        => 'required',
+            'tgllahir'      => 'required',
+            'telp'          => 'required',
+            'password'      => 'required',
+            'alamat'        => 'required',
+            'gambar'        => 'required|image|max:1999',
+        ]);
+
+        $gambarWithExt      = $request->file('gambar')->getClientOriginalName();
+        $gambar             = pathinfo($gambarWithExt, PATHINFO_FILENAME);
+        $gambarExt          = $request->file('gambar')->getClientOriginalExtension();
+        $gambarStore        = str_replace(' ', '_', $gambar).'_'.time().'.'.$gambarExt;
+        $pathgambar         = $request->file('gambar')->storeAs('public/gambar',$gambarStore);
+
+        $dosen = new Dosen;
+        $dosen->nidn        = $request->input('nidn');
+        $dosen->namadosen   = $request->input('namadosen');
+        $dosen->keilmuan    = $request->input('keilmuan');
+        $dosen->tempat      = $request->input('tempat');
+        $dosen->tgllahir    = $request->input('tgllahir');
+        $dosen->telp        = $request->input('telp');
+        $dosen->password    = md5($request->input('password'));
+        $dosen->alamat      = $request->input('alamat');
+        $dosen->gambar      = $gambarStore;
+        $dosen->save();
+
+        return redirect('/dosen')->with('sukses','Data Dosen berhasil ditambah');
+
     }
 
     /**
