@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Admin
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\DosenController;
 
 use App\Http\Controllers\Mahasiswa\Perwaliancontroller;
 use App\Http\Controllers\Mahasiswa\KhsController;
@@ -30,6 +31,8 @@ use App\Http\Controllers\Mahasiswa\ProfilController;
 
 // Admin
 Route::get('/adm', [AdminController::class, 'index']);
+// Dosen
+Route::resource('/dosen', AdminController::class);
 
 
 Route::get('/', function () {
