@@ -46,9 +46,23 @@
                             <td>{{ $d->namadosen }}</td>
                             <td>{{ $d->alamat }}</td>
                             <td>
-                              <div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>
-                              <div class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></div>
-                              <div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>
+
+                              {{-- sok nu ieu mah sorangan we --}}
+                              <button class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></button>
+                              {{--  --}}
+                              
+                              <form action="/dosen/{{ $d->id }}/edit" method="post" class="d-inline">
+                                @csrf
+                                @method('GET')
+                                <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Apakah anda yakin ingin edit?')"><i class="fas fa-edit"></i></>
+                              </form>
+                              
+                              <form action="/dosen/{{ $d->id }}" method="post" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm ml-1" onclick="return confirm('Apakah anda yakin ingin hapus?')"><i class="fas fa-trash"></i></>
+                              </form>
+
                             </td>
                         </tr>
                         @endforeach
