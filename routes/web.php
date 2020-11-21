@@ -30,10 +30,6 @@ use App\Http\Controllers\Mahasiswa\ProfilController;
 //admin
 Route::get('/admin', [AdminController::class, 'index']);
 
-// Admin
-Route::get('/adm', [AdminController::class, 'index']);
-
-
 Route::get('/', function () {
     return view('mahasiswa.dashboard');
 });
