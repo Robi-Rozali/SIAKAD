@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DosenController;
 use App\Http\Controllers\Admin\NilaiController;
+use App\Http\Controllers\Admin\InputjadwalController;
+use App\Http\Controllers\Admin\KhsadmController;
+use App\Http\Controllers\Admin\PerwalianadmController;
+use App\Http\Controllers\Admin\KurikulumController;
 
 
 //Keuangan
@@ -39,9 +43,13 @@ use App\Http\Controllers\Mahasiswa\ProfilController;
 
 // Admin
 Route::get('/adm', [AdminController::class, 'index']);
+Route::get('/kurikulum', [KurikulumController::class, 'index']);
 
 //Prodi
 Route::get('/nilai', [NilaiController::class, 'index']);
+Route::get('/inputjadwal', [InputjadwalController::class, 'index']);
+Route::get('/khsadm', [KhsadmController::class, 'index']);
+Route::get('/perwalianadm', [PerwalianadmController::class, 'index']);
 
 // Dosen
 Route::resource('/dosen', DosenController::class);
