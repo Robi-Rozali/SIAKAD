@@ -55,7 +55,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Master:</h6>
             <a class="collapse-item" href="mahasiswa.html">Mahasiswa</a>
-            <a class="collapse-item" href="dosen.html">Dosen</a>
+            <a class="collapse-item" href="\dosen">Dosen</a>
             <a class="collapse-item" href="prodi.html">Prodi</a>
             <a class="collapse-item" href="ruang.html">Ruangan</a>
           </div>
