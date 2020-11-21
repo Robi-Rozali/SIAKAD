@@ -41,6 +41,7 @@
             <a class="collapse-item" href="\khsadm">KHS</a>
             <a class="collapse-item" href="\perwalianadm">KRS</a>
             <a class="collapse-item" href="\kurikulum">Kurikulum</a>
+            <a class="collapse-item" href="\Nilai">Nilai</a>
           </div>
         </div>
       </li>
