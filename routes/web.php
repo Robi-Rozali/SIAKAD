@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Admin
+use App\Http\Controllers\Admin\AdminController;
+
 use App\Http\Controllers\Mahasiswa\Perwaliancontroller;
 use App\Http\Controllers\Mahasiswa\KhsController;
 use App\Http\Controllers\Mahasiswa\KrsController;
