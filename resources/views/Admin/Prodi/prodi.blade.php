@@ -6,43 +6,69 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">PRODI</h1>
+            @if(session('sukses'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{session('sukses')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
           </div>
           
           <!-- awal konten utama -->
           <div class="row">
             <div class="col-md-12">
               <div class="card shadow">
-                <div class="card-header"><a href="tambahprodi.html" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a></div>
+                <div class="card-header"><a href="/prodi/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a></div>
                 <div class="card-body">
                   <div class="table-responsive">
                      <table class="table table-bordered" id="dataTable">
                       <thead>
                         <tr>
                             <th>NO</th>
-                            <th>Kode Prodi</th>
                             <th>Nama Prodi</th>
-                            <th>Peminatan</th>
+                            <th>Prodi</th>
                             <th>Ketua Prodi</th>
                             <th>NIDN</th>
                             <th>Foto Ketua Prodi</th>
-                            <th >AKSI</th>
+                            <th>AKSI</th>
                         </tr>
                         </thead>
                         <tbody>
+                        @php
+                          $no=1;
+                        @endphp
+                        @foreach ($prodi as $p)
                         <tr>
-                            <td>1</td>
-                            <td>A2</td>
-                            <td>Teknik Informatika</td>
-                            <td>Network</td>
-                            <td>Nunu</td>
-                            <td>A2.1700081</td>
-                            <td>.....</td>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $p->nama }}</td>
+                            <td>{{ $p->prodi }}</td>
+                            <td>{{ $p->ketua }}</td>
+                            <td>{{ $p->nidn }}</td>
+                            <td><img src="/storage/gambar/{{ $p->gambar }}" alt="" width="100"></td>
                             <td>
-                              <div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>
-                              <div class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></div>
-                              <div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>
+
+                            <form action="/prodi/{{ $p->id }}" method="post" class="d-inline">
+                                @csrf
+                                @method('GET')  
+                              <button class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></button>
+                            </form>
+
+                            <form action="/prodi/{{ $p->id }}/edit" method="post" class="d-inline">
+                                @csrf
+                                @method('GET')
+                                <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Apakah anda yakin ingin edit?')"><i class="fas fa-edit"></i></>
+                              </form>
+
+                            <form action="/prodi/{{ $p->id }}" method="post" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm ml-1" onclick="return confirm('Apakah anda yakin ingin hapus?')"><i class="fas fa-trash"></i></>
+                              </form>
                             </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                     </div>

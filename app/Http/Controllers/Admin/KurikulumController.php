@@ -14,6 +14,9 @@ class KurikulumController extends Controller
      */
     public function index()
     {
+        $data = [
+            'kurikulum' => Kurikulum::all(),
+        ];
         return view('Admin.kurikulum.kurikulum');
     }
 

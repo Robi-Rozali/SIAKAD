@@ -13,16 +13,16 @@
               <div class="col-md-2"></div>
               <div class="col-md-8">
                 <div class="card shadow">
-                  <div class="card-header">Tambah Data Prodi</div>
+                  <div class="card-header">Edit Data Prodi</div>
                   <div class="card-body">
-                    <form action="/prodi" method="post" enctype="multipart/form-data">
+                    <form action="/prodi/{{ $prodi->id }}" method="post" enctype="multipart/form-data">
                       @csrf
-                      @method('POST')
+                      @method('PUT')
   
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Nama Prodi</label>
                         <div class="col-sm-9">
-                          <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
+                          <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ $prodi->nama }}">
                           @error('nama') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -32,7 +32,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Prodi</label>
                         <div class="col-sm-9">
-                          <input type="text" name="prodi" class="form-control @error('prodi') is-invalid @enderror" value="{{ old('prodi') }}">
+                          <input type="text" name="prodi" class="form-control @error('prodi') is-invalid @enderror" value="{{ $prodi->prodi }}">
                           @error('prodi') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -42,7 +42,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Ketua Prodi</label>
                         <div class="col-sm-9">
-                          <input type="text" name="ketua" class="form-control @error('ketua') is-invalid @enderror" value="{{ old('ketua') }}">
+                          <input type="text" name="ketua" class="form-control @error('ketua') is-invalid @enderror" value="{{ $prodi->ketua }}">
                           @error('ketua') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -52,32 +52,28 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">NIDN</label>
                         <div class="col-sm-9">
-                          <input type="text" name="nidn" class="form-control @error('nidn') is-invalid @enderror" value="{{ old('nidn') }}">
+                          <input type="text" name="nidn" class="form-control @error('nidn') is-invalid @enderror" value="{{ $prodi->nidn }}">
                           @error('nidn') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
                         </div>
                       </div>
-
-
   
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Gambar</label>
                         <div class="col-sm-9">
-                          <input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror">
-                          @error('gambar') 
-                              <small class="text-danger">{{ $message }}</small>
-                          @enderror
+                          <input type="hidden" name="gambardb" value="{{ $prodi->gambar }}">
+                          <input type="file" name="gambar" class="form-control">
+                          <small>{{ $prodi->gambar }}</small>
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Password</label>
                         <div class="col-sm-9">
-                          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}">
-                          @error('password') 
-                              <small class="text-danger">{{ $message }}</small>
-                          @enderror
+                          <input type="hidden" name="pass" value="{{ $prodi->password }}">
+                          <input type="password" name="password" class="form-control" value="" placeholder="Kosongkan Jika tidak dirubah">
+
                         </div>
                       </div>
   
