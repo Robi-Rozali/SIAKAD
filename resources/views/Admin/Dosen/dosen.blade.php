@@ -48,8 +48,12 @@
                             <td>
 
                               {{-- sok nu ieu mah sorangan we --}}
+                            <form action="/dosen/{{ $d->id }}/detail" method="post" class="d-inline">
+                                @csrf
+                                @method('GET')
                               <button class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></button>
                               {{--  --}}
+                            </form>
                               
                               <form action="/dosen/{{ $d->id }}/edit" method="post" class="d-inline">
                                 @csrf
