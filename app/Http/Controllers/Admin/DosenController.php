@@ -83,7 +83,10 @@ class DosenController extends Controller
      */
     public function show($id)
     {
-        return view('admin.dosen.detail');
+        $data = [
+            'dosen'     => Dosen::find($id),
+        ];
+        return view('admin.dosen.detail')->with($data);
     }
 
     /**

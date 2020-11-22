@@ -14,43 +14,43 @@
               <div class="col-md-8">
                 <div class="card shadow">
                   <div class="card-header">Detail Dosen</div>
-                  <div class="card-body">
+                  <div class="card-body">`
                       <div class="row">
                         <div class="col-md-4">
-                                <img src="/storage/gambar/{{ $d->gambar }}" alt="" width="100">
+                            <img src="/storage/gambar/{{ $dosen->gambar }}" alt="" class="w-100">
                         </div>
                         <div class="col-md-8">
                             <table class="table">
                                 <tr>
-                                    <td>NIM</td>
-                                    <td><strong>{{ $d->nidn }}</strong></td>
+                                    <td>NIDN</td>
+                                    <td><strong>{{ $dosen->nidn }}</strong></td>
                                 </tr>
                                 <tr>
                                     <td>Nama</td>
-                                    <td><strong>{{ $d->namadosen }}</strong></td>
+                                    <td><strong>{{ $dosen->namadosen }}</strong></td>
                                 </tr>
                                 <tr>
                                     <td>Tempat Lahir</td>
-                                    <td><strong>{{ $d->tempat }}</strong></td>
+                                    <td><strong>{{ $dosen->tempat }}</strong></td>
                                 </tr>
                                 <tr>
                                     <td>Tanggal Lahir</td>
-                                    <td><strong>{{ $d->tgllahir }}</strong></td>
+                                    <td><strong>{{ $dosen->tgllahir }}</strong></td>
                                 </tr>
                                 <tr>
                                     <td>Keilmuan</td>
-                                    <td><strong>{{ $d->keilmuan }}</strong></td>
+                                    <td><strong>{{ $dosen->keilmuan }}</strong></td>
                                 </tr>
                                 <tr>
                                     <td>No Handphone</td>
-                                    <td><strong>{{ $d->telp }}</strong></td>
+                                    <td><strong>{{ $dosen->telp }}</strong></td>
                                 </tr>
                             </table>
                         </div>
                   </div>
                     <hr>
                       <div class="form-group">
-                         <button type="submit" class="btn btn-primary mb-2">Kembali</button>
+                         <a href="/dosen" type="submit" class="btn btn-primary mb-2">Kembali</a>
                       </div>
                 </div>  
               </div>
