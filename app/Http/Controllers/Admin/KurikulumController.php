@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+use App\Models\Kurikulum;
 
 class KurikulumController extends Controller
 {
@@ -17,7 +20,7 @@ class KurikulumController extends Controller
         $data = [
             'kurikulum' => Kurikulum::all(),
         ];
-        return view('Admin.kurikulum.kurikulum');
+        return view('Admin.kurikulum.kurikulum')->with($data);
     }
 
     /**
@@ -27,7 +30,7 @@ class KurikulumController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.kurikulum.tambahkurikulum');
     }
 
     /**
@@ -38,7 +41,24 @@ class KurikulumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode'          => 'required',
+            'matakuliah'    => 'required',
+            'sks'           => 'required',
+            'semester'      => 'required',
+            'jurusan'       => 'required',
+        ]);
+
+
+        $kurikulum = new Kurikulum;
+        $kurikulum->kode        = $request->input('kode');
+        $kurikulum->matakuliah  = $request->input('matakuliah');
+        $kurikulum->sks         = $request->input('sks');
+        $kurikulum->semester    = $request->input('semester');
+        $kurikulum->jurusan     = $request->input('jurusan');
+        $kurikulum->save();
+
+        return redirect('/kurikulum')->with('sukses','Data Kurikulum berhasil ditambah');
     }
 
     /**
@@ -49,7 +69,10 @@ class KurikulumController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = [
+            'kurikulum'     => Kurikulum::find($id),
+        ];
+        return view('admin.kurikulum.detail')->with($data);
     }
 
     /**
@@ -60,7 +83,11 @@ class KurikulumController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'kurikulum' => Kurikulum::find($id),
+        ];
+
+        return view('admin.kurikulum.edit')->with($data);
     }
 
     /**
@@ -72,7 +99,26 @@ class KurikulumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'kode'          => 'required',
+            'matakuliah'    => 'required',
+            'sks'           => 'required',
+            'semester'      => 'required',
+            'jurusan'       => 'required',
+        ]);
+
+
+        $kurikulum = Kurikulum::find($id);
+        $kurikulum->kode        = $request->input('kode');
+        $kurikulum->matakuliah  = $request->input('matakuliah');
+        $kurikulum->sks         = $request->input('sks');
+        $kurikulum->semester    = $request->input('semester');
+        $kurikulum->jurusan     = $request->input('jurusan');
+        
+        $kurikulum->save();
+
+
+        return redirect('/kurikulum')->with('sukses','Data Kurikulim berhasil diedit');
     }
 
     /**
@@ -83,6 +129,9 @@ class KurikulumController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kurikulum = Kurikulum::find($id);
+        $kurikulum->delete();
+
+        return redirect('/kurikulum')->with('sukses','Data Kurikulum berhasil dihapus');
     }
 }

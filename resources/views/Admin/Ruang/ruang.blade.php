@@ -6,20 +6,27 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Ruangan</h1>
+            @if(session('sukses'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{session('sukses')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
           </div>
           
           <!-- awal konten utama -->
           <div class="row">
             <div class="col-md-12">
               <div class="card shadow">
-                <div class="card-header"><a href="tambahruang.html" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a></div>
+                <div class="card-header"><a href="/ruang/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a></div>
                 <div class="card-body">
                   <div class="table-responsive">
                      <table class="table table-bordered" id="dataTable">
                       <thead>
                         <tr>
                             <th>NO</th>
-                            <th>ID Ruangan</th>
                             <th>Nama Ruangan</th>
                             <th>Lantai</th>
                             <th>Kapasitas</th>
@@ -27,18 +34,30 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @php
+                          $no=1;
+                        @endphp
+                        @foreach ($ruang as $r)
                         <tr>
-                            <td>1</td>
-                            <td>RS01</td>
-                            <td>R4</td>
-                            <td>2</td>
-                            <td>40</td>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $r->nama }}</td>
+                            <td>{{ $r->lantai }}</td>
+                            <td>{{ $r->kapasitas }}</td>
                             <td>
-                              <div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>
-                              <div class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></div>
-                              <div class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></div>
+                              <form action="/ruang/{{ $r->id }}/edit" method="post" class="d-inline">
+                                @csrf
+                                @method('GET')
+                                <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Apakah anda yakin ingin edit?')"><i class="fas fa-edit"></i></>
+                              </form>
+                              
+                              <form action="/ruang/{{ $r->id }}" method="post" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm ml-1" onclick="return confirm('Apakah anda yakin ingin hapus?')"><i class="fas fa-trash"></i></>
+                              </form>
                             </td>
                         </tr>
+                        @endforeach
                         </tbody>
                     </table>
                     </div>

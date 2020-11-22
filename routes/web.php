@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PerwalianadmController;
 use App\Http\Controllers\Admin\KurikulumController;
 use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\Admin\MahasiswaController;
+use App\Http\Controllers\Admin\RuangController;
 
 
 //Keuangan
@@ -45,9 +46,10 @@ use App\Http\Controllers\Mahasiswa\ProfilController;
 
 // Admin
 Route::get('/adm', [AdminController::class, 'index']);
-Route::get('/kurikulum', [KurikulumController::class, 'index']);
+Route::resource('/kurikulum', KurikulumController::class);
 Route::resource('/prodi', ProdiController::class);
 Route::resource('/mahasiswa', MahasiswaController::class);
+Route::resource('/ruang', RuangController::class);
 
 //Prodi
 Route::get('/nilai', [NilaiController::class, 'index']);
