@@ -22,7 +22,7 @@
                         <div class="col-md-8">
                             <table class="table">
                                 <tr>
-                                    <td>Nama</td>
+                                    <td>Nama Prodi</td>
                                     <td><strong>{{ $prodi->nama }}</strong></td>
                                 </tr>
                                 <tr>

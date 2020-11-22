@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\KhsadmController;
 use App\Http\Controllers\Admin\PerwalianadmController;
 use App\Http\Controllers\Admin\KurikulumController;
 use App\Http\Controllers\Admin\ProdiController;
+use App\Http\Controllers\Admin\MahasiswaController;
 
 
 //Keuangan
@@ -46,6 +47,7 @@ use App\Http\Controllers\Mahasiswa\ProfilController;
 Route::get('/adm', [AdminController::class, 'index']);
 Route::get('/kurikulum', [KurikulumController::class, 'index']);
 Route::resource('/prodi', ProdiController::class);
+Route::resource('/mahasiswa', MahasiswaController::class);
 
 //Prodi
 Route::get('/nilai', [NilaiController::class, 'index']);

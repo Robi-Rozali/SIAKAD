@@ -27,11 +27,11 @@
                       <thead>
                         <tr>
                             <th>NO</th>
+                            <th>Foto Ketua Prodi</th>
                             <th>Nama Prodi</th>
                             <th>Prodi</th>
                             <th>Ketua Prodi</th>
                             <th>NIDN</th>
-                            <th>Foto Ketua Prodi</th>
                             <th>AKSI</th>
                         </tr>
                         </thead>
@@ -42,11 +42,11 @@
                         @foreach ($prodi as $p)
                         <tr>
                             <td>{{ $no++ }}</td>
+                            <td><img src="/storage/gambar/{{ $p->gambar }}" alt="" width="100"></td>
                             <td>{{ $p->nama }}</td>
                             <td>{{ $p->prodi }}</td>
                             <td>{{ $p->ketua }}</td>
                             <td>{{ $p->nidn }}</td>
-                            <td><img src="/storage/gambar/{{ $p->gambar }}" alt="" width="100"></td>
                             <td>
 
                             <form action="/prodi/{{ $p->id }}" method="post" class="d-inline">

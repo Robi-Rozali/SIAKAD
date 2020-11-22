@@ -13,16 +13,16 @@
               <div class="col-md-2"></div>
               <div class="col-md-8">
                 <div class="card shadow">
-                  <div class="card-header">Tambah Data Mahasiswa</div>
+                  <div class="card-header">Edit Data Mahasiswa</div>
                   <div class="card-body">
-                    <form action="/mahasiswa" method="post" enctype="multipart/form-data">
+                    <form action="/mahasiswa/{{ $mahasiswa->id }}" method="post" enctype="multipart/form-data">
                       @csrf
-                      @method('POST')
+                      @method('PUT')
 
                       <div class="form-group row ">
                         <label for="" class="col-sm-3 col-form-label text-right">NIM</label>
                         <div class="col-sm-9">
-                          <input type="text" name="nim" class="form-control @error('nim') is-invalid @enderror" value="{{ old('nim') }}">
+                          <input type="text" name="nim" class="form-control @error('nim') is-invalid @enderror" value="{{ $mahasiswa->nim }}">
                           @error('nim') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -32,7 +32,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Nama</label>
                         <div class="col-sm-9">
-                          <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
+                          <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ $mahasiswa->nama }}">
                           @error('nama') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -42,7 +42,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Tempat Lahir</label>
                         <div class="col-sm-9">
-                          <input type="text" name="tempat" class="form-control @error('tempat') is-invalid @enderror" value="{{ old('tempat') }}">
+                          <input type="text" name="tempat" class="form-control @error('tempat') is-invalid @enderror" value="{{ $mahasiswa->tempat }}">
                           @error('tempat') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -52,7 +52,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Tanggal Lahir</label>
                         <div class="col-sm-9">
-                          <input type="date" name="tgllahir" class="form-control @error('tgllahir') is-invalid @enderror" value="{{ old('tgllahir') }}">
+                          <input type="date" name="tgllahir" class="form-control @error('tgllahir') is-invalid @enderror" value="{{ $mahasiswa->tgllahir }}">
                           @error('tgllahir') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -62,10 +62,10 @@
                      <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Jurusan</label>
                         <div class="col-sm-9">
-                          <select class="form-control @error('jurusan') is-invalid @enderror" name="jurusan"  value="{{ old('jurusan') }}">
-                                    <option nama="#" value="Teknik Informatika">Teknik Informatika</option>
-                                    <option nama="#" value="Sistem Informasi">Sistem Informasi</option>
-                                    <option nama="#" value="Manajemen Informatika">Manajemen Informatika</option>
+                          <select class="form-control @error('jurusan') is-invalid @enderror" name="jurusan" id="" value="{{ $mahasiswa->jurusan }}">
+                                    <option nama="" value="Teknik Informatika">Teknik Informatika</option>
+                                    <option nama="" value="Sistem Informasi">Sistem Informasi</option>
+                                    <option nama="" value="Manajemen Informatika">Manajemen Informatika</option>
                           </select>
                           @error('jurusan') 
                               <small class="text-danger">{{ $message }}</small>
@@ -76,7 +76,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">No Handphone</label>
                         <div class="col-sm-9">
-                          <input type="text" name="telp" class="form-control @error('telp') is-invalid @enderror" value="{{ old('telp') }}">
+                          <input type="text" name="telp" class="form-control @error('telp') is-invalid @enderror" value="{{ $mahasiswa->telp }}">
                           @error('telp') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -86,7 +86,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Email</label>
                         <div class="col-sm-9">
-                          <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
+                          <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ $mahasiswa->email }}">
                           @error('email') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -96,17 +96,15 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Password</label>
                         <div class="col-sm-9">
-                          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}">
-                          @error('password') 
-                              <small class="text-danger">{{ $message }}</small>
-                          @enderror
+                          <input type="hidden" name="pass" value="{{ $mahasiswa->password }}">
+                          <input type="password" name="password" class="form-control" value="" placeholder="Kosongkan Jika tidak dirubah">
                         </div>
                       </div>
   
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Alamat</label>
                         <div class="col-sm-9">
-                          <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" value="{{ old('alamat') }}">
+                          <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" value="{{ $mahasiswa->alamat }}">
                           @error('alamat') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -116,10 +114,9 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Gambar</label>
                         <div class="col-sm-9">
-                          <input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror">
-                          @error('gambar') 
-                              <small class="text-danger">{{ $message }}</small>
-                          @enderror
+                          <input type="hidden" name="gambardb" value="{{ $mahasiswa->gambar }}">
+                          <input type="file" name="gambar" class="form-control">
+                          <small>{{ $mahasiswa->gambar }}</small>
                         </div>
                       </div>
   

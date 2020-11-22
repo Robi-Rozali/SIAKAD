@@ -13,7 +13,7 @@
               <div class="col-md-2"></div>
               <div class="col-md-8">
                 <div class="card shadow">
-                  <div class="card-header">Tambah Data Dosen</div>
+                  <div class="card-header">Edit Data Dosen</div>
                   <div class="card-body">
                     <form action="/dosen/{{ $dosen->id }}" method="post" enctype="multipart/form-data">
                       @csrf

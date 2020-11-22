@@ -80,7 +80,7 @@ class ProdiController extends Controller
         $data = [
             'prodi'     => Prodi::find($id),
         ];
-        return view('Admin.prodi.prodi')->with($data);
+        return view('Admin.prodi.detail')->with($data);
     }
 
     /**
@@ -112,7 +112,6 @@ class ProdiController extends Controller
             'prodi'         => 'required',
             'ketua'         => 'required',
             'nidn'          => 'required',
-            'password'      => 'required',
         ]);
 
         if ($request->hasFIle('gambar')) {
