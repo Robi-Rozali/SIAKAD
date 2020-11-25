@@ -47,36 +47,7 @@
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Master Data</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Master:</h6>
-            <a class="collapse-item" href="\mahasiswa">Mahasiswa</a>
-            <a class="collapse-item" href="\dosen">Dosen</a>
-            <a class="collapse-item" href="\prodi">Prodi</a>
-            <a class="collapse-item" href="\ruang">Ruangan</a>
-          </div>
-        </div>
-      </li>
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Keuangan</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Jadwal :</h6>
-            <a class="collapse-item" href="\biaya">Biaya Kuliah</a>
-            <a class="collapse-item" href="\Pembayarankeu">Form Pembayaran</a>
-            <a class="collapse-item" href="\laporan">Laporan Keuangan</a>
-          </div>
-        </div>
-      </li>
             <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link" href="charts.html">

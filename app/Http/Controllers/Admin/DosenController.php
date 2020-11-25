@@ -48,6 +48,7 @@ class DosenController extends Controller
             'tempat'        => 'required',
             'tgllahir'      => 'required',
             'telp'          => 'required',
+            'email'         => 'required',
             'password'      => 'required',
             'alamat'        => 'required',
             'gambar'        => 'required|image|max:1999',
@@ -66,6 +67,7 @@ class DosenController extends Controller
         $dosen->tempat      = $request->input('tempat');
         $dosen->tgllahir    = $request->input('tgllahir');
         $dosen->telp        = $request->input('telp');
+        $dosen->email        = $request->input('email');
         $dosen->password    = md5($request->input('password'));
         $dosen->alamat      = $request->input('alamat');
         $dosen->gambar      = $gambarStore;
@@ -120,6 +122,7 @@ class DosenController extends Controller
             'tempat'        => 'required',
             'tgllahir'      => 'required',
             'telp'          => 'required',
+            'email'         => 'required',
             'alamat'        => 'required',
         ]);
 
@@ -138,6 +141,7 @@ class DosenController extends Controller
         $dosen->tempat      = $request->input('tempat');
         $dosen->tgllahir    = $request->input('tgllahir');
         $dosen->telp        = $request->input('telp');
+        $dosen->email        = $request->input('email');
 
         if ($request->input('password') == '') {
             $dosen->password    = $request->input('pass');

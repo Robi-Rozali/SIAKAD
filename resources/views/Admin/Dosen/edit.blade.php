@@ -79,6 +79,16 @@
                         </div>
                       </div>
 
+                      <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">Email</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ $dosen->email }}">
+                          @error('email') 
+                              <small class="text-danger">{{ $message }}</small>
+                          @enderror
+                        </div>
+                      </div>
+
                        <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Password</label>
                         <div class="col-sm-9">

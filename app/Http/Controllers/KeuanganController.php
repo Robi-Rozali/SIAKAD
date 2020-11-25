@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class NilaiController extends Controller
+class KeuanganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class NilaiController extends Controller
      */
     public function index()
     {
-        return view('Prodi.nilai');
+        return view('keuangan.index');
     }
 
     /**

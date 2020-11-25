@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Mahasiswa;
+use App\Models\Prodi;
 
 class MahasiswaController extends Controller
 {
@@ -30,7 +31,10 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('Admin.Mahasiswa.tambahmahasiswa');
+        $data = [
+            'prodi' => Prodi::all(),
+        ];
+        return view('Admin.Mahasiswa.tambahmahasiswa')->with($data);
     }
 
     /**
@@ -100,6 +104,7 @@ class MahasiswaController extends Controller
     {
         $data = [
             'mahasiswa' => Mahasiswa::find($id),
+            'prodi' => Prodi::all(),
         ];
 
         return view('admin.Mahasiswa.edit')->with($data);

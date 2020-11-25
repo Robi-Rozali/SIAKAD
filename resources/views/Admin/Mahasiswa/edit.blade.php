@@ -63,9 +63,10 @@
                         <label for="" class="col-sm-3 col-form-label text-right">Jurusan</label>
                         <div class="col-sm-9">
                           <select class="form-control @error('jurusan') is-invalid @enderror" name="jurusan" id="" value="{{ $mahasiswa->jurusan }}">
-                                    <option nama="" value="Teknik Informatika">Teknik Informatika</option>
-                                    <option nama="" value="Sistem Informasi">Sistem Informasi</option>
-                                    <option nama="" value="Manajemen Informatika">Manajemen Informatika</option>
+                            <option nama="" value="{{ $mahasiswa->jurusan }}">{{ $mahasiswa->jurusan }}</option>
+                            @foreach ($prodi as $p)
+                            <option nama="#" value="{{$p->prodi}}">{{$p->prodi}}</option>
+                            @endforeach
                           </select>
                           @error('jurusan') 
                               <small class="text-danger">{{ $message }}</small>

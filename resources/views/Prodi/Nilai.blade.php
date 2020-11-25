@@ -14,7 +14,11 @@
               <div class="card shadow">
                 <div class="card-header">
                   <a href="tambahnilai.html" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-                  <div class="row">
+                  <a href="" class="btn btn-success"><i class="fas fa-file-alt"></i> Export</a>
+                  <a href="" class="btn btn-success"><i class="fas fa-file-alt"></i> Import</a>
+                </div>
+                <div class="card-body">
+                  <div class="form-group row">
                       <label for="" class="col-md-2 my-auto">Cari Mahasiswa</label>
                       <div class="col-md-3 my-auto">
                         <input type="text" class="form-control" placeholder="Cari">
@@ -23,12 +27,10 @@
                         <button type="submit" class="btn btn-primary mb-2 my-auto" id="#">Cari</button>
                       </div>
                     </div>
-                </div>
-                <div class="card-body">
                     <div class="form-group row">
-                        <label for="" class="col-sm-2 col-form-label">NIM</label>
-                        <div class="">
-                          <input type="text" name="#" class="form-control">
+                        <label for="" class="col-sm-2 ">NIM</label>
+                        <div class="col-sm-2">
+                          A3.1700040
                         </div>
                       </div>
                       <div class="form-group row">

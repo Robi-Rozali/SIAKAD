@@ -45,6 +45,10 @@
                                     <td>No Handphone</td>
                                     <td><strong>{{ $dosen->telp }}</strong></td>
                                 </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td><strong>{{ $dosen->email }}</strong></td>
+                                </tr>
                             </table>
                         </div>
                   </div>

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Keuangan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class InputjadwalController extends Controller
+class KeuanganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class InputjadwalController extends Controller
      */
     public function index()
     {
-        return view('admin.krs.inputjadwal');
+        return view('keuangan.index');
     }
 
     /**

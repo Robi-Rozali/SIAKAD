@@ -21,7 +21,11 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card shadow">
-                <div class="card-header"><a href="/kurikulum/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a></div>
+                <div class="card-header">
+                  <a href="/kurikulum/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                  <a href="" class="btn btn-success"><i class="fas fa-file-alt"></i> Export</a>
+                  <a href="" class="btn btn-success"><i class="fas fa-file-alt"></i> Import</a>
+                </div>
                 <div class="card-body">
                   <div class="table-responsive">
                      <table class="table table-bordered" id="dataTable">

@@ -68,6 +68,16 @@
                           @enderror
                         </div>
                       </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">Tahun Akademik</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="tahun" class="form-control @error('tahun') is-invalid @enderror" value="{{ $kurikulum->tahun }}">
+                          @error('tahun') 
+                              <small class="text-danger">{{ $message }}</small>
+                          @enderror
+                        </div>
+                      </div>
   
                       <hr>
                       <div class="form-group">

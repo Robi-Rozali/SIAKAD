@@ -30,7 +30,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    @include('Admin.template.sidebar')
+    @include('Prodi.template.sidebar')
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -40,7 +40,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        @include('Admin.template.topbar')
+        @include('Prodi.template.topbar')
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->

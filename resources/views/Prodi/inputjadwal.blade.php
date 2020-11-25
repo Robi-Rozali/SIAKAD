@@ -42,9 +42,13 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="">Angkatan</label>
-                                <input type="text" name="#" class="form-control">
-                            </div>
+                                <label for="" class="">Tahun Akademik</label>
+                                <select class="form-control" name="" id="">
+                                    <option nama="#" value="">2018</option>
+                                    <option nama="#" value="">2019</option>
+                                    <option nama="#" value="">2020</option>
+                                </select>
+                              </div>
                         </div>
                     </div>
                    

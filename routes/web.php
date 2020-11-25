@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 // Admin
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DosenController;
-use App\Http\Controllers\Admin\NilaiController;
 use App\Http\Controllers\Admin\InputjadwalController;
 use App\Http\Controllers\Admin\KhsadmController;
 use App\Http\Controllers\Admin\PerwalianadmController;
@@ -16,6 +15,8 @@ use App\Http\Controllers\Admin\RuangController;
 
 
 //Keuangan
+use App\Http\Controllers\Keuangan\KeuanganController;
+use App\Http\Controllers\Keuangan\DashboardController;
 use App\Http\Controllers\Keuangan\BiayaController;
 use App\Http\Controllers\Keuangan\PembayarankeuController;
 
@@ -32,6 +33,9 @@ use App\Http\Controllers\Mahasiswa\JadwalujianController;
 use App\Http\Controllers\Mahasiswa\PembayaranController;
 use App\Http\Controllers\Mahasiswa\ProfilController;
 
+//Prodi
+use App\Http\Controllers\Prodi\ProdiindexController;
+use App\Http\Controllers\Prodi\NilaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +56,7 @@ Route::resource('/mahasiswa', MahasiswaController::class);
 Route::resource('/ruang', RuangController::class);
 
 //Prodi
+//Route::get('/prodi', [ProdiindexController::class, 'index']);
 Route::get('/nilai', [NilaiController::class, 'index']);
 Route::get('/inputjadwal', [InputjadwalController::class, 'index']);
 Route::get('/khsadm', [KhsadmController::class, 'index']);
@@ -61,8 +66,10 @@ Route::get('/perwalianadm', [PerwalianadmController::class, 'index']);
 Route::resource('/dosen', DosenController::class);
 
 //Keuangan
+Route::get('/keuangan', [KeuanganController::class, 'index']);
+Route::get('/keuangan', [DashboardController::class, 'index']);
 Route::resource('/biaya', BiayaController::class);
-Route::resource('/Pembayarankeu', PembayarankeuController::class);
+Route::resource('/pembayarankeu', PembayarankeuController::class);
 
 //Mahasiswa
 Route::get('/', function () {
@@ -87,4 +94,4 @@ Route::get('/jadwalujian', [JadwalujianController::class, 'index']);
 
 Route::get('/pembayaran', [PembayaranController::class, 'index']);
 
-Route::get('/profil', [ProfilController::class, 'index']);
+Route::resource('/profil', ProfilController::class);
