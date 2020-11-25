@@ -61,8 +61,8 @@ Route::get('/perwalianadm', [PerwalianadmController::class, 'index']);
 Route::resource('/dosen', DosenController::class);
 
 //Keuangan
-Route::get('/biaya', [BiayaController::class, 'index']);
-Route::get('/Pembayarankeu', [PembayarankeuController::class, 'index']);
+Route::resource('/biaya', BiayaController::class);
+Route::resource('/Pembayarankeu', PembayarankeuController::class);
 
 //Mahasiswa
 Route::get('/', function () {

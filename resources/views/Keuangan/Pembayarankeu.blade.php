@@ -16,23 +16,34 @@
               <div class="card shadow">
                 <div class="card-header">Tambah Data Pembayaran</div>
                 <div class="card-body">
-                  <form action="">
+                  <form action="/pembayarankeu" method="post" enctype="multipart/form-data">
+                      @csrf
+                      @method('POST')
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label text-right">NIM</label>
                         <div class="col-sm-9">
-                          <input type="text" name="#" class="form-control">
+                          <input type="text" name="nim" class="form-control @error('nim') is-invalid @enderror" value="{{ old('nim') }}">
+                          @error('nim') 
+                              <small class="text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                       </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label text-right">Nama</label>
                         <div class="col-sm-9">
-                          <input type="text" name="#" class="form-control">
+                          <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
+                          @error('nama') 
+                              <small class="text-danger">{{ $message }}</small>
+                          @enderror
                         </div>
                     </div>
                     <div class="form-group row">
-                      <label for="" class="col-sm-2 my-auto col-form-label text-right">Semester</label>
+                      <label for="" class="col-sm-2 my-auto col-form-label text-right">Jurusan</label>
                       <div class="col-sm-9">
-                        <input type="text" name="#" class="form-control">
+                        <input type="text" name="jurusan" class="form-control @error('jurusan') is-invalid @enderror" value="{{ old('jurusan') }}">
+                          @error('jurusan') 
+                              <small class="text-danger">{{ $message }}</small>
+                          @enderror
                       </div>
                     </div>
                     <div class="teks-hitam">
@@ -44,25 +55,34 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-form-label text-right">Tanggal Transaksi</label>
                                 <div class="">
-                                  <input type="date" name="#" class="form-control">
+                                  <input type="date" name="tgltransaksi" class="form-control @error('tgltransaksi') is-invalid @enderror" value="{{ old('tgltransaksi') }}">
+                                  @error('tgltransaksi') 
+                                    <small class="text-danger">{{ $message }}</small>
+                                  @enderror
                                 </div>
                               </div>
                               <div class="form-group row">
                                 <label for="" class="col-sm-4 my-auto text-right">Jenis Pembayaran</label>
-                                <select class="form-control" style="width: 20%;" name="" id="">
-                                    <option nama="#" value="">Pendaftaran</option>
-                                    <option nama="#" value="">UPP</option>
-                                    <option nama="#" value="">USB</option>
-                                    <option nama="#" value="">SKS</option>
-                                    <option nama="#" value="">PPSPP</option>
-                                    <option nama="#" value="">Almamater</option>
-                                    <option nama="#" value="">Semua</option>
+                                <select class="form-control @error('jenisbayar') is-invalid @enderror" name="jenisbayar"  value="{{ old('jenisbayar') }}">
+                                    <option nama="#" value="Pendaftaran">Pendaftaran</option>
+                                    <option nama="#" value="UPP">UPP</option>
+                                    <option nama="#" value="USB">USB</option>
+                                    <option nama="#" value="SKS">SKS</option>
+                                    <option nama="#" value="PPSPP">PPSPP</option>
+                                    <option nama="#" value="Almamater">Almamater</option>
+                                    <option nama="#" value="Semua">Semua</option>
                                 </select>
+                                @error('jenisbayar') 
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
                                 </div>
                               <div class="form-group row">
                                 <label for="" class="col-sm-4 col-form-label text-right">Jumlah Bayar</label>
                                 <div class="">
-                                  <input type="text" name="#" class="form-control" style="width: 200%;">
+                                  <input type="date" name="jumlah" class="form-control @error('jumlah') is-invalid @enderror" style="width: 200%" value="{{ old('jumlah') }}">
+                                  @error('jumlah') 
+                                    <small class="text-danger">{{ $message }}</small>
+                                  @enderror
                                 </div>
                               </div>
                         </div>  
@@ -71,7 +91,7 @@
                         <hr class="sidebar-divider">
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary mb-2">Simpan</button>
-                            <button type="submit" class="btn btn-light mb-2">Batal</button>
+                            <a href="/index" class="btn btn-danger mb-2">Keluar</a>
                         </div>
                       </form>
                     </div>

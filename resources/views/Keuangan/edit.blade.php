@@ -13,15 +13,15 @@
               <div class="col-md-2"></div>
               <div class="col-md-8">
                 <div class="card shadow">
-                  <div class="card-header">Tambah Biaya Kuliah</div>
+                  <div class="card-header">Edit Biaya Kuliah</div>
                   <div class="card-body">
-                    <form action="/biaya" method="post" enctype="multipart/form-data">
+                    <form action="/biaya/{{ $biaya->id }}" method="post" enctype="multipart/form-data">
                       @csrf
-                      @method('POST')
+                      @method('PUT')
                       <div class="form-group row ">
                         <label for="" class="col-sm-3 col-form-label text-right">Tahun Akdemik</label>
                         <div class="col-sm-9">
-                          <input type="text" name="tahun" class="form-control @error('tahun') is-invalid @enderror" value="{{ old('tahun') }}">
+                          <input type="text" name="tahun" class="form-control @error('tahun') is-invalid @enderror" value="{{ $biaya->tahun }}">
                           @error('tahun') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -31,7 +31,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Jurusan</label>
                         <div class="col-sm-9">
-                          <select class="form-control @error('jurusan') is-invalid @enderror" name="jurusan"  value="{{ old('jurusan') }}">
+                          <select class="form-control @error('jurusan') is-invalid @enderror" name="jurusan"  value="{{ $biaya->jurusan }}">
                                     <option nama="#" value="Teknik Informatika">Teknik Informatika</option>
                                     <option nama="#" value="Sistem Informasi">Sistem Informasi</option>
                                     <option nama="#" value="Manajemen Informatika">Manajemen Informatika</option>
@@ -45,7 +45,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Pendaftaran</label>
                         <div class="col-sm-9">
-                          <input type="text" name="pendaftaran" class="form-control @error('pendaftaran') is-invalid @enderror" value="{{ old('pendaftaran') }}">
+                          <input type="text" name="pendaftaran" class="form-control @error('pendaftaran') is-invalid @enderror" value="{{ $biaya->pendaftaran }}">
                           @error('pendaftaran') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -55,7 +55,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">UPP</label>
                         <div class="col-sm-9">
-                          <input type="text" name="upp" class="form-control @error('upp') is-invalid @enderror" value="{{ old('upp') }}">
+                          <input type="text" name="upp" class="form-control @error('upp') is-invalid @enderror" value="{{ $biaya->upp }}">
                           @error('upp') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -65,7 +65,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">USB</label>
                         <div class="col-sm-9">
-                         <input type="text" name="usb" class="form-control @error('usb') is-invalid @enderror" value="{{ old('usb') }}">
+                         <input type="text" name="usb" class="form-control @error('usb') is-invalid @enderror" value="{{ $biaya->usb }}">
                           @error('usb') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -75,7 +75,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">SKS</label>
                         <div class="col-sm-9">
-                          <input type="text" name="sks" class="form-control @error('sks') is-invalid @enderror" value="{{ old('sks') }}">
+                          <input type="text" name="sks" class="form-control @error('sks') is-invalid @enderror" value="{{ $biaya->sks }}">
                           @error('sks') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -85,7 +85,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">PPSPP</label>
                         <div class="col-sm-9">
-                          <input type="text" name="ppspp" class="form-control @error('ppspp') is-invalid @enderror" value="{{ old('ppspp') }}">
+                          <input type="text" name="ppspp" class="form-control @error('ppspp') is-invalid @enderror" value="{{ $biaya->ppspp }}">
                           @error('ppspp') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -95,7 +95,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Almamater</label>
                         <div class="col-sm-9">
-                          <input type="text" name="almamater" class="form-control @error('almamater') is-invalid @enderror" value="{{ old('almamater') }}">
+                          <input type="text" name="almamater" class="form-control @error('almamater') is-invalid @enderror" value="{{ $biaya->almamater }}">
                           @error('almamater') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror

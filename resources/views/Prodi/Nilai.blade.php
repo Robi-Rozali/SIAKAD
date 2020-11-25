@@ -12,7 +12,18 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card shadow">
-                <div class="card-header"><a href="tambahnilai.html" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a></div>
+                <div class="card-header">
+                  <a href="tambahnilai.html" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                  <div class="row">
+                      <label for="" class="col-md-2 my-auto">Cari Mahasiswa</label>
+                      <div class="col-md-3 my-auto">
+                        <input type="text" class="form-control" placeholder="Cari">
+                      </div>
+                      <div>
+                        <button type="submit" class="btn btn-primary mb-2 my-auto" id="#">Cari</button>
+                      </div>
+                    </div>
+                </div>
                 <div class="card-body">
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">NIM</label>
