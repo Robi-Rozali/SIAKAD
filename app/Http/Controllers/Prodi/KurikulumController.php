@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Prodi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Kurikulum;
+use App\Models\Prodi;
+
 
 class KurikulumController extends Controller
 {
@@ -20,7 +22,7 @@ class KurikulumController extends Controller
         $data = [
             'kurikulum' => Kurikulum::all(),
         ];
-        return view('Admin.kurikulum.kurikulum')->with($data);
+        return view('Prodi.kurikulum.kurikulum')->with($data);
     }
 
     /**
@@ -30,7 +32,10 @@ class KurikulumController extends Controller
      */
     public function create()
     {
-        return view('admin.kurikulum.tambahkurikulum');
+        $data = [
+            'prodi' => Prodi::all(),
+        ];
+        return view('Prodi.kurikulum.tambahkurikulum')->with($data);
     }
 
     /**
@@ -74,7 +79,7 @@ class KurikulumController extends Controller
         $data = [
             'kurikulum'     => Kurikulum::find($id),
         ];
-        return view('admin.kurikulum.detail')->with($data);
+        return view('Prodi.kurikulum.detail')->with($data);
     }
 
     /**
@@ -87,9 +92,10 @@ class KurikulumController extends Controller
     {
         $data = [
             'kurikulum' => Kurikulum::find($id),
+            'prodi' => Prodi::all(),
         ];
 
-        return view('admin.kurikulum.edit')->with($data);
+        return view('Prodi.kurikulum.edit')->with($data);
     }
 
     /**

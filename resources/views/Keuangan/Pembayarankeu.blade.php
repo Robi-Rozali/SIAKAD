@@ -62,8 +62,9 @@
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="" class="col-sm-4 my-auto text-right">Jenis Pembayaran</label>
-                                <select class="form-control @error('jenisbayar') is-invalid @enderror" name="jenisbayar"  value="{{ old('jenisbayar') }}">
+                                <label for="" class="col-sm-4 col-form-label text-right">Jenis Pembayaran</label>
+                                
+                                  <select class="form-control @error('jenisbayar') is-invalid @enderror" name="jenisbayar" style="width: 40%;" value="{{ old('jenisbayar') }}">
                                     <option nama="#" value="Pendaftaran">Pendaftaran</option>
                                     <option nama="#" value="UPP">UPP</option>
                                     <option nama="#" value="USB">USB</option>
@@ -75,11 +76,12 @@
                                 @error('jenisbayar') 
                                 <small class="text-danger">{{ $message }}</small>
                                 @enderror
-                                </div>
+                                
+                            </div>
                               <div class="form-group row">
                                 <label for="" class="col-sm-4 col-form-label text-right">Jumlah Bayar</label>
                                 <div class="">
-                                  <input type="date" name="jumlah" class="form-control @error('jumlah') is-invalid @enderror" style="width: 200%" value="{{ old('jumlah') }}">
+                                  <input type="text" name="jumlah" class="form-control @error('jumlah') is-invalid @enderror" style="width: 200%" value="{{ old('jumlah') }}">
                                   @error('jumlah') 
                                     <small class="text-danger">{{ $message }}</small>
                                   @enderror

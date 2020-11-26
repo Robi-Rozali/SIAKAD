@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\prodi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class KhsadmController extends Controller
+class jurusancontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class KhsadmController extends Controller
      */
     public function index()
     {
-        return view('Prodi.Khsadm');
+        return view('prodi.index');
     }
 
     /**

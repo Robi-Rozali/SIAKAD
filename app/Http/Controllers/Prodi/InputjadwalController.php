@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Prodi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use App\Models\Inputjadwal;
+use App\Models\Prodi;
 
 class InputjadwalController extends Controller
 {
@@ -14,7 +17,10 @@ class InputjadwalController extends Controller
      */
     public function index()
     {
-        return view('admin.krs.inputjadwal');
+        $data = [
+            'inputjadwal' => Inputjadwal::all(),
+        ];   
+        return view('prodi.jadwal.inputjadwal')->with($data);
     }
 
     /**
@@ -24,7 +30,10 @@ class InputjadwalController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'prodi' => Prodi::all(),
+        ];
+        return view('prodi.jadwal.inputjadwal')-with($data);
     }
 
     /**

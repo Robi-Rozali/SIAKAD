@@ -5,10 +5,6 @@ use Illuminate\Support\Facades\Route;
 // Admin
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DosenController;
-use App\Http\Controllers\Admin\InputjadwalController;
-use App\Http\Controllers\Admin\KhsadmController;
-use App\Http\Controllers\Admin\PerwalianadmController;
-use App\Http\Controllers\Admin\KurikulumController;
 use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\Admin\RuangController;
@@ -34,8 +30,12 @@ use App\Http\Controllers\Mahasiswa\PembayaranController;
 use App\Http\Controllers\Mahasiswa\ProfilController;
 
 //Prodi
-use App\Http\Controllers\Prodi\ProdiindexController;
+use App\Http\Controllers\Prodi\JurusanController;
 use App\Http\Controllers\Prodi\NilaiController;
+use App\Http\Controllers\Prodi\InputjadwalController;
+use App\Http\Controllers\Prodi\KhsadmController;
+use App\Http\Controllers\Prodi\PerwalianadmController;
+use App\Http\Controllers\Prodi\KurikulumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,17 +50,17 @@ use App\Http\Controllers\Prodi\NilaiController;
 
 // Admin
 Route::get('/adm', [AdminController::class, 'index']);
-Route::resource('/kurikulum', KurikulumController::class);
 Route::resource('/prodi', ProdiController::class);
 Route::resource('/mahasiswa', MahasiswaController::class);
 Route::resource('/ruang', RuangController::class);
 
 //Prodi
-//Route::get('/prodi', [ProdiindexController::class, 'index']);
+Route::get('/prodi', [JurusanController::class, 'index']);
 Route::get('/nilai', [NilaiController::class, 'index']);
 Route::get('/inputjadwal', [InputjadwalController::class, 'index']);
 Route::get('/khsadm', [KhsadmController::class, 'index']);
 Route::get('/perwalianadm', [PerwalianadmController::class, 'index']);
+Route::resource('/kurikulum', KurikulumController::class);
 
 // Dosen
 Route::resource('/dosen', DosenController::class);

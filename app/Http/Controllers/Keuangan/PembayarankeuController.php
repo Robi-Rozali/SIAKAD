@@ -17,10 +17,8 @@ class PembayarankeuController extends Controller
      */
     public function index()
     {
-        $data = [
-            'pembayarankeu' => Pembayarankeu::all(),
-        ];
-        return view('Keuangan.Pembayarankeu')->with($data);
+        return view('Keuangan.Pembayarankeu');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -29,7 +27,10 @@ class PembayarankeuController extends Controller
      */
     public function create()
     {
-        return view('keuangan.pembayarankeu');
+        $data = [
+            'pembayarankeu' => Pembayarankeu::all(),
+        ];
+        return view('Keuangan.pembayarankeu')->with($data);
     }
 
     /**

@@ -14,7 +14,7 @@ class KhsadmController extends Controller
      */
     public function index()
     {
-        //
+        return view('Prodi.khs.Khsadm');
     }
 
     /**

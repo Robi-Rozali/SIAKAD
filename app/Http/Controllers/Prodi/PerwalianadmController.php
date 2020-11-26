@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Prodi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class PerwalianadmController extends Controller
      */
     public function index()
     {
-        return view('Prodi.perwalianadm');
+        return view('Prodi.perwalian.perwalianadm');
     }
 
     /**

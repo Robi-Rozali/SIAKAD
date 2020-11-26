@@ -19,6 +19,7 @@
   <!-- Custom styles for this template-->
   <link href="{{ asset('Admin/css/sb-admin-2.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('Admin/vendor/sweetalert/css/sweetalert.css') }} ">
   <!-- datatable -->
   <link href="{{ asset('Admin/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
@@ -107,7 +108,8 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('Admin/js/demo/chart-area-demo.js') }} "></script>
   <script src="{{ asset('Admin/js/demo/chart-pie-demo.js') }} "></script>
-
+  <!-- SweatAlert -->
+  <script type="text/javascript" src="{{ asset('Admin/vendor/sweetalert/js/sweetalert.min.js') }} "></script>
 </body>
 
 </html>

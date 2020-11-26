@@ -40,7 +40,7 @@
           <span>Biaya Kuliah</span></a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="\Pembayarankeu">
+        <a class="nav-link" href="\pembayarankeu">
           <i class="fas fa-file-invoice"></i>
           <span>Form Pembayaran</span></a>
       </li>

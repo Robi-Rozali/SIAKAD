@@ -50,6 +50,16 @@
                                 </select>
                               </div>
                         </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="" class="">Kelas</label>
+                                <select class="form-control" name="" id="">
+                                    <option nama="#" value="">A</option>
+                                    <option nama="#" value="">B</option>
+                                    <option nama="#" value="">C</option>
+                                </select>
+                              </div>
+                        </div>
                     </div>
                    
                     

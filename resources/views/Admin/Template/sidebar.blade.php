@@ -29,7 +29,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>Akademik</span>
@@ -44,7 +44,7 @@
             <a class="collapse-item" href="\nilai">Nilai</a>
           </div>
         </div>
-      </li>
+      </li> -->
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">

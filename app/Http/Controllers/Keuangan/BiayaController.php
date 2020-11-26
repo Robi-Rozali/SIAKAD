@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Biaya;
+use App\Models\Prodi;
+use App\Models\Kurikulum;
 
 class BiayaController extends Controller
 {
@@ -30,7 +32,11 @@ class BiayaController extends Controller
      */
     public function create()
     {
-        return view('keuangan.inputbiaya');
+        $data = [
+            'prodi' => Prodi::all(),
+            'tahun' => Kurikulum::all(),
+        ];
+        return view('keuangan.inputbiaya')->with($data);
     }
 
     /**
@@ -91,6 +97,8 @@ class BiayaController extends Controller
     {
         $data = [
             'biaya' => Biaya::find($id),
+            'prodi' => Prodi::all(),
+            'tahun' => Kurikulum::all(),
         ];
 
         return view('keuangan.edit')->with($data);
