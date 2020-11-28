@@ -21,10 +21,10 @@
                       <div class="form-group row ">
                         <label for="" class="col-sm-3 col-form-label text-right">Tahun Akdemik</label>
                         <div class="col-sm-9">
-                          <select class="form-control @error('tahun') is-invalid @enderror" name="tahun"  value="{{ old('tahun') }}">
-                            <option nama="#" value="">--Pilih--</option>
+                          <select class="form-control @error('tahun') is-invalid @enderror" name="tahun"  value="">
+                            <option  value="">--Pilih--</option>
                             @foreach ($tahun as $t)
-                            <option nama="#" value="{{$t->tahun}}">{{$t->tahun}}</option>
+                            <option  value="{{$t->tahun}}">{{$t->tahun}}</option>
                             @endforeach
                           </select>
                           @error('tahun') 

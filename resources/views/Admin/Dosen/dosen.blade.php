@@ -6,14 +6,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dosen</h1>
-            @if(session('sukses'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{session('sukses')}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            @endif
+            
           </div>
           
           <!-- awal konten utama -->
@@ -80,4 +73,17 @@
 
         </div>
       <!-- End of Main Content -->
+@endsection
+
+@section('script')
+  <script type="text/javascript">
+    
+    @if(session('sukses'))       
+    Swal.fire(
+      'Berhasil!',
+      '{{ session('sukses') }}',
+      'success'
+    )
+    @endif
+  </script>
 @endsection

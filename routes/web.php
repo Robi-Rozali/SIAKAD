@@ -52,6 +52,10 @@ use App\Http\Controllers\Prodi\KurikulumController;
 Route::get('/adm', [AdminController::class, 'index']);
 Route::resource('/prodi', ProdiController::class);
 Route::resource('/mahasiswa', MahasiswaController::class);
+Route::post('/mahasiswa/import/csv', [MahasiswaController::class, 'importcsv']);
+
+Route::get('/mahasiswa/export/csv', [MahasiswaController::class, 'exportcsv']);
+
 Route::resource('/ruang', RuangController::class);
 
 //Prodi

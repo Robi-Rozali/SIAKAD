@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Mahasiswa;
 use App\Models\Prodi;
 
+use App\Exports\MahasiswaExport;
+use App\Imports\MahasiswaImport;
+
+use Maatwebsite\Excel\Facades\Excel;
+
 class MahasiswaController extends Controller
 {
     /**
@@ -182,4 +187,20 @@ class MahasiswaController extends Controller
 
         return redirect('/mahasiswa')->with('sukses','Data Mahasiswa berhasil dihapus');
     }
+
+    public function importcsv(Request $request){
+        $validatedData = $request->validate([
+            'file' => 'required',
+        ]);
+
+        Excel::import(new MahasiswaImport, $request->file('file'));
+
+        return redirect('/mahasiswa')->with('sukses','The file has been import');
+    }
+
+    public function exportcsv(){
+        return Excel::download(new MahasiswaExport, 'mahasiswa.xls');
+        
+    }
+
 }

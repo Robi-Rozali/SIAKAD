@@ -34,7 +34,7 @@ class BiayaController extends Controller
     {
         $data = [
             'prodi' => Prodi::all(),
-            'tahun' => Kurikulum::all(),
+            'tahun' => Kurikulum::select('tahun')->get(),
         ];
         return view('keuangan.inputbiaya')->with($data);
     }
