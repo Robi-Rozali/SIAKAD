@@ -80,3 +80,15 @@
         </div>
       <!-- End of Main Content -->
 @endsection
+@section('script')
+  <script type="text/javascript">
+    
+    @if(session('sukses'))       
+    Swal.fire(
+      'Berhasil!',
+      '{{ session('sukses') }}',
+      'success'
+    )
+    @endif
+  </script>
+@endsection

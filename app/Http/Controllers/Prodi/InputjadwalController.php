@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Inputjadwal;
 use App\Models\Prodi;
 use App\Models\Kurikulum;
+use App\Models\Dosen;
+use App\Models\Ruang;
 
 class InputjadwalController extends Controller
 {
@@ -20,6 +22,11 @@ class InputjadwalController extends Controller
     {
         $data = [
             'inputjadwal' => Inputjadwal::all(),
+            'prodi' => Prodi::all(),
+            'namadosen' => Dosen::select('namadosen')->get(),
+            'nama' => Ruang::select('nama')->get(),
+            'lantai' => Ruang::select('lantai','nama')->get(),
+
         ];   
         return view('prodi.jadwal.inputjadwal')->with($data);
     }
@@ -45,7 +52,36 @@ class InputjadwalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kode'          => 'required',
+            'matakuliah'    => 'required',
+            'kelas'         => 'required',
+            'ruang'         => 'required',
+            'hari'          => 'required',
+            'jam'           => 'required',
+            'namadosen'     => 'required',
+            'semester'      => 'required',
+            'jurusan'       => 'required',
+            'tahun'         => 'required',
+            'sks'           => 'required',
+        ]);
+
+
+        $inputjadwal = new Inputjadwal;
+        $inputjadwal->kode        = $request->input('kode');
+        $inputjadwal->matakuliah  = $request->input('matakuliah');
+        $inputjadwal->kelas       = $request->input('kelas');
+        $inputjadwal->ruang       = $request->input('ruang');
+        $inputjadwal->hari        = $request->input('hari');
+        $inputjadwal->jam         = $request->input('jam');
+        $inputjadwal->namadosen   = $request->input('namadosen');
+        $inputjadwal->semester    = $request->input('semester');
+        $inputjadwal->jurusan     = $request->input('jurusan');
+        $inputjadwal->tahun       = $request->input('tahun');
+        $inputjadwal->sks         = $request->input('sks');
+        $inputjadwal->save();
+
+        return redirect('/inputjadwal')->with('sukses','Data Jadwal berhasil ditambah');
     }
 
     /**
@@ -67,7 +103,11 @@ class InputjadwalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'inputjadwal' => Inputjadwal::find($id),
+            
+        ];
+        return view('prodi.jadwal.inputjadwal')-with($data);
     }
 
     /**

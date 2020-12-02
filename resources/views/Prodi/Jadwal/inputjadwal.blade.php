@@ -5,7 +5,7 @@
         <div class="container-fluid">
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Mahasiswa</h1>
+            <h1 class="h3 mb-0 text-gray-800">Input Jadwal</h1>
           </div>
           
           <!-- awal konten utama -->
@@ -14,6 +14,9 @@
               <div class="card shadow">
                 <div class="card-header"><a href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Cetak</a></div>
                 <class class="card-body">
+                    <form action="/inputjadwal" method="post" enctype="multipart/form-data">
+                      @csrf
+                      @method('POST')
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
@@ -94,24 +97,30 @@
                             <td><input id="matkul" type="text" name="matkul" class="form-control" readonly></td>
                             <td><input id="sks" type="text" name="sks" class="form-control" readonly></td>
                             <td>
-                                <select class="form-control" name="" id="">
-                                    <option nama="#" value="">LT1.03</option>
-                                    <option nama="#" value="">LT1.04</option>
-                                    <option nama="#" value="">LT1.05</option>
-                                    <option nama="#" value="">LT1.06</option>
-                                    <option nama="#" value="">LT1.07</option>
-                                    <option nama="#" value="">LT1.08</option>
-                                </select>
+                                <select class="form-control @error('ruang') is-invalid @enderror" name="ruang"  value="{{ old('ruang') }}">
+                            <option nama="" value="">--Pilih--</option>
+                            @foreach ($lantai as $l)
+                            <option nama="" value="{{$l->lantai}}{{$l->nama}}">{{$l->lantai}}{{$l->nama}}</option>
+                            @endforeach
+                          </select>
+                          @error('ruang') 
+                              <small class="text-danger">{{ $message }}</small>
+                          @enderror
                             </td>
                             <td>
                                 <input id="jam_awal" type="text" name="jam_awal" class="form-control">
                                 <input id="jam_akhir" type="text" name="jam_akhir" class="form-control">
                             </td>
                             <td>
-                                <select class="form-control" name="" id="">
-                                    <option nama="#" value="">Robi Rozali S.Kom</option>
-                                    <option nama="#" value="">-</option>
-                                </select>
+                                <select class="form-control @error('namadosen') is-invalid @enderror" name="namadosen"  value="{{ old('namadosen') }}">
+                            <option nama="" value="">--Pilih--</option>
+                            @foreach ($namadosen as $d)
+                            <option nama="" value="{{$d->namadosen}}">{{$d->namadosen}}</option>
+                            @endforeach
+                          </select>
+                          @error('namadosen') 
+                              <small class="text-danger">{{ $message }}</small>
+                          @enderror
                             </td>
                         </tr>
                         </tbody>
