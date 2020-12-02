@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Inputjadwal;
 use App\Models\Prodi;
+use App\Models\Kurikulum;
 
 class InputjadwalController extends Controller
 {
@@ -91,4 +92,15 @@ class InputjadwalController extends Controller
     {
         //
     }
+
+    public function matkul($prodi,$smtr){
+        $matkul = Kurikulum::where('jurusan','=',$prodi)
+                            ->where('semester','=',$smtr)->get();
+
+        return response()->json([
+            'data' => $matkul,
+        ]);
+    }
+
+
 }

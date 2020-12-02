@@ -61,7 +61,10 @@ Route::resource('/ruang', RuangController::class);
 //Prodi
 Route::get('/prodi', [JurusanController::class, 'index']);
 Route::get('/nilai', [NilaiController::class, 'index']);
+
 Route::get('/inputjadwal', [InputjadwalController::class, 'index']);
+Route::get('/inputjadwal/{prodi}/{smtr}', [InputjadwalController::class, 'matkul']);
+
 Route::get('/khsadm', [KhsadmController::class, 'index']);
 Route::get('/perwalianadm', [PerwalianadmController::class, 'index']);
 Route::resource('/kurikulum', KurikulumController::class);

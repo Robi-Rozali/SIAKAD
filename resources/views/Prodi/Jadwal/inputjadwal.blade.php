@@ -18,25 +18,25 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Program Studi</label>
-                                <select class="form-control" name="" id="">
-                                    <option nama="#" value="">Sistem Informasi</option>
-                                    <option nama="#" value="">Teknik Informatika</option>
-                                    <option nama="#" value="">Manajemen Informatika</option>
+                                <select class="form-control" name="" id="prodi">
+                                    <option value="SI">Sistem Informasi</option>
+                                    <option value="TI">Teknik Informatika</option>
+                                    <option value="MI">Manajemen Informatika</option>
                                 </select>
                               </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="" class="">Semester</label>
-                                <select class="form-control" name="" id="">
-                                    <option nama="#" value="">1</option>
-                                    <option nama="#" value="">2</option>
-                                    <option nama="#" value="">3</option>
-                                    <option nama="#" value="">4</option>
-                                    <option nama="#" value="">5</option>
-                                    <option nama="#" value="">6</option>
-                                    <option nama="#" value="">7</option>
-                                    <option nama="#" value="">8</option>
+                                <select class="form-control" name="" id="semester" onchange="Matkul()">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
                                 </select>
                               </div>
                         </div>
@@ -44,9 +44,9 @@
                             <div class="form-group">
                                 <label for="" class="">Tahun Akademik</label>
                                 <select class="form-control" name="" id="">
-                                    <option nama="#" value="">2018</option>
-                                    <option nama="#" value="">2019</option>
-                                    <option nama="#" value="">2020</option>
+                                    <option nama="2018" value="">2018</option>
+                                    <option nama="2019" value="">2019</option>
+                                    <option nama="2020" value="">2020</option>
                                 </select>
                               </div>
                         </div>
@@ -54,9 +54,9 @@
                             <div class="form-group">
                                 <label for="" class="">Kelas</label>
                                 <select class="form-control" name="" id="">
-                                    <option nama="#" value="">A</option>
-                                    <option nama="#" value="">B</option>
-                                    <option nama="#" value="">C</option>
+                                    <option nama="A" value="">A</option>
+                                    <option nama="B" value="">B</option>
+                                    <option nama="C" value="">C</option>
                                 </select>
                               </div>
                         </div>
@@ -67,19 +67,19 @@
                      <table class="table table-bordered" id="">
                       <thead>
                         <tr>
-                            <th>NO</th>
+                            {{-- <th>NO</th> --}}
                             <th>Hari</th>
-                            <th>Kode</th>
+                            <th width="100">Kode</th>
                             <th>Mata Kuliah</th>
-                            <th>SKS</th>
+                            <th width="100">SKS</th>
                             <th>Ruang</th>
-                            <th>Jam</th>
+                            <th width="100">Jam</th>
                             <th>Dosen</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>1</td>
+                            {{-- <td>1</td> --}}
                             <td>
                                 <select class="form-control" name="" id="">
                                     <option nama="#" value="">Senin</option>
@@ -90,9 +90,9 @@
                                     <option nama="#" value="">Sabtu</option>
                                 </select>
                             </td>
-                            <td>ST007</td>
-                            <td>Kerja Praktek</td>
-                            <td>3</td>
+                            <td><input id="kode_matkul" type="text" name="kode" class="form-control" readonly></td>
+                            <td><input id="matkul" type="text" name="matkul" class="form-control" readonly></td>
+                            <td><input id="sks" type="text" name="sks" class="form-control" readonly></td>
                             <td>
                                 <select class="form-control" name="" id="">
                                     <option nama="#" value="">LT1.03</option>
@@ -104,8 +104,8 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="text" name="#" class="form-control">
-                                <input type="text" name="#" class="form-control">
+                                <input id="jam_awal" type="text" name="jam_awal" class="form-control">
+                                <input id="jam_akhir" type="text" name="jam_akhir" class="form-control">
                             </td>
                             <td>
                                 <select class="form-control" name="" id="">
@@ -128,4 +128,20 @@
 
         </div>
       <!-- End of Main Content -->
+@endsection
+
+@section('script')
+    <script>
+      
+            function Matkul(){
+                var prodi = $('#prodi').val();
+                var smtr = $('#semester').val();
+                $.get('/inputjadwal/'+prodi+'/'+smtr,function(data){                 
+                    $('#kode_matkul').val(data.data[0].kode);
+                    $('#matkul').val(data.data[0].matakuliah);
+                    $('#sks').val(data.data[0].sks);
+                })
+            }
+
+    </script>
 @endsection

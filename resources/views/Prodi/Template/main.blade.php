@@ -110,6 +110,9 @@
   <script src="{{ asset('Admin/js/demo/chart-pie-demo.js') }} "></script>
   <!-- SweatAlert -->
   <script type="text/javascript" src="{{ asset('Admin/vendor/sweetalert/js/sweetalert.min.js') }} "></script>
+
+  @yield('script')
+
 </body>
 
 </html>
