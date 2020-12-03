@@ -20,45 +20,45 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="">Program Studi</label>
-                                <select class="form-control @error('jurusan') is-invalid @enderror" name="jurusan"  value="{{ old('jurusan') }}">
-                            <option nama="#" value="">--Pilih--</option>
-                            @foreach ($prodi as $p)
-                            <option nama="#" value="{{$p->prodi}}">{{$p->prodi}}</option>
-                            @endforeach
-                          </select>
-                          @error('jurusan') 
-                              <small class="text-danger">{{ $message }}</small>
-                          @enderror
-                              </div>
+                              <label for="">Program Studi</label>
+                              <select class="form-control" name="jurusan" id="jurusan">
+                                <option value="">--Pilih--</option>
+                                @foreach ($prodi as $p)
+                                  <option value="{{$p->prodi}}">{{ str_replace('_', ' ', $p->prodi) }}</option>
+                                @endforeach 
+                              </select>
+                              @error('jurusan') 
+                                <small class="text-danger">{{ $message }}</small>
+                              @enderror
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="" class="">Semester</label>
-                                 <select class="form-control @error('semester') is-invalid @enderror" name="semester"  value="{{ old('semester') }}" onchange="Matkul()">
-                            <option nama="#" value="">--Pilih--</option>
-                            @foreach ($semester as $s)
-                            <option nama="#" value="{{$s->semester}}">{{$s->semester}}</option>
-                            @endforeach
-                          </select>
-                          @error('semester') 
-                              <small class="text-danger">{{ $message }}</small>
-                          @enderror
-                              </div>
+                              <label for="" class="">Semester</label>
+                                <select class="form-control" name="semester" id="semester">
+                                  <option value="">--Pilih--</option>
+                                  @foreach ($semester as $s)
+                                  <option value="{{$s->semester}}">{{ str_replace('_', ' ', $s->semester) }}</option>
+                                  @endforeach
+                                </select>
+                                  @error('semester') 
+                                      <small class="text-danger">{{ $message }}</small>
+                                  @enderror
+                            </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="" class="">Tahun Akademik</label>
-                                <select class="form-control @error('tahun') is-invalid @enderror" name="tahun"  value="{{ old('tahun') }}">
-                            <option nama="#" value="">--Pilih--</option>
-                            @foreach ($tahun as $t)
-                            <option nama="#" value="{{$t->tahun}}">{{$t->tahun}}</option>
-                            @endforeach
-                          </select>
-                          @error('tahun') 
-                              <small class="text-danger">{{ $message }}</small>
-                          @enderror
-                              </div>
+                          <div class="form-group">
+                            <label for="" class="">Tahun Akademik</label>
+                              <select class="form-control" name="tahun" id="tahun" onchange="Matkul()">
+                                <option value="">--Pilih--</option>
+                                @foreach ($tahun as $t)
+                                  <option value="{{$t->tahun}}">{{$t->tahun}}</option>
+                                @endforeach
+                              </select>
+                              @error('tahun') 
+                                <small class="text-danger">{{ $message }}</small>
+                              @enderror
+                          </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
@@ -92,12 +92,12 @@
                             {{-- <td>1</td> --}}
                             <td>
                                 <select class="form-control" name="" id="">
-                                    <option nama="#" value="">Senin</option>
-                                    <option nama="#" value="">Selasa</option>
-                                    <option nama="#" value="">Rabu</option>
-                                    <option nama="#" value="">Kamis</option>
-                                    <option nama="#" value="">Jum'at</option>
-                                    <option nama="#" value="">Sabtu</option>
+                                    <option value="">Senin</option>
+                                    <option value="">Selasa</option>
+                                    <option value="">Rabu</option>
+                                    <option value="">Kamis</option>
+                                    <option value="">Jum'at</option>
+                                    <option value="">Sabtu</option>
                                 </select>
                             </td>
                             <td>
@@ -157,9 +157,12 @@
     <script>
       
             function Matkul(){
-                var prodi = $('#prodi').val();
+                var prodi = $('#jurusan').val();
                 var smtr = $('#semester').val();
                 var tahun = $('#tahun').val();
+                console.log(prodi)
+                console.log(smtr)
+                console.log(tahun)
                 $.get('/inputjadwal/'+prodi+'/'+smtr+'/'+tahun,function(data){                 
                     $('#kode_matkul').val(data.data[0].kode);
                     $('#matkul').val(data.data[0].matakuliah);

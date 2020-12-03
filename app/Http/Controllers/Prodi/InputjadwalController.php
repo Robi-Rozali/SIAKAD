@@ -135,9 +135,10 @@ class InputjadwalController extends Controller
         //
     }
 
-    public function matkul($prodi,$smtr){
+    public function matkul($prodi,$smtr,$tahun){
         $matkul = Kurikulum::where('jurusan','=',$prodi)
-                            ->where('semester','=',$smtr)->get();
+                            ->where('semester','=',$smtr)
+                            ->where('tahun','=',$tahun)->get();
 
         return response()->json([
             'data' => $matkul,
