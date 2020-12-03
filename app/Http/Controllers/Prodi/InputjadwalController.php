@@ -22,7 +22,9 @@ class InputjadwalController extends Controller
     {
         $data = [
             'inputjadwal' => Inputjadwal::all(),
-            'prodi' => Prodi::all(),
+            'prodi' => Prodi::select('prodi')->get(),
+            'semester' => Kurikulum::select('semester')->groupBy('semester')->get(),
+            'tahun' => Kurikulum::select('tahun')->groupBy('tahun')->get(),
             'namadosen' => Dosen::select('namadosen')->get(),
             'nama' => Ruang::select('nama')->get(),
             'lantai' => Ruang::select('lantai','nama')->get(),

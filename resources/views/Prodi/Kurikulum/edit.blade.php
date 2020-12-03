@@ -62,10 +62,10 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Jurusan</label>
                         <div class="col-sm-9">
-                          <select class="form-control @error('jurusan') is-invalid @enderror" name="jurusan"  value="{{ old('jurusan') }}">
-                            <option nama="#" value="">--Pilih--</option>
+                          <select class="form-control @error('jurusan') is-invalid @enderror" name="jurusan">
+                            <option value="{{ $kurikulum->jurusan }}">{{$kurikulum->jurusan}}</option>
                             @foreach ($prodi as $p)
-                            <option nama="#" value="{{$p->prodi}}">{{$p->prodi}}</option>
+                            <option value="{{$p->prodi}}">{{$p->prodi}}</option>
                             @endforeach
                           </select>
                           @error('jurusan') 
@@ -77,8 +77,8 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Tahun Akademik</label>
                         <div class="col-sm-9">
-                          <input type="text" name="tahun" class="form-control @error('tahun') is-invalid @enderror" value="{{ $kurikulum->tahun }}">
-                          @error('tahun') 
+                          <input type="text" name="Tahun" class="form-control @error('Tahun') is-invalid @enderror" value="{{ $kurikulum->Tahun }}">
+                          @error('Tahun') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
                         </div>

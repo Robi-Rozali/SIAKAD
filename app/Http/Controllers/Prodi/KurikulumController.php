@@ -52,7 +52,7 @@ class KurikulumController extends Controller
             'sks'           => 'required',
             'semester'      => 'required',
             'jurusan'       => 'required',
-            'tahun'         => 'required',
+            'Tahun'         => 'required',
         ]);
 
 
@@ -62,7 +62,7 @@ class KurikulumController extends Controller
         $kurikulum->sks         = $request->input('sks');
         $kurikulum->semester    = $request->input('semester');
         $kurikulum->jurusan     = $request->input('jurusan');
-        $kurikulum->tahun       = $request->input('tahun');
+        $kurikulum->Tahun       = $request->input('Tahun');
         $kurikulum->save();
 
         return redirect('/kurikulum')->with('sukses','Data Kurikulum berhasil ditambah');
@@ -113,7 +113,7 @@ class KurikulumController extends Controller
             'sks'           => 'required',
             'semester'      => 'required',
             'jurusan'       => 'required',
-            'tahun'         => 'required',
+            'Tahun'         => 'required',
         ]);
 
 
@@ -123,7 +123,7 @@ class KurikulumController extends Controller
         $kurikulum->sks         = $request->input('sks');
         $kurikulum->semester    = $request->input('semester');
         $kurikulum->jurusan     = $request->input('jurusan');
-        $kurikulum->tahun       = $request->input('tahun');
+        $kurikulum->Tahun       = $request->input('Tahun');
         
         $kurikulum->save();
 

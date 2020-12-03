@@ -21,36 +21,43 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Program Studi</label>
-                                <select class="form-control" name="" id="prodi">
-                                    <option value="SI">Sistem Informasi</option>
-                                    <option value="TI">Teknik Informatika</option>
-                                    <option value="MI">Manajemen Informatika</option>
-                                </select>
+                                <select class="form-control @error('jurusan') is-invalid @enderror" name="jurusan"  value="{{ old('jurusan') }}">
+                            <option nama="#" value="">--Pilih--</option>
+                            @foreach ($prodi as $p)
+                            <option nama="#" value="{{$p->prodi}}">{{$p->prodi}}</option>
+                            @endforeach
+                          </select>
+                          @error('jurusan') 
+                              <small class="text-danger">{{ $message }}</small>
+                          @enderror
                               </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="" class="">Semester</label>
-                                <select class="form-control" name="" id="semester" onchange="Matkul()">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                </select>
+                                 <select class="form-control @error('semester') is-invalid @enderror" name="semester"  value="{{ old('semester') }}" onchange="Matkul()">
+                            <option nama="#" value="">--Pilih--</option>
+                            @foreach ($semester as $s)
+                            <option nama="#" value="{{$s->semester}}">{{$s->semester}}</option>
+                            @endforeach
+                          </select>
+                          @error('semester') 
+                              <small class="text-danger">{{ $message }}</small>
+                          @enderror
                               </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="" class="">Tahun Akademik</label>
-                                <select class="form-control" name="" id="">
-                                    <option nama="2018" value="">2018</option>
-                                    <option nama="2019" value="">2019</option>
-                                    <option nama="2020" value="">2020</option>
-                                </select>
+                                <select class="form-control @error('tahun') is-invalid @enderror" name="tahun"  value="{{ old('tahun') }}">
+                            <option nama="#" value="">--Pilih--</option>
+                            @foreach ($tahun as $t)
+                            <option nama="#" value="{{$t->tahun}}">{{$t->tahun}}</option>
+                            @endforeach
+                          </select>
+                          @error('tahun') 
+                              <small class="text-danger">{{ $message }}</small>
+                          @enderror
                               </div>
                         </div>
                         <div class="col-md-3">
@@ -93,9 +100,16 @@
                                     <option nama="#" value="">Sabtu</option>
                                 </select>
                             </td>
-                            <td><input id="kode_matkul" type="text" name="kode" class="form-control" readonly></td>
-                            <td><input id="matkul" type="text" name="matkul" class="form-control" readonly></td>
-                            <td><input id="sks" type="text" name="sks" class="form-control" readonly></td>
+                            <td>
+                                <input id="kode_matkul" type="text" name="kode" class="form-control @error('kode') is-invalid @enderror" value="{{ old('kode') }}" readonly>
+                            </td>
+
+                            <td>
+                                <input id="matkul" type="text" name="matakuliah" class="form-control @error('matakuliah') is-invalid @enderror" value="{{ old('matakuliah') }}" readonly>
+                            </td>
+                            <td>
+                                <input id="sks" type="text" name="sks" class="form-control @error('sks') is-invalid @enderror" value="{{ old('sks') }}" readonly>
+                            </td>
                             <td>
                                 <select class="form-control @error('ruang') is-invalid @enderror" name="ruang"  value="{{ old('ruang') }}">
                             <option nama="" value="">--Pilih--</option>
@@ -108,8 +122,8 @@
                           @enderror
                             </td>
                             <td>
-                                <input id="jam_awal" type="text" name="jam_awal" class="form-control">
-                                <input id="jam_akhir" type="text" name="jam_akhir" class="form-control">
+                                <input id="jam_awal" type="text" name="jam_awal" class="form-control @error('jam') is-invalid @enderror" value="{{ old('jam') }}">
+                                <input id="jam_akhir" type="text" name="jam_akhir" class="form-control @error('jam') is-invalid @enderror" value="{{ old('jam') }}">
                             </td>
                             <td>
                                 <select class="form-control @error('namadosen') is-invalid @enderror" name="namadosen"  value="{{ old('namadosen') }}">
@@ -145,7 +159,8 @@
             function Matkul(){
                 var prodi = $('#prodi').val();
                 var smtr = $('#semester').val();
-                $.get('/inputjadwal/'+prodi+'/'+smtr,function(data){                 
+                var tahun = $('#tahun').val();
+                $.get('/inputjadwal/'+prodi+'/'+smtr+'/'+tahun,function(data){                 
                     $('#kode_matkul').val(data.data[0].kode);
                     $('#matkul').val(data.data[0].matakuliah);
                     $('#sks').val(data.data[0].sks);
