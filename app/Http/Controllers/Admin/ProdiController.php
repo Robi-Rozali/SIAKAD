@@ -20,7 +20,7 @@ class ProdiController extends Controller
         $data = [
             'prodi' => Prodi::all(),
         ];
-        return view('Admin.prodi.prodi')->with($data);
+        return view('Admin.prodi.prodii')->with($data);
     }
 
     /**
@@ -65,7 +65,7 @@ class ProdiController extends Controller
         $prodi->password    = md5($request->input('password'));       
         $prodi->save();
 
-        return redirect('/prodi')->with('sukses','Data Prodi berhasil ditambah');
+        return redirect('/prodii')->with('sukses','Data Prodi berhasil ditambah');
 
     }
 
@@ -143,7 +143,7 @@ class ProdiController extends Controller
     
         $prodi->save();
 
-        return redirect('/prodi')->with('sukses','Data Prodi berhasil diedit');
+        return redirect('/prodii')->with('sukses','Data Prodi berhasil diedit');
     }
 
     /**
@@ -158,6 +158,6 @@ class ProdiController extends Controller
         Storage::delete('public/gambar/'.$prodi->gambar);
         $prodi->delete();
 
-        return redirect('/prodi')->with('sukses','Data Prodi berhasil dihapus');
+        return redirect('/prodii')->with('sukses','Data Prodi berhasil dihapus');
     }
 }

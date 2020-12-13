@@ -19,7 +19,7 @@
                       @csrf
                       @method('PUT')
   
-                      <div class="form-group row">
+                      {{-- <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Nama Prodi</label>
                         <div class="col-sm-9">
                           <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ $prodi->nama }}">
@@ -27,7 +27,7 @@
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
                         </div>
-                      </div>
+                      </div> --}}
   
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Prodi</label>
@@ -80,7 +80,7 @@
                       <hr>
                       <div class="form-group">
                          <button type="submit" class="btn btn-primary mb-2">Simpan</button>
-                         <a href="/prodi" class="btn btn-danger mb-2">Keluar</a>
+                         <a href="/prodii" class="btn btn-danger mb-2">Keluar</a>
                       </div>
   
                     </form>

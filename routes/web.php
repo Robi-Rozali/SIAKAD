@@ -50,7 +50,7 @@ use App\Http\Controllers\Prodi\KurikulumController;
 
 // Admin
 Route::get('/adm', [AdminController::class, 'index']);
-Route::resource('/prodi', ProdiController::class);
+Route::resource('/prodii', ProdiController::class);
 Route::resource('/mahasiswa', MahasiswaController::class);
 Route::post('/mahasiswa/import/csv', [MahasiswaController::class, 'importcsv']);
 

@@ -19,7 +19,7 @@
                       @csrf
                       @method('POST')
   
-                      <div class="form-group row">
+                      {{-- <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Nama Prodi</label>
                         <div class="col-sm-9">
                           <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
@@ -27,7 +27,7 @@
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
                         </div>
-                      </div>
+                      </div> --}}
   
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Prodi</label>

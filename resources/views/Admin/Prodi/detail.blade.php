@@ -21,10 +21,10 @@
                         </div>
                         <div class="col-md-8">
                             <table class="table">
-                                <tr>
+                                {{-- <tr>
                                     <td>Nama Prodi</td>
                                     <td><strong>{{ $prodi->nama }}</strong></td>
-                                </tr>
+                                </tr> --}}
                                 <tr>
                                     <td>Prodi</td>
                                     <td><strong>{{ $prodi->prodi }}</strong></td>
@@ -42,7 +42,7 @@
                   </div>
                     <hr>
                       <div class="form-group">
-                         <a href="/prodi" type="submit" class="btn btn-primary mb-2">Kembali</a>
+                         <a href="/prodii" type="submit" class="btn btn-primary mb-2">Kembali</a>
                       </div>
                 </div>  
               </div>

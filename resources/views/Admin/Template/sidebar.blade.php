@@ -58,7 +58,7 @@
           <span>Dosen</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="\prodi">
+        <a class="nav-link" href="\prodii">
           <i class="fas fa-university"></i>
           <span>Prodi</span></a>
       </li>
