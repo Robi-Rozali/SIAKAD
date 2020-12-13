@@ -10,4 +10,17 @@ class Inputjadwal extends Model
     use HasFactory;
 
     protected $table = 'jadwal';
+    protected $fillable = [
+    	'kode',
+        'matakuliah',
+        'kelas',
+        'ruang',
+        'hari',
+        'jam',
+        'namadosen',
+        'semester',
+        'jurusan',
+        'tahun',
+        'sks',
+    ];
 }
