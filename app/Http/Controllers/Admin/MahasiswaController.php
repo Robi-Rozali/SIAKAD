@@ -207,7 +207,7 @@ class MahasiswaController extends Controller
         
     }
 
-    public function cetak(Request $request){
+    public function cetak(){
         // request()->validate([
         //     'nim'           => 'required',
         //     'nama'          => 'required',
@@ -232,7 +232,7 @@ class MahasiswaController extends Controller
 
         $mahasiswa = Mahasiswa::all();
         $pdf = PDF::loadview('Admin.Mahasiswa.cetak', ['mahasiswa' => $mahasiswa]);
-        return $pdf->download('Mahasiswa.pdf'); 
+        return $pdf->stream('Mahasiswa.pdf'); 
     }
 
 }
