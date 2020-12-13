@@ -13,6 +13,8 @@ use App\Models\Prodi;
 use App\Exports\MahasiswaExport;
 use App\Imports\MahasiswaImport;
 
+use PDF;
+
 use Maatwebsite\Excel\Facades\Excel;
 
 class MahasiswaController extends Controller
@@ -203,6 +205,34 @@ class MahasiswaController extends Controller
     public function exportcsv(){
         return Excel::download(new MahasiswaExport, 'mahasiswa.xls');
         
+    }
+
+    public function cetak(Request $request){
+        // request()->validate([
+        //     'nim'           => 'required',
+        //     'nama'          => 'required',
+        //     'jurusan'       => 'required',
+        //     'alamat'        => 'required',
+        //     'email'         => 'required|email',
+        //     'tempat'        => 'required',
+        //     'tgllahir'      => 'required',
+        //     'telp'          => 'required',
+        // ]);
+
+        // $data = [
+        //     'nim'           => $request->nim,
+        //     'nama'          => $request->nama,
+        //     'jurusan'       => $request->jurusan,
+        //     'alamat'        => $request->alamat,
+        //     'email'         => $request->email,
+        //     'tempat'        => $request->tempat,
+        //     'tgllahir'      => $request->tgllahir,
+        //     'telp'          => $request->telp,
+        // ];
+
+        $mahasiswa = Mahasiswa::all();
+        $pdf = PDF::loadview('Admin.Mahasiswa.cetak', ['mahasiswa' => $mahasiswa]);
+        return $pdf->download('Mahasiswa.pdf'); 
     }
 
 }

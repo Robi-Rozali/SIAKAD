@@ -177,6 +177,9 @@ return [
 
         // Maatwebsite  (export import)
         Maatwebsite\Excel\ExcelServiceProvider::class,
+
+        // dompdf
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -231,6 +234,8 @@ return [
 
         // Maatwebsite (Export Import)
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        // dompdf
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

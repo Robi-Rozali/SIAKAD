@@ -23,6 +23,7 @@
                 <div class="card-header"><a href="/mahasiswa/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
                 <a href="/mahasiswa/export/csv" class="btn btn-success"><i class="fas fa-file-alt"></i> Export</a>
                   <button type="button" class="btn btn-primary d-inline" data-toggle="modal" data-target="#import"> <i class="fas fa-file-alt"></i> Import</button>
+                  <a href="/mahasiswa/cetak" class="btn btn-success"><i class="fas fa-file-alt"></i> Cetak</a>
                 <div class="card-body">
                   <div class="table-responsive">
                      <table class="table table-bordered" id="dataTable">

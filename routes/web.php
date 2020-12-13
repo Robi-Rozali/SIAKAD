@@ -55,6 +55,7 @@ Route::resource('/mahasiswa', MahasiswaController::class);
 Route::post('/mahasiswa/import/csv', [MahasiswaController::class, 'importcsv']);
 
 Route::get('/mahasiswa/export/csv', [MahasiswaController::class, 'exportcsv']);
+Route::get('/mahasiswa/cetak', [MahasiswaController::class, 'cetak']);
 
 Route::resource('/ruang', RuangController::class);
 
