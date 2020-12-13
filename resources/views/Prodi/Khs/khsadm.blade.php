@@ -16,41 +16,49 @@
                 <div class="card shadow">
                   <div class="card-header">
                     <div class="row">
-                      <label for="" class="col-md-2 my-auto">Cari Mahasiswa</label>
-                      <div class="col-md-3 my-auto">
-                        <input type="text" class="form-control" placeholder="Cari">
-                      </div>
-                      <div>
-                        <button type="submit" class="btn btn-primary mb-2 my-auto" id="#">Cari</button>
-                      </div>
+                      <form class="row g-3">
+                        <div class="col-auto">
+                          <form action="/khsadm" method="GET">
+                          @csrf
+
+                          <input type="text" class="form-control" id="input" placeholder="Cari Mahasiswa" value="{{ old('cari') }}">
+                        </div>
+                        <div class="col-auto">
+                          <button type="submit" id="cari" class="btn btn-primary mb-2">Cari</button>
+                        </div>
+                      </form>
+                      
+                      </form>
+                      
                     </div>
                   </div>
+                        
                   <div class="card-body">
                     
                     <div class="form-group row">
-                      <label for="foto" class="col-sm-2">
+                      <label for="" class="col-sm-2">
                         NIM
                       </label>
-                      <div class="col-sm-5 teks-hitam">
-                        A3.1700040
+                      <div class="col-sm-5 teks-hitam" id="nim">
+                      
                       </div>
                       <div class="col-sm-4"></div>
                     </div>
                     <div class="form-group row">
-                      <label for="foto" class="col-sm-2">
+                      <label for="" class="col-sm-2">
                         Nama
                       </label>
-                      <div class="col-sm-5 teks-hitam">
-                        ROBI ROZALI
+                      <div class="col-sm-5 teks-hitam" id="nama">
+                        
                       </div>
                       <div class="col-sm-4"></div>
                     </div>
                     <div class="form-group row">
-                      <label for="foto" class="col-sm-2">
+                      <label for="" class="col-sm-2">
                         Jurusan / Prog
                       </label>
-                      <div class="col-sm-5 teks-hitam">
-                       Sistem Informasi / S1
+                      <div class="col-sm-5 teks-hitam" id="jurusan">
+                       
                       </div>
                       <div class="col-sm-4"></div>
                     </div>
@@ -67,14 +75,7 @@
                                 <th>Nilai</th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>FT0001</td>
-                                <td>TRO</td>
-                                <td>2</td>
-                                <td>C</td>
-                              </tr>
+                            <tbody id="databray">                             
                             </tbody>
                           </table>
                         </div>
@@ -84,7 +85,7 @@
                         </div>
                       </div>  
                     </div>
-  
+                        
                   </div>
                 </div>
               </div>  
@@ -95,4 +96,52 @@
 
         </div>
       <!-- End of Main Content -->
+@endsection
+@section('script')
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $.ajaxSetup({
+        headers:{
+          'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('Content')
+        }
+      });
+      $('body').on('click','#cari', function(event){
+        event.preventDefault()
+        var id = $('#input').val();
+        console.log(id)
+        $.get('/khsadm/'+id,function(data){
+          $('#nim').text(data.data[0].nim);
+          $('#nama').text(data.data[0].nama);
+          $('#jurusan').text(data.data[0].jurusan);
+         
+          for(var i=0; i < data.data.length; i++){
+            console.log(i)
+            var a,b,c,d;
+            a = data.data[i].kode;
+            b = data.data[i].matakuliah;
+            c = data.data[i].sks;
+            d = data.data[i].grade;
+             var form = `
+              <tr>
+                                <td></td>
+                                <td>`+a+`</td>
+                                <td>`+b+`</td>
+                                <td>`+c+`</td>
+                                <td>`+d+`</td>
+                              </tr>
+              `;
+              console.log(a,b,c,d)
+              document.getElementById("databray").innerHTML = form;
+            // $('#databray').html(form);
+              // $('#kode').text(data.data[i].kode);
+              // $('#matakuliah').text(data.data[i].matakuliah);
+              // $('#sks').text(data.data[i].sks);
+              // $('#grade').text(data.data[i].grade);    
+          }
+          
+        })
+      });
+    })
+  </script>
 @endsection

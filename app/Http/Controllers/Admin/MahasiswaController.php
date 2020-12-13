@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Mahasiswa;
 use App\Models\Prodi;
@@ -25,6 +26,7 @@ class MahasiswaController extends Controller
     {
         $data = [
             'mahasiswa' => Mahasiswa::all(),
+            
         ];
         return view('Admin.Mahasiswa.mahasiswa')->with($data);
     }

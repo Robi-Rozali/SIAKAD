@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Kurikulum;
 use App\Models\Prodi;
 
+use App\Exports\KurikulumExport;
+use App\Imports\KurikulumImport;
+
+use Maatwebsite\Excel\Facades\Excel;
 
 class KurikulumController extends Controller
 {
@@ -143,5 +147,20 @@ class KurikulumController extends Controller
         $kurikulum->delete();
 
         return redirect('/kurikulum')->with('sukses','Data Kurikulum berhasil dihapus');
+    }
+
+    public function importcsv(Request $request){
+        $validatedData = $request->validate([
+            'file' => 'required',
+        ]);
+
+        Excel::import(new KurikulumImport, $request->file('file'));
+
+        return redirect('/kurikulum')->with('sukses','The file has been import');
+    }
+
+    public function exportcsv(){
+        return Excel::download(new KurikulumExport, 'Kurikulum.xls');
+        
     }
 }

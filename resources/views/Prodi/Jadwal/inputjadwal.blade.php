@@ -122,11 +122,10 @@
                           @enderror
                             </td>
                             <td>
-                                <input id="jam_awal" type="text" name="jam_awal" class="form-control @error('jam') is-invalid @enderror" value="{{ old('jam') }}">
-                                <input id="jam_akhir" type="text" name="jam_akhir" class="form-control @error('jam') is-invalid @enderror" value="{{ old('jam') }}">
+                                <input id="jam" type="text" name="jam" class="form-control @error('jam') is-invalid @enderror" value="{{ old('jam') }}">
                             </td>
                             <td>
-                                <select class="form-control @error('namadosen') is-invalid @enderror" name="namadosen"  value="{{ old('namadosen') }}">
+                            <select class="form-control @error('namadosen') is-invalid @enderror" name="namadosen"  value="{{ old('namadosen') }}">
                             <option nama="" value="">--Pilih--</option>
                             @foreach ($namadosen as $d)
                             <option nama="" value="{{$d->namadosen}}">{{$d->namadosen}}</option>

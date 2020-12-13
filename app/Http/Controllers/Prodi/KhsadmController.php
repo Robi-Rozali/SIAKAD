@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Prodi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Nilai;
+
 class KhsadmController extends Controller
 {
     /**
@@ -12,9 +14,16 @@ class KhsadmController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('Prodi.khs.Khsadm');
+        //$result = KHS::when($request->search, function($query) use ($request){
+          //  $query->where('nim', 'like', "%{$request->search}%")
+            //        ->orWhere('nama', 'like', "%{$request->search}%");
+        //})->paginate(2);
+        $data = [
+            'nilai' => Nilai::all(),
+        ];
+        return view('Prodi.khs.Khsadm')->with($data);
     }
 
     /**
@@ -81,5 +90,14 @@ class KhsadmController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function cari($id){
+
+        $nilai = Nilai::where('nim', '=', $id)->orWhere('nama', '=', $id)->get();
+
+        return response()->json([
+            'data' =>$nilai,
+        ]);
     }
 }

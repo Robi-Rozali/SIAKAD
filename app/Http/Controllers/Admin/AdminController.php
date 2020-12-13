@@ -4,13 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\Mahasiswa;
+use App\Models\Prodi;
+use App\Models\Dosen;
+use App\Models\Ruang;
 
 class AdminController extends Controller
 {
     
     public function index(){
-    	return view('admin.index');
-    }
+    	$data = [
+    		'jumlah' => Mahasiswa::select(DB::raw('COUNT(nim) as total'))->get(),
+    		'jumdos' => Dosen::select(DB::raw('COUNT(nidn) as total'))->get(),
+    		'jumruang' => Ruang::select(DB::raw('COUNT(id) as total'))->get(),
+    	];
+    	// dd($data);
+    	
+    	return view('admin.index')->with($data);
+    } 
 
 
 }

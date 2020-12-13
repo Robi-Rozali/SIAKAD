@@ -61,6 +61,7 @@ Route::resource('/ruang', RuangController::class);
 //Prodi
 Route::get('/prodi', [JurusanController::class, 'index']);
 Route::get('/nilai', [NilaiController::class, 'index']);
+Route::get('/khsadm/{id}', [KhsadmController::class, 'cari']);
 
 Route::resource('/inputjadwal', InputjadwalController::class);
 Route::get('/inputjadwal/{prodi}/{smtr}/{tahun}', [InputjadwalController::class, 'matkul']);
@@ -68,6 +69,9 @@ Route::get('/inputjadwal/{prodi}/{smtr}/{tahun}', [InputjadwalController::class,
 Route::get('/khsadm', [KhsadmController::class, 'index']);
 Route::get('/perwalianadm', [PerwalianadmController::class, 'index']);
 Route::resource('/kurikulum', KurikulumController::class);
+Route::post('/kurikulum/import/csv', [KurikulumController::class, 'importcsv']);
+
+Route::get('/kurikulum/export/csv', [KurikulumController::class, 'exportcsv']);
 
 // Dosen
 Route::resource('/dosen', DosenController::class);

@@ -2,7 +2,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/adm">
         <div class="sidebar-brand-icon">
           <img src="../img/stmik.png" class="d-inline" style="width: 50px" alt="logo">
         </div>
@@ -15,7 +15,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/adm">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -48,6 +48,31 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
+        <a class="nav-link" href="\mahasiswa">
+          <i class="fas fa-user-graduate"></i>
+          <span>Mahasiswa</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="\dosen">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <span>Dosen</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="\prodi">
+          <i class="fas fa-university"></i>
+          <span>Prodi</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="\ruang">
+          <i class="fas fa-university"></i>
+          <span>Ruangan</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="\ruang">
+          <i class="fas fa-university"></i>
+          <span>Jurusan</span></a>
+      </li>
+      <!--<li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
           <span>Master Data</span>
@@ -61,7 +86,7 @@
             <a class="collapse-item" href="\ruang">Ruangan</a>
           </div>
         </div>
-      </li>
+      </li>-->
       <!-- Nav Item - Pages Collapse Menu -->
             <!-- Nav Item - Charts -->
       <li class="nav-item">
