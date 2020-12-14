@@ -99,14 +99,17 @@
                                 </select>
                             </td>
                             <td>
-                                <input id="kode_matkul" type="text" name="fields[0][kode]" class="form-control @error('kode') is-invalid @enderror" value="{{ old('kode') }}" >
+                                <input id="kode_matkul0" type="text" name="fields[0][kode]" class="form-control @error('kode') is-invalid @enderror" value="{{ old('kode') }}" readonly>
                             </td>
 
                             <td>
-                                <input id="matkul" type="text" name="fields[0][matakuliah]" class="form-control @error('matakuliah') is-invalid @enderror" value="{{ old('matakuliah') }}" >
+                                {{-- <input id="matkul" type="text" name="fields[0][matakuliah]" class="form-control @error('matakuliah') is-invalid @enderror" value="{{ old('matakuliah') }}" > --}}
+                                <select name="fields[0][matakuliah]" id="matkul0" class="form-control" onchange="Detail('0')">
+                                  <option selected>-- pilih --</option>
+                                </select>
                             </td>
                             <td>
-                                <input id="sks" type="text" name="fields[0][sks]" class="form-control @error('sks') is-invalid @enderror" value="{{ old('sks') }}" >
+                                <input id="sks0" type="text" name="fields[0][sks]" class="form-control @error('sks') is-invalid @enderror" value="{{ old('sks') }}" readonly>
                             </td>
                             <td>
                                 <select class="form-control @error('ruang') is-invalid @enderror" name="fields[0][ruang]"  value="{{ old('ruang') }}">
@@ -154,12 +157,13 @@
 @section('script')
     <script>
       var i = 0;
+
       function Tambah(){
         i++;
         var prodi = $('#jurusan').val();
-                var smtr = $('#semester').val();
-                var tahun = $('#tahun').val();
-                var kelas = $('#kelas').val();
+        var smtr = $('#semester').val();
+        var tahun = $('#tahun').val();
+        var kelas = $('#kelas').val();
         var form = `       
         <input type="hidden" name="fields[`+i+`][jurusan]" value="`+prodi+`">
         <input type="hidden" name="fields[`+i+`][semester]" value="`+smtr+`">
@@ -176,14 +180,16 @@
                                 </select>
                             </td>
                             <td>
-                                <input id="kode_matkul" type="text" name="fields[`+i+`][kode]" class="form-control @error('kode') is-invalid @enderror" value="{{ old('kode') }}" >
+                                <input id="kode_matkul`+i+`" type="text" name="fields[`+i+`][kode]" class="form-control @error('kode') is-invalid @enderror" value="{{ old('kode') }}" readonly>
                             </td>
 
                             <td>
-                                <input id="matkul" type="text" name="fields[`+i+`][matakuliah]" class="form-control @error('matakuliah') is-invalid @enderror" value="{{ old('matakuliah') }}" >
+                                {{-- <input id="matkul`+i+`" type="text" name="fields[`+i+`][matakuliah]" class="form-control @error('matakuliah') is-invalid @enderror" value="{{ old('matakuliah') }}" > --}}
+                                <select name="fields[0][matakuliah]" id="matkul`+i+`" class="form-control" onchange="Detail(`+i+`)">
+                                </select>
                             </td>
                             <td>
-                                <input id="sks" type="text" name="fields[`+i+`][sks]" class="form-control @error('sks') is-invalid @enderror" value="{{ old('sks') }}" >
+                                <input id="sks`+i+`" type="text" name="fields[`+i+`][sks]" class="form-control @error('sks') is-invalid @enderror" value="{{ old('sks') }}" readonly>
                             </td>
                             <td>
                                 <select class="form-control @error('ruang') is-invalid @enderror" name="fields[`+i+`][ruang]"  value="{{ old('ruang') }}">
@@ -211,7 +217,14 @@
                           @enderror
                             </td>
                             <td><button type="button" class="btn btn-danger" onclick="Kurang()"><i class="fas fa-minus"></i></button></td>
+
         `;
+
+        $('#matkul0 option').each(function(){ 
+          var value = $(this).val();
+          console.log(value)
+           $(`#matkul${i++}`).html('<option value="">--ini isinya--</option>')
+        });
         $('#formjadwal').append("<tr class='"+i+"'>"+form+"</tr>");
       }
 
@@ -231,10 +244,22 @@
                 console.log(prodi)
                 console.log(smtr)
                 console.log(tahun)
-                $.get('/inputjadwal/'+prodi+'/'+smtr+'/'+tahun,function(data){                 
-                    $('#kode_matkul').val(data.data[0].kode);
-                    $('#matkul').val(data.data[0].matakuliah);
-                    $('#sks').val(data.data[0].sks);
+                $.get('/inputjadwal/'+prodi+'/'+smtr+'/'+tahun,function(data){
+                  $.each(data, function(i, value){
+                    console.log(value);
+                    for(var i = 0, length1 = value.length; i < length1; i++){
+                      $('#matkul0').append($('<option>').text(value[i].matakuliah).attr('value',value[i].matakuliah));
+                    }
+                  });
+                })
+            }
+
+            function Detail(type){
+              var matkul = $(`#matkul${type}`).val();
+              console.log(matkul)
+              $.get('/inputjadwal/detail/'+matkul,function(data){
+                    $(`#kode_matkul${type}`).val(data.data[0].kode);
+                    $(`#sks${type}`).val(data.data[0].sks);
                 })
             }
 

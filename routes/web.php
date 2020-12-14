@@ -66,6 +66,7 @@ Route::get('/khsadm/{id}', [KhsadmController::class, 'cari']);
 
 Route::resource('/inputjadwal', InputjadwalController::class);
 Route::get('/inputjadwal/{prodi}/{smtr}/{tahun}', [InputjadwalController::class, 'matkul']);
+Route::get('/inputjadwal/detail/{id}', [InputjadwalController::class, 'detail']);
 
 Route::get('/khsadm', [KhsadmController::class, 'index']);
 Route::get('/perwalianadm', [PerwalianadmController::class, 'index']);

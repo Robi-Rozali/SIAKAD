@@ -167,5 +167,13 @@ class InputjadwalController extends Controller
         ]);
     }
 
+    public function detail($id){
+        $matkul = Kurikulum::where('matakuliah','=',$id)->get();
+
+        return response()->json([
+            'data' => $matkul,
+        ]);
+    }
+
 
 }

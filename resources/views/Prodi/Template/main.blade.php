@@ -99,15 +99,15 @@
   <script src="{{ asset('Admin/js/sb-admin-2.min.js') }} "></script>
 
   <!-- Page level plugins -->
-  <script src="{{ asset('Admin/vendor/chart.js/Chart.min.js') }} "></script>
+  {{-- <script src="{{ asset('Admin/vendor/chart.js/Chart.min.js') }} "></script> --}}
   <!-- datatable -->
   <script src="{{ asset('Admin/vendor/datatables/jquery.dataTables.min.js') }} "></script>
   <script src="{{ asset('Admin/vendor/datatables/dataTables.bootstrap4.min.js') }} "></script>
   <script src="{{ asset('Admin/js/demo/datatables-demo.js') }} "></script>
 
   <!-- Page level custom scripts -->
-  <script src="{{ asset('Admin/js/demo/chart-area-demo.js') }} "></script>
-  <script src="{{ asset('Admin/js/demo/chart-pie-demo.js') }} "></script>
+  {{-- <script src="{{ asset('Admin/js/demo/chart-area-demo.js') }} "></script> --}}
+  {{-- <script src="{{ asset('Admin/js/demo/chart-pie-demo.js') }} "></script> --}}
   <!-- SweatAlert -->
   <script type="text/javascript" src="{{ asset('Admin/vendor/sweetalert/js/sweetalert.min.js') }} "></script>
 
