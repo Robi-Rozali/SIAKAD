@@ -187,7 +187,7 @@
 
                             <td>
                                 {{-- <input id="matkul`+i+`" type="text" name="fields[`+i+`][matakuliah]" class="form-control @error('matakuliah') is-invalid @enderror" value="{{ old('matakuliah') }}" > --}}
-                                <select name="fields[0][matakuliah]" id="matkul`+i+`" class="form-control matkul_tambah`+i+`" onchange="Detail(`+i+`)">
+                                <select name="fields[`+i+`][matakuliah]" id="matkul`+i+`" class="form-control matkul_tambah`+i+`" onchange="Detail(`+i+`)">
                                 
                                 </select>
                             </td>
