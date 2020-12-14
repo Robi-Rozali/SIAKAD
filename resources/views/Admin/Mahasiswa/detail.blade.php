@@ -30,6 +30,10 @@
                                     <td><strong>{{ $mahasiswa->nama }}</strong></td>
                                 </tr>
                                 <tr>
+                                    <td>Jenis Kelamin</td>
+                                    <td><strong>{{ $mahasiswa->jenis_kelamin }}</strong></td>
+                                </tr>
+                                <tr>
                                     <td>Tempat Lahir</td>
                                     <td><strong>{{ $mahasiswa->tempat }}</strong></td>
                                 </tr>
