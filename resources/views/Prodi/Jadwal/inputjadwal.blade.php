@@ -157,13 +157,15 @@
 @section('script')
     <script>
       var i = 0;
-
+      
+      var prodi = $('#jurusan').val();
+      var smtr = $('#semester').val();
+      var tahun = $('#tahun').val();
+      var kelas = $('#kelas').val();
+      
+// $('#matkul0 option').each(function(){ $(this).val() })
       function Tambah(){
-        i++;
-        var prodi = $('#jurusan').val();
-        var smtr = $('#semester').val();
-        var tahun = $('#tahun').val();
-        var kelas = $('#kelas').val();
+        i++;       
         var form = `       
         <input type="hidden" name="fields[`+i+`][jurusan]" value="`+prodi+`">
         <input type="hidden" name="fields[`+i+`][semester]" value="`+smtr+`">
@@ -185,7 +187,8 @@
 
                             <td>
                                 {{-- <input id="matkul`+i+`" type="text" name="fields[`+i+`][matakuliah]" class="form-control @error('matakuliah') is-invalid @enderror" value="{{ old('matakuliah') }}" > --}}
-                                <select name="fields[0][matakuliah]" id="matkul`+i+`" class="form-control" onchange="Detail(`+i+`)">
+                                <select name="fields[0][matakuliah]" id="matkul`+i+`" class="form-control matkul_tambah`+i+`" onchange="Detail(`+i+`)">
+                                
                                 </select>
                             </td>
                             <td>
@@ -219,13 +222,13 @@
                             <td><button type="button" class="btn btn-danger" onclick="Kurang()"><i class="fas fa-minus"></i></button></td>
 
         `;
-
-        $('#matkul0 option').each(function(){ 
-          var value = $(this).val();
-          console.log(value)
-           $(`#matkul${i++}`).html('<option value="">--ini isinya--</option>')
-        });
         $('#formjadwal').append("<tr class='"+i+"'>"+form+"</tr>");
+        var data_matkul = $('#matkul0 option').map(function(){ return $(this).val() }).get();
+        console.log(data_matkul)
+        for(var k = 0, length1 = data_matkul.length; k < length1; k++){
+          console.log(data_matkul[k])
+          $('.matkul_tambah'+i).append($('<option>').text(data_matkul[k]).attr('value',data_matkul[k]));
+        }
       }
 
       function Kurang(){
