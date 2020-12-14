@@ -223,8 +223,10 @@
 
         `;
         $('#formjadwal').append("<tr class='"+i+"'>"+form+"</tr>");
-        var data_matkul = $('#matkul0 option').map(function(){ return $(this).val() }).get();        
+        var data_matkul = $('#matkul0 option').map(function(){ return $(this).val() }).get();
+        
         for(var k = 0, length1 = data_matkul.length; k < length1; k++){
+          
           $('.matkul_tambah'+i).append($('<option>').text(data_matkul[k]).attr('value',data_matkul[k]));
         }
       }
@@ -241,9 +243,11 @@
             function Matkul(){
                 var prodi = $('#jurusan').val();
                 var smtr = $('#semester').val();
-                var tahun = $('#tahun').val();                
+                var tahun = $('#tahun').val();
+                
                 $.get('/inputjadwal/'+prodi+'/'+smtr+'/'+tahun,function(data){
                   $.each(data, function(i, value){
+                    
                     for(var i = 0, length1 = value.length; i < length1; i++){
                       $('#matkul0').append($('<option>').text(value[i].matakuliah).attr('value',value[i].matakuliah));
                     }
@@ -253,6 +257,7 @@
 
             function Detail(type){
               var matkul = $(`#matkul${type}`).val();
+              
               $.get('/inputjadwal/detail/'+matkul,function(data){
                     $(`#kode_matkul${type}`).val(data.data[0].kode);
                     $(`#sks${type}`).val(data.data[0].sks);
