@@ -20,10 +20,12 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card shadow">
-                <div class="card-header"><a href="/mahasiswa/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-                <a href="/mahasiswa/export/csv" class="btn btn-success"><i class="fas fa-file-alt"></i> Export</a>
-                  <button type="button" class="btn btn-primary d-inline" data-toggle="modal" data-target="#import"> <i class="fas fa-file-alt"></i> Import</button>
-                  <a href="/mahasiswa/cetak/pdf" class="btn btn-success"><i class="fas fa-file-alt"></i> Cetak</a>
+                <div class="card-header">
+                  <a href="/mahasiswa/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
+                  <a href="/mahasiswa/export/csv" class="btn btn-success"><i class="fas fa-file-alt"></i> Export</a>
+                  <button type="button" class="btn btn-success d-inline" data-toggle="modal" data-target="#import"> <i class="fas fa-file-alt"></i> Import</button>
+                  <a href="/mahasiswa/cetak/pdf" class="btn btn-info"><i class="fas fa-print"></i> Cetak</a>
+                </div>
                 <div class="card-body">
                   <div class="table-responsive">
                      <table class="table table-bordered" id="dataTable">
@@ -32,10 +34,11 @@
                             <th>NO</th>
                             <th>NIM</th>
                             <th>Nama Mahasiswa</th>
+                            <th>Jenis Kelamin</th>
                             <th>Jurusan</th>
                             <th>No Telpon</th>
                             <th>Alamat</th>
-                            <th >AKSI</th>
+                            <th>AKSI</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,7 +50,7 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $m->nim }}</td>
                             <td>{{ $m->nama }}</td>
-                            {{--Gender acan--}}
+                            <td>{{ $m->jenis_kelamin }}</td>
                             <td>{{ $m->jurusan }}</td>
                             <td>{{ $m->telp }}</td>
                             <td>{{ $m->alamat }}</td>

@@ -57,6 +57,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim'           => 'required',
             'nama'          => 'required',
+            'jenis_kelamin' => 'required',
             'jurusan'       => 'required',
             'alamat'        => 'required',
             'email'         => 'required',
@@ -74,16 +75,17 @@ class MahasiswaController extends Controller
         $pathgambar         = $request->file('gambar')->storeAs('public/gambar',$gambarStore);
 
         $mahasiswa = new Mahasiswa;
-        $mahasiswa->nim         = $request->input('nim');
-        $mahasiswa->nama        = $request->input('nama');
-        $mahasiswa->jurusan     = $request->input('jurusan');
-        $mahasiswa->alamat      = $request->input('alamat');
-        $mahasiswa->email       = $request->input('email');
-        $mahasiswa->password    = md5($request->input('password'));
-        $mahasiswa->tempat      = $request->input('tempat');
-        $mahasiswa->tgllahir    = $request->input('tgllahir');
-        $mahasiswa->telp        = $request->input('telp');
-        $mahasiswa->gambar      = $gambarStore;
+        $mahasiswa->nim             = $request->input('nim');
+        $mahasiswa->nama            = $request->input('nama');
+        $mahasiswa->jenis_kelamin   = $request->input('jenis_kelamin');
+        $mahasiswa->jurusan         = $request->input('jurusan');
+        $mahasiswa->alamat          = $request->input('alamat');
+        $mahasiswa->email           = $request->input('email');
+        $mahasiswa->password        = md5($request->input('password'));
+        $mahasiswa->tempat          = $request->input('tempat');
+        $mahasiswa->tgllahir        = $request->input('tgllahir');
+        $mahasiswa->telp            = $request->input('telp');
+        $mahasiswa->gambar          = $gambarStore;
         $mahasiswa->save();
 
         return redirect('/mahasiswa')->with('sukses','Data Mahasiswa berhasil ditambah');
@@ -131,6 +133,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim'           => 'required',
             'nama'          => 'required',
+            'jenis_kelamin' => 'required',
             'jurusan'       => 'required',
             'alamat'        => 'required',
             'email'         => 'required',
@@ -148,14 +151,15 @@ class MahasiswaController extends Controller
         }
 
         $mahasiswa = Mahasiswa::find($id);
-        $mahasiswa->nim         = $request->input('nim');
-        $mahasiswa->nama        = $request->input('nama');
-        $mahasiswa->jurusan     = $request->input('jurusan');
-        $mahasiswa->alamat      = $request->input('alamat');
-        $mahasiswa->email       = $request->input('email');
-        $mahasiswa->tempat      = $request->input('tempat');
-        $mahasiswa->tgllahir    = $request->input('tgllahir');
-        $mahasiswa->telp        = $request->input('telp');
+        $mahasiswa->nim             = $request->input('nim');
+        $mahasiswa->nama            = $request->input('nama');
+        $mahasiswa->jenis_kelamin   = $request->input('jenis_kelamin');
+        $mahasiswa->jurusan         = $request->input('jurusan');
+        $mahasiswa->alamat          = $request->input('alamat');
+        $mahasiswa->email           = $request->input('email');
+        $mahasiswa->tempat          = $request->input('tempat');
+        $mahasiswa->tgllahir        = $request->input('tgllahir');
+        $mahasiswa->telp            = $request->input('telp');
 
         if ($request->input('password') == '') {
             $mahasiswa->password    = $request->input('pass');

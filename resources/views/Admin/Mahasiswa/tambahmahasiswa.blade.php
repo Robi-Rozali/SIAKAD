@@ -38,6 +38,20 @@
                           @enderror
                         </div>
                       </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">Jenis Kelamin</label>
+                        <div class="col-sm-9">
+                          <select class="form-control @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin"  value="{{ old('jenis_kelamin') }}">
+                            <option nama="#" value="">--Pilih--</option>
+                            <option nama="#" value="Laki-laki">Laki-laki</option>
+                            <option nama="#" value="Perempuan">Perempuan</option>
+                          </select>
+                          @error('jenis_kelamin') 
+                              <small class="text-danger">{{ $message }}</small>
+                          @enderror
+                        </div>
+                      </div>
   
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Tempat Lahir</label>
