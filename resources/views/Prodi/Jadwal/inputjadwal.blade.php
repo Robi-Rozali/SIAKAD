@@ -115,7 +115,7 @@
                                 <select class="form-control @error('ruang') is-invalid @enderror" name="fields[0][ruang]"  value="{{ old('ruang') }}">
                             <option  value="">--Pilih--</option>
                             @foreach ($lantai as $l)
-                            <option value="{{$l->lantai}}{{$l->nama}}">{{$l->lantai}}{{$l->nama}}</option>
+                            <option value="{{$l->lantai}}{{$l->nama}}">{{$l->lantai}}|{{$l->nama}}</option>
                             @endforeach
                           </select>
                           @error('ruang') 

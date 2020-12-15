@@ -29,6 +29,15 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                      <label for="" class="col-sm-2 my-auto">Jurusan</label>
+                      <select class="form-control" style="width: 20%;" name="" id="">
+                          <option nama="#" value="">1</option>
+                          <option nama="#" value="">2</option>
+                          <option nama="#" value="">3</option>
+                          <option nama="#" value="">4</option>
+                      </select>
+                    </div>
+                    <div class="form-group row">
                       <label for="" class="col-sm-2 my-auto">Semester</label>
                       <select class="form-control" style="width: 20%;" name="" id="">
                           <option nama="#" value="">1</option>
@@ -57,7 +66,6 @@
                                 <th>Kode</th>
                                 <th>Mata Kuliah</th>
                                 <th>SKS</th>
-                                <th>Nilai</th>
                                 <th class="text-center">Ambil</th>
                                 </tr>
                             </thead>
@@ -67,7 +75,6 @@
                                 <td>FT0001</td>
                                 <td>TRO</td>
                                 <td>2</td>
-                                <td>C</td>
                                 <td>
                                     <div class="form-check text-center">
                                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
@@ -93,7 +100,6 @@
                                 <th>Kode</th>
                                 <th>Mata Kuliah</th>
                                 <th>SKS</th>
-                                <th>Nilai</th>
                                 <th class="text-center">Ambil</th>
                                 </tr>
                             </thead>
@@ -103,7 +109,6 @@
                                 <td>FT0001</td>
                                 <td>TRO</td>
                                 <td>2</td>
-                                <td>C</td>
                                 <td>
                                     <div class="form-check text-center">
                                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">

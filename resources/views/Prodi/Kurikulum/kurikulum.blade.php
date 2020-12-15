@@ -50,8 +50,8 @@
                             <td>{{ $k->kode }}</td>
                             <td>{{ $k->matakuliah }}</td>
                             <td>{{ $k->sks }}</td>
-                            <td>{{ $k->semester }}</td>
-                            <td>{{ $k->jurusan }}</td>
+                            <td>{{ str_replace('_', ' ', $k->semester) }}</td>
+                            <td>{{ str_replace('_', ' ', $k->jurusan) }}</td>
                             <td>
                               
 
