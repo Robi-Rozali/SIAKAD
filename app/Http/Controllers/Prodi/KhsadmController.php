@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Prodi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use PDF;
 
 use App\Models\Nilai;
 
@@ -100,4 +103,12 @@ class KhsadmController extends Controller
             'data' =>$nilai,
         ]);
     }
+
+    public function cetak(){
+
+        $nilai = Nilai::all();
+        $pdf = PDF::loadview('Prodi.Khs.cetak', ['nilai' => $nilai]);
+        return $pdf->stream('Nilai.pdf'); 
+    }
+
 }

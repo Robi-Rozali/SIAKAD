@@ -11,6 +11,7 @@ use App\Models\Prodi;
 use App\Models\Kurikulum;
 use App\Models\Dosen;
 use App\Models\Ruang;
+use App\Models\Kelas;
 
 class InputjadwalController extends Controller
 {
@@ -29,6 +30,7 @@ class InputjadwalController extends Controller
             'namadosen' => Dosen::select('namadosen')->get(),
             'nama' => Ruang::select('nama')->get(),
             'lantai' => Ruang::select('lantai','nama')->get(),
+            'kelas' => Kelas::select('kelas')->get(),
 
         ];   
         return view('prodi.jadwal.inputjadwal')->with($data);

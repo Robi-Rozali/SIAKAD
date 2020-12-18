@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\DosenController;
 use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\Admin\RuangController;
+use App\Http\Controllers\Admin\KelasController;
+
 
 
 //Keuangan
@@ -58,11 +60,13 @@ Route::get('/mahasiswa/export/csv', [MahasiswaController::class, 'exportcsv']);
 Route::get('/mahasiswa/cetak/pdf', [MahasiswaController::class, 'cetak']);
 
 Route::resource('/ruang', RuangController::class);
+Route::resource('/kelas', KelasController::class);
 
 //Prodi
 Route::get('/prodi', [JurusanController::class, 'index']);
 Route::get('/nilai', [NilaiController::class, 'index']);
 Route::get('/khsadm/{id}', [KhsadmController::class, 'cari']);
+Route::get('/khsadm/cetak/pdf', [KhsadmController::class, 'cetak']);
 
 Route::resource('/inputjadwal', InputjadwalController::class);
 Route::get('/inputjadwal/{prodi}/{smtr}/{tahun}', [InputjadwalController::class, 'matkul']);
@@ -70,6 +74,7 @@ Route::get('/inputjadwal/detail/{id}', [InputjadwalController::class, 'detail'])
 
 Route::get('/khsadm', [KhsadmController::class, 'index']);
 Route::get('/perwalianadm', [PerwalianadmController::class, 'index']);
+Route::get('/perwalianadm/{prodi}/{smtr}/{tahun}', [PerwalianadmController::class, 'matakuliah']);
 Route::resource('/kurikulum', KurikulumController::class);
 Route::post('/kurikulum/import/csv', [KurikulumController::class, 'importcsv']);
 
