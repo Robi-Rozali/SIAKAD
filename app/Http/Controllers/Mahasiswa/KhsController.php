@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Mahasiswa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Nilai;
+
 class KhsController extends Controller
 {
     /**
@@ -14,7 +16,12 @@ class KhsController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.perwalian.khs');
+        {
+       $data = [
+            'nilai' => Nilai::all(),
+        ];
+        return view('mahasiswa.perwalian.khs')->with($data);
+    }
     }
 
     /**
@@ -35,7 +42,23 @@ class KhsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         {
+         $request->validate([
+            'nim'           => 'required',
+            'nama'          => 'required',
+            'jurusan'       => 'required',
+            'tahun'         => 'required',
+            'kode'          => 'required',
+            'matakuliah'    => 'required',
+            'sks'           => 'required',
+            'kehadiran'     => 'required',
+            'tugas'         => 'required',
+            'uts'           => 'required',
+            'uas'           => 'required',
+            'grade'         => 'required',
+            
+        ]);
+     }
     }
 
     /**
@@ -47,6 +70,7 @@ class KhsController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
