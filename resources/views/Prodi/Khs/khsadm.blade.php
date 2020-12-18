@@ -76,7 +76,7 @@
                         </div>
                         <hr>
                         <div>
-                          <button type="submit" class="btn btn-primary mb-2" id="#">Cetak</button>
+                          <a href="/khsadm/cetak/pdf" class="btn btn-info"><i class="fas fa-print"></i> Cetak</a>
                         </div>
                       </div>  
                     </div>

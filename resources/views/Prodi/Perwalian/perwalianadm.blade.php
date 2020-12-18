@@ -19,23 +19,25 @@
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">NIM</label>
                         <div class="">
-                          <input type="text" name="#" class="form-control">
+                          <input type="text" class="form-control" id="inputcari" placeholder="Masukan NIM" value="">
                         </div>
+                        <div class="col-auto">
+                          <button type="button" id="cari" onclick="Cari()" class="btn btn-primary mb-2">Cari</button>
+                        </div>   
                       </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">Nama</label>
-                        <div class="">
-                          <input type="text" name="#" class="form-control">
-                        </div>
+                        <div class="col-sm-5 teks-hitam" id="nama">
+                        
+                      </div>
+                      <div class="col-sm-4"></div>
                     </div>
                     <div class="form-group row">
                       <label for="" class="col-sm-2 my-auto">Jurusan</label>
-                      <select class="form-control" style="width: 20%;" name="" id="">
-                          <option nama="#" value="">1</option>
-                          <option nama="#" value="">2</option>
-                          <option nama="#" value="">3</option>
-                          <option nama="#" value="">4</option>
-                      </select>
+                      <div class="col-sm-5 teks-hitam" id="jurusan">
+                       
+                      </div>
+                      <div class="col-sm-4"></div>
                     </div>
                     <div class="form-group row">
                       <label for="" class="col-sm-2 my-auto">Semester</label>
