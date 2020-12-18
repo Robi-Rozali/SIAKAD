@@ -70,6 +70,7 @@ Route::get('/inputjadwal/detail/{id}', [InputjadwalController::class, 'detail'])
 
 Route::get('/khsadm', [KhsadmController::class, 'index']);
 Route::get('/perwalianadm', [PerwalianadmController::class, 'index']);
+Route::get('/perwalianadm/{prodi}/{smtr}/{tahun}', [PerwalianadmController::class, 'matakuliah']);
 Route::resource('/kurikulum', KurikulumController::class);
 Route::post('/kurikulum/import/csv', [KurikulumController::class, 'importcsv']);
 

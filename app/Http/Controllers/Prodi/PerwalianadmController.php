@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Prodi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Mahasiswa;
+use App\Models\Kurikulum;
+
 class PerwalianadmController extends Controller
 {
     /**
@@ -82,4 +85,23 @@ class PerwalianadmController extends Controller
     {
         //
     }
+
+    public function mahasiswa($id){
+        $mhs = Mahasiswa::where('nim','=',$id)->orWhere('nama','=',$id)->get();
+
+        return response()->json([
+            'mhs' => $mhs,
+        ]);
+    }
+
+    public function matakuliah($prodi,$smtr,$tahun){
+        $matkul = Kurikulum::where('jurusan','=',$prodi)
+                            ->where('semester','=',$smtr)
+                            ->where('tahun','=',$tahun)->get();
+
+        return response()->json([
+            'matkul' => $matkul,
+        ]);
+    }
+
 }
