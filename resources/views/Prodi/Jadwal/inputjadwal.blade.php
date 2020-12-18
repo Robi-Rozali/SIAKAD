@@ -5,14 +5,17 @@
         <div class="container-fluid">
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Input Jadwal</h1>
+            {{-- <h1 class="h3 mb-0 text-gray-800">Input Jadwal</h1> --}}
           </div>
           
           <!-- awal konten utama -->
           <div class="row">
             <div class="col-md-12">
               <div class="card shadow">
-                <div class="card-header"><a href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Cetak</a></div>
+                <div class="card-header">
+                  Input Jadwal
+                  {{-- <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Cetak</a> --}}
+                </div>
                 <div class="card-body">
                     <form action="/inputjadwal" method="post">
                       @csrf
@@ -64,9 +67,14 @@
                             <div class="form-group">
                                 <label for="" class="">Kelas</label>
                                 <select class="form-control" name="fields[0][kelas]" id="kelas">
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
+                                  <option value="">--Pilih--</option>
+                                  @foreach ($kelas as $k)
+                                    <option value="{{$k->kelas}}">{{$k->kelas}}</option>
+                                  @endforeach
+                                </select>
+                                @error('kelas') 
+                                  <small class="text-danger">{{ $message }}</small>
+                                @enderror
                                 </select>
                               </div>
                         </div>
