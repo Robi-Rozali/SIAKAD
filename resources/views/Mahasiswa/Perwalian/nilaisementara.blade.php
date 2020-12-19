@@ -15,10 +15,12 @@
             </div>
             @endif
           </div>
+
             @php
             $no=1;
             @endphp
-
+                <div class="card shadow">
+                  <div class="card-header">Daftar Nilai Sementara</div>
                 <div class="card-body">
                   <div class="form-group row">
                     <label for="foto" class="col-sm-3">
@@ -124,7 +126,7 @@
                       </table>
                     </div>  
                   </div>
-                  
+                  </div>
                 </div>
               </div>
            
