@@ -54,14 +54,14 @@
                   </div>
                  
                   <div class="form-group row">
-                    <label for="" class="col-sm-3">Tahun Akademik</label>
-                    <select class="form-control col-md-2 mr-2" name="tahun" id="tahun">
-                      @foreach ($tahun as $nn)
-                        <option value="{{ $nn->tahun }}">{{ $nn->tahun }}</option>
+                    <label for="" class="col-sm-3">Semester</label>
+                    <select class="form-control col-md-2 mr-2" name="semester" id="semester">
+                      @foreach ($semester as $sm)
+                        <option value="{{ $sm->semester }}">{{ $sm->semester }}</option>
                         @endforeach
                     </select>
                    <div class="">
-                    <button type="button" class="btn btn-primary mb-2 my-auto" id="cari_tahun" onclick="Cari()">submit</button>
+                    <button type="button" class="btn btn-primary mb-2 my-auto" id="cari_semester" onclick="Cari()">submit</button>
                    </div>
                   </div>
                   
@@ -120,20 +120,20 @@
 @section('script')
     <script type="text/javascript">
     function Cari(){
-      var tahun = $('#tahun').val();
+      var semester = $('#semester').val();
       var nim = $('#nim').val();
       var d = document.getElementById('display');
       var rt = document.getElementById('row_table');
       var jumlah_sks = 0;
       var nilai = 0;
       var mutu = 0;
-      $('.tr-tahun').remove();
-        $.get('/khs/'+tahun+'/'+nim,function(data){
+      $('.tr-semester').remove();
+        $.get('/khs/'+semester+'/'+nim,function(data){
           $.each(data, function(i, value){
             var n = 1;
             for(var i = 0, length1 = value.length; i < length1; i++){
               var form = `
-                <tr id="tr" class='tr-tahun'>
+                <tr id="tr" class='tr-semester'>
                   <td>${n++}</td>
                   <td>${value[i].kode}</td>
                   <td>${value[i].matakuliah}</td>
