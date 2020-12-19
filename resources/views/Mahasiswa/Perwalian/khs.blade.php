@@ -2,18 +2,31 @@
 
 @section('konten')
         <!-- Begin Page Content -->
-        <div class="container-fluid mb-5">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card shadow">
-                <div class="card-header">Kartu Hasil Studi (KHS)</div>
+         <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Kartu Hasil Studi</h1>
+            @if(session('sukses'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{session('sukses')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
+          </div>
+            @php
+            $no=1;
+            @endphp
+            @foreach ($nilai as $nn)
                 <div class="card-body">
                   <div class="form-group row">
                     <label for="foto" class="col-sm-3">
                       NIM
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                      A3.1700040
+                      {{ $nn->nim }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -22,7 +35,7 @@
                       Nama
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                      ROBI ROZALI
+                      {{ $nn->nama }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -31,26 +44,15 @@
                       Jurusan / Prog
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                     Sistem Informasi / S1
+                     {{ $nn->jurusan }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
-                  <div class="form-group row">
-                    <label for="foto" class="col-sm-3">
-                      Tahun Akademik / Per
-                    </label>
-                    <div class="col-sm-5 teks-hitam">
-                     2020/2021 / 1
-                    </div>
-                    <div class="col-sm-4"></div>
-                  </div>
+                 
                   <div class="form-group row">
                     <label for="" class="col-sm-3">Tahun Akademik</label>
                     <select class="form-control col-md-2 mr-2" name="" id="">
-                        <option nama="#" value="">2019</option>
-                        <option nama="#" value="">2020</option>
-                        <option nama="#" value="">2021</option>
-                        <option nama="#" value="">2022</option>
+                        <option nama="#" value="">{{ $nn->tahun }}</option>
                     </select>
                    <div class="">
                     <button type="submit" class="btn btn-primary mb-2 my-auto" id="#">submit</button>
@@ -76,22 +78,23 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td>1</td>
-                              <td>SI1044</td>
-                              <td>Kerja Praktek</td>
-                              <td>2</td>
-                              <td>100</td>
-                              <td>100</td>
-                              <td>100</td>
-                              <td>100</td>
-                              <td>100</td>
-                              <td>A</td>
+                              <td>{{ $no++ }}</td>
+                              <td>{{ $nn->kode }}</td>
+                              <td>{{ $nn->matakuliah }}</td>
+                              <td>{{ $nn->sks }}</td>
+                              <td>{{ $nn->kehadiran }}</td>
+                              <td>{{ $nn->tugas }}</td>
+                              <td>{{ $nn->uts }}</td>
+                              <td>{{ $nn->uas }}</td>
+                              <td>{{ $nn->jumlah }}</td>
+                              <td>{{ $nn->grade }}</td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
                     </div>  
                   </div>
+                  @endforeach
                 </div>
               </div>
             </div>  

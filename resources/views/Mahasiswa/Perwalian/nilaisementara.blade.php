@@ -2,18 +2,30 @@
 
 @section('konten')
         <!-- Begin Page Content -->
-        <div class="container-fluid mb-5">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card shadow">
-                <div class="card-header">Daftar Nilai Sementara</div>
+        <div class="container-fluid">
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Daftar Nilai Sementara</h1>
+            @if(session('sukses'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{session('sukses')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
+          </div>
+            @php
+            $no=1;
+            @endphp
+            @foreach ($nilai as $n)
                 <div class="card-body">
                   <div class="form-group row">
                     <label for="foto" class="col-sm-3">
                       NIM
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                      A3.1700040
+                      {{ $n->nim }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -22,7 +34,7 @@
                       Nama
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                      ROBI ROZALI
+                      {{ $n->nama }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -31,7 +43,7 @@
                       Jurusan / Prog
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                     Sistem Informasi / S1
+                     {{ $n->jurusan }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -51,18 +63,18 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td>1</td>
-                              <td>FT0001</td>
-                              <td>TRO</td>
-                              <td>2</td>
-                              <td>C</td>
+                              <td>{{ $no++ }}</td>
+                              <td>{{ $n->kode }}</td>
+                              <td>{{ $n->matakuliah }}</td>
+                              <td>{{ $n->sks }}</td>
+                              <td>{{ $n->grade }}</td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
                     </div>  
                   </div>
-
+                  @endforeach
                 </div>
               </div>
             </div>  
