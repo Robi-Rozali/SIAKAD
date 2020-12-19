@@ -55,6 +55,11 @@
 	</style>
 	</head>
 	<body>
+		<table>
+			<tr>
+				<td width="100" align="center"></td>
+			</tr>
+		</table>
 	<center>
 		<h5>KARTU HASIL STUDI</h4>
 		<h6>STMIK - SUMEDANG</h5>

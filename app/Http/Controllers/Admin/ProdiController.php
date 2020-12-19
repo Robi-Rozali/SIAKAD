@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Prodi;
 
@@ -62,7 +63,7 @@ class ProdiController extends Controller
         $prodi->ketua       = $request->input('ketua');
         $prodi->nidn        = $request->input('nidn');
         $prodi->gambar      = $gambarStore;
-        $prodi->password    = md5($request->input('password'));       
+        $prodi->password    = Hash::make(($request->input('password'));       
         $prodi->save();
 
         return redirect('/prodii')->with('sukses','Data Prodi berhasil ditambah');
@@ -138,7 +139,7 @@ class ProdiController extends Controller
         if ($request->input('password') == '') {
             $prodi->password    = $request->input('pass');
         }else{
-            $prodi->password    = md5($request->input('password'));
+            $prodi->password    = Hash::make(($request->input('password')); 
         }
     
         $prodi->save();
