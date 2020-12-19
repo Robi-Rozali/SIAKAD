@@ -17,6 +17,9 @@ class PerwalianadmController extends Controller
      */
     public function index()
     {
+        $data = [
+            'Kurikulum' => Kurikulum::all(),
+        ];
         return view('Prodi.perwalian.perwalianadm');
     }
 

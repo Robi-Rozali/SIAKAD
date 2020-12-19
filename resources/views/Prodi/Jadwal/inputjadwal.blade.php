@@ -98,7 +98,7 @@
                             {{-- <td>1</td> --}}
                             <td>
                                 <select class="form-control" name="fields[0][hari]" id="">
-                                      <option value="Senin">Senin</option>
+                                    <option value="Senin">Senin</option>
                                     <option value="Selasa">Selasa</option>
                                     <option value="Rabu">Rabu</option>
                                     <option value="Kamis">Kamis</option>

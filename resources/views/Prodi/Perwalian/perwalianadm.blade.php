@@ -1,7 +1,7 @@
 @extends('Prodi.template.main')
 
 @section('konten')
-@foreach ($mhs as $d)
+{{-- @foreach ($mhs as $d) --}}
         <!-- Begin Page Content -->
         <div class="container-fluid">
           <!-- Page Heading -->
@@ -24,7 +24,7 @@
                                 <label for="" class="col-sm-3 col-form-label">NIM</label>
                                 <div class="col-sm-5">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="nim" aria-describedby="button-nim" value="{{ ($mhs->nim == '') ? '' : $mhs->nim }}">
+                                        <input type="text" class="form-control" name="nim" aria-describedby="button-nim" value="{{-- {{ ($mhs->nim == '') ? '' : $mhs->nim }} --}}">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button" id="button-nim"><i class="fas fa-search"></i></button>
                                         </div>
@@ -168,5 +168,33 @@
 
         </div>
       <!-- End of Main Content -->
-@endforeach    
+{{-- @endforeach --}}    
 @endsection
+{{-- @section('script')
+
+  <script type="text/javascript">
+    function Cari(){
+      var id = $('#inputcari').val();
+        $.get('/perwalianadm/'+id,function(data){
+          var jrs = data.data[0].jurusan;
+          $('#nim').text(data.data[0].nim);
+          $('#nama').text(data.data[0].nama);
+          $('#jurusan').text(jrs.replace('_',' '));
+          $.each(data, function(i, value){
+            var n = 1;
+            for(var i = 0, length1 = value.length; i < length1; i++){
+              $(`#tr${i}`).remove();
+              var form = `
+                <tr id="tr${i}">
+                  <td>${n++}</td>
+                  <td>${value[i].kode}</td>
+                  <td>${value[i].matakuliah}</td>
+                  <td>${value[i].sks}</td>>
+                </tr>`;
+              $('#table_perwalian').append(form);
+            }
+          });
+        })
+    }
+  </script>
+@endsection --}}
