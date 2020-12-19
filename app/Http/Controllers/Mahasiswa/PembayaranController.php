@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Mahasiswa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Pembayarankeu;
+use App\Models\Biaya;
+
 class PembayaranController extends Controller
 {
     /**
@@ -14,7 +17,13 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        return view('Mahasiswa.pembayaran.pembayaran');
+         $nim = 'A2.1700081';
+         $tahun = '2020';
+        $data = [
+            'pembayaran' => Pembayarankeu::where('nim', '=', $nim)->first(),
+            'pembayaran_semua' => Pembayarankeu::where('nim', '=', $nim)->get(),
+        ];
+        return view('Mahasiswa.pembayaran.pembayaran')->with($data);
     }
 
     /**

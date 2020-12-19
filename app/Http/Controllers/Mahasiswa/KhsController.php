@@ -16,12 +16,14 @@ class KhsController extends Controller
      */
     public function index()
     {
-        {
-       $data = [
-            'nilai' => Nilai::all(),
+        $nim = 'A2.1700081';
+        $data = [
+            'nilai' => Nilai::where('nim', '=', $nim)->first(),
+            'tahun' => Nilai::where('nim', '=', $nim)
+                            ->select('tahun')->groupBy('tahun')->get(),
         ];
         return view('mahasiswa.perwalian.khs')->with($data);
-    }
+    
     }
 
     /**
@@ -106,4 +108,13 @@ class KhsController extends Controller
     {
         //
     }
+
+    public function nilai($tahun,$nim){
+        $nilai = Nilai::where('tahun','=',$tahun)
+                        ->where('nim', '=', $nim)->get();
+        return response()->json([
+            'data' => $nilai,
+        ]);
+    }
+
 }
