@@ -19,7 +19,7 @@ class NilaisementaraController extends Controller
      */
     public function index()
     {
-            $nim = 'A2.1700081';
+            $nim = 'A3.1700040';
         $data = [
             'nilai' => Nilai::where('nim', '=', $nim)->first(),
             'nilaisemua' => Nilai::where('nim', '=', $nim)->get(),

@@ -16,7 +16,7 @@ class KhsController extends Controller
      */
     public function index()
     {
-        $nim = 'A2.1700081';
+        $nim = 'A3.1700040';
         $data = [
             'nilai' => Nilai::where('nim', '=', $nim)->first(),
             'tahun' => Nilai::where('nim', '=', $nim)

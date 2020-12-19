@@ -8,7 +8,6 @@
               <div class="card shadow">
                 <div class="card-header">Kartu Rencana Studi (KRS)</div>
                 <div class="card-body">
-
                   <div class="form-group row">
                     <label for="foto" class="col-sm-3">
                       NIM
