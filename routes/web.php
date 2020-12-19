@@ -97,6 +97,7 @@ Route::get('/', function () {
 Route::get('/perwalian', [Perwaliancontroller::class, 'index']);
 
 Route::get('/khs', [KhsController::class, 'index']);
+Route::get('/khs/{tahun}/{nim}', [KhsController::class, 'nilai']);
 
 Route::get('/krs', [KrsController::class, 'index']);
 

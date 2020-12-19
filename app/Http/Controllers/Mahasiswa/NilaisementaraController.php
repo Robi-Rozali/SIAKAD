@@ -19,12 +19,13 @@ class NilaisementaraController extends Controller
      */
     public function index()
     {
-         {
-       $data = [
-            'nilai' => Nilai::all(),
+            $nim = 'A2.1700081';
+        $data = [
+            'nilai' => Nilai::where('nim', '=', $nim)->first(),
+            'nilaisemua' => Nilai::where('nim', '=', $nim)->get(),
         ];
         return view('mahasiswa.perwalian.nilaisementara')->with($data);
-    }
+    
     }
 
     /**

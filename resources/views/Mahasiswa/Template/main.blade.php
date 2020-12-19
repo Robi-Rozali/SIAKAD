@@ -45,7 +45,7 @@
         <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer class="sticky-footer bg-white mt-5">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; Your Website 2020</span>
@@ -83,7 +83,7 @@
       </div>
     </div>
   </div>
-
+</div>
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('Admin/vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('Admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }} "></script>
@@ -100,6 +100,8 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('Admin/js/demo/chart-area-demo.js') }} "></script>
   <script src="{{ asset('Admin/js/demo/chart-pie-demo.js') }} "></script>
+
+  @yield('script')
 
 </body>
 
