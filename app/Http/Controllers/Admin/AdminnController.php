@@ -66,7 +66,7 @@ class AdminnController extends Controller
         $admin->telp        = $request->input('telp');
         $admin->alamat      = $request->input('alamat');
         $admin->username    = $request->input('username');
-        $admin->password    = Hash::make(($request->input('password')); 
+        $admin->password    = Hash::make($request->input('password')); 
         $admin->gambar      = $gambarStore;
         $admin->save();
 
@@ -139,7 +139,7 @@ class AdminnController extends Controller
         if ($request->input('password') == '') {
             $admin->password    = $request->input('pass');
         }else{
-            $admin->password    = Hash::make(($request->input('password')); 
+            $admin->password    = Hash::make($request->input('password')); 
         } 
         if ($request->hasFile('gambar')) {
             Storage::delete('public/gambar/'.$admin->gambar);
