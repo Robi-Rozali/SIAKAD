@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Dosen;
 
@@ -68,7 +69,7 @@ class DosenController extends Controller
         $dosen->tgllahir    = $request->input('tgllahir');
         $dosen->telp        = $request->input('telp');
         $dosen->email        = $request->input('email');
-        $dosen->password    = md5($request->input('password'));
+        $dosen->password    = Hash::make(($request->input('password')); 
         $dosen->alamat      = $request->input('alamat');
         $dosen->gambar      = $gambarStore;
         $dosen->save();
@@ -146,7 +147,7 @@ class DosenController extends Controller
         if ($request->input('password') == '') {
             $dosen->password    = $request->input('pass');
         }else{
-            $dosen->password    = md5($request->input('password'));
+            $dosen->password    = Hash::make(($request->input('password')); 
         }
         
 

@@ -19,7 +19,7 @@
                       
                         <div class="col-auto">
                 
-                          <input type="text" class="form-control" id="inputcari" placeholder="Cari Mahasiswa" value="">
+                          <input type="text" class="form-control" id="inputcari" placeholder="Cari Mahasiswa" value="" name="cari">
                         </div>
                         <div class="col-auto">
                           <button type="button" id="cari" onclick="Cari()" class="btn btn-primary mb-2">Cari</button>
@@ -76,7 +76,13 @@
                         </div>
                         <hr>
                         <div>
-                          <a href="/khsadm/cetak/pdf" class="btn btn-info"><i class="fas fa-print"></i> Cetak</a>
+                          <form action="/khsadm/cetak/pdf" method="post">
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" name="id" id="id">
+                            <button type="submit" class="btn btn-info"><i class="fas fa-print"></i> Cetak</button>  
+                          </form>
+                          
                         </div>
                       </div>  
                     </div>
@@ -99,6 +105,7 @@
       var id = $('#inputcari').val();
         $.get('/khsadm/'+id,function(data){
           var jrs = data.data[0].jurusan;
+          $('#id').val(data.data[0].nim);
           $('#nim').text(data.data[0].nim);
           $('#nama').text(data.data[0].nama);
           $('#jurusan').text(jrs.replace('_',' '));
@@ -111,7 +118,7 @@
                   <td>${n++}</td>
                   <td>${value[i].kode}</td>
                   <td>${value[i].matakuliah}</td>
-                  <td>${value[i].nama}</td>
+                  <td>${value[i].sks}</td>
                   <td>${value[i].grade}</td>
                 </tr>`;
               $('#table_nilai').append(form);

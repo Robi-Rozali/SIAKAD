@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Mahasiswa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Nilai;
+
 class KhsController extends Controller
 {
     /**
@@ -14,7 +16,14 @@ class KhsController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.perwalian.khs');
+        $nim = 'A2.1700081';
+        $data = [
+            'nilai' => Nilai::where('nim', '=', $nim)->first(),
+            'semester' => Nilai::where('nim', '=', $nim)
+                            ->select('semester')->groupBy('semester')->get(),
+        ];
+        return view('mahasiswa.perwalian.khs')->with($data);
+    
     }
 
     /**
@@ -35,7 +44,23 @@ class KhsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         {
+         $request->validate([
+            'nim'           => 'required',
+            'nama'          => 'required',
+            'jurusan'       => 'required',
+            'tahun'         => 'required',
+            'kode'          => 'required',
+            'matakuliah'    => 'required',
+            'sks'           => 'required',
+            'kehadiran'     => 'required',
+            'tugas'         => 'required',
+            'uts'           => 'required',
+            'uas'           => 'required',
+            'grade'         => 'required',
+            
+        ]);
+     }
     }
 
     /**
@@ -47,6 +72,7 @@ class KhsController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -82,4 +108,13 @@ class KhsController extends Controller
     {
         //
     }
+
+    public function nilai($semester,$nim){
+        $nilai = Nilai::where('semester','=',$semester)
+                        ->where('nim', '=', $nim)->get();
+        return response()->json([
+            'data' => $nilai,
+        ]);
+    }
+
 }

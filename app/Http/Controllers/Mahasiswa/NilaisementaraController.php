@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Mahasiswa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+
+use App\Models\Nilai;
+
+
+
 class NilaisementaraController extends Controller
 {
     /**
@@ -14,7 +19,13 @@ class NilaisementaraController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.perwalian.nilaisementara');
+            $nim = 'A3.1700040';
+        $data = [
+            'nilai' => Nilai::where('nim', '=', $nim)->first(),
+            'nilaisemua' => Nilai::where('nim', '=', $nim)->get(),
+        ];
+        return view('mahasiswa.perwalian.nilaisementara')->with($data);
+    
     }
 
     /**
@@ -35,7 +46,18 @@ class NilaisementaraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+         $request->validate([
+            'nim'           => 'required',
+            'nama'          => 'required',
+            'jurusan'       => 'required',
+            'kode'          => 'required',
+            'matakuliah'    => 'required',
+            'sks'           => 'required',
+            'grade'         => 'required',
+            
+        ]);
+     }
     }
 
     /**
@@ -46,7 +68,7 @@ class NilaisementaraController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

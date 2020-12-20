@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Mahasiswa;
 use App\Models\Prodi;
@@ -81,7 +82,7 @@ class MahasiswaController extends Controller
         $mahasiswa->jurusan         = $request->input('jurusan');
         $mahasiswa->alamat          = $request->input('alamat');
         $mahasiswa->email           = $request->input('email');
-        $mahasiswa->password        = md5($request->input('password'));
+        $mahasiswa->password        = Hash::make(($request->input('password')); 
         $mahasiswa->tempat          = $request->input('tempat');
         $mahasiswa->tgllahir        = $request->input('tgllahir');
         $mahasiswa->telp            = $request->input('telp');
@@ -164,7 +165,7 @@ class MahasiswaController extends Controller
         if ($request->input('password') == '') {
             $mahasiswa->password    = $request->input('pass');
         }else{
-            $mahasiswa->password    = md5($request->input('password'));
+            $mahasiswa->password    = Hash::make(($request->input('password')); 
         }
         
         

@@ -104,11 +104,15 @@ class KhsadmController extends Controller
         ]);
     }
 
-    public function cetak(){
-
-        $nilai = Nilai::all();
-        $pdf = PDF::loadview('Prodi.Khs.cetak', ['nilai' => $nilai]);
+    public function cetak(Request $request){
+        $id = $request->input('id');
+        $data = [
+            'mhs' => Nilai::where('nim','=', $id)->first(),
+            'nilai' => Nilai::where('nim','=', $id)->get(),
+        ];
+        $pdf = PDF::loadview('Prodi.Khs.cetak',$data);
         return $pdf->stream('Nilai.pdf'); 
+        // return view('prodi.khs.cetak')->with($data);
     }
 
 }
