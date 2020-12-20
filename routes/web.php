@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProdiController;
 use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\Admin\RuangController;
 use App\Http\Controllers\Admin\KelasController;
+use App\Http\Controllers\Admin\AdminnController;
 
 
 
@@ -30,6 +31,7 @@ use App\Http\Controllers\Mahasiswa\JadwalkuliahController;
 use App\Http\Controllers\Mahasiswa\JadwalujianController;
 use App\Http\Controllers\Mahasiswa\PembayaranController;
 use App\Http\Controllers\Mahasiswa\ProfilController;
+use App\Http\Controllers\Mahasiswa\MhsController;
 
 //Prodi
 use App\Http\Controllers\Prodi\JurusanController;
@@ -55,12 +57,11 @@ Route::get('/adm', [AdminController::class, 'index']);
 Route::resource('/prodii', ProdiController::class);
 Route::resource('/mahasiswa', MahasiswaController::class);
 Route::post('/mahasiswa/import/csv', [MahasiswaController::class, 'importcsv']);
-
 Route::get('/mahasiswa/export/csv', [MahasiswaController::class, 'exportcsv']);
 Route::get('/mahasiswa/cetak/pdf', [MahasiswaController::class, 'cetak']);
-
 Route::resource('/ruang', RuangController::class);
 Route::resource('/kelas', KelasController::class);
+Route::resource('/adminn', AdminnController::class);
 
 //Prodi
 Route::get('/prodi', [JurusanController::class, 'index']);
@@ -90,9 +91,10 @@ Route::resource('/biaya', BiayaController::class);
 Route::resource('/pembayarankeu', PembayarankeuController::class);
 
 //Mahasiswa
-Route::get('/', function () {
-    return view('mahasiswa.dashboard');
-});
+Route::get('/mhs', [MhsController::class, 'index']);
+// Route::get('/', function () {
+//     return view('mahasiswa.dashboard');
+// });
 
 Route::get('/perwalian', [Perwaliancontroller::class, 'index']);
 
@@ -114,3 +116,8 @@ Route::get('/jadwalujian', [JadwalujianController::class, 'index']);
 Route::get('/pembayaran', [PembayaranController::class, 'index']);
 
 Route::resource('/profil', ProfilController::class);
+
+//menu
+Route::get('/', function () {
+    return view('index');
+});

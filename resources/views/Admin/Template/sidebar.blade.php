@@ -95,7 +95,7 @@
       <!-- Nav Item - Pages Collapse Menu -->
             <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="\adminn">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Pengguna Sistem</span></a>
       </li>
