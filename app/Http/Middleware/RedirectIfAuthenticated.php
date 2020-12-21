@@ -23,7 +23,7 @@ class RedirectIfAuthenticated
         if (Auth::guard('mahasiswa')->check()){
             return redirect('/mhs/dashboard');
         }elseif (Auth::guard('admin')->check()) {
-            return redirect('/adm/index');
+            return redirect('/adm');
         }elseif (Auth::guard('prodi')->check()) {
             return redirect('/prodi/index');
         }elseif (Auth::guard('keuangan')->check()) {

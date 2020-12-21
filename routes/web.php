@@ -54,7 +54,7 @@ use App\Http\Controllers\Prodi\KurikulumController;
 */
 
 // Admin
-Route::get('/adm', [AdminController::class, 'index']);
+Route::get('/adm', [AdminController::class, 'index'])->middleware('auth:admin');
 Route::resource('/prodii', ProdiController::class);
 Route::resource('/mahasiswa', MahasiswaController::class);
 Route::post('/mahasiswa/import/csv', [MahasiswaController::class, 'importcsv']);
@@ -123,3 +123,6 @@ Route::resource('/profil', ProfilController::class);
 
 // ora ora ora ora ora
 Route::get('/', [LoginController::class, 'index'])->middleware('guest:mahasiswa','guest:prodi','guest:admin','guest:keuangan')->name('login');
+
+Route::post('/', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);
