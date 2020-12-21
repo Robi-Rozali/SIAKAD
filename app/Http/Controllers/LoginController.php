@@ -26,16 +26,16 @@ class LoginController extends Controller
         $data = $request->only('username','password');
 
         if (Auth::guard('mahasiswa')->attempt($data)) {
-            return redirect()->intended('/mhs/dashboard');
+            return redirect()->intended('/mhs');
 
         }elseif (Auth::guard('admin')->attempt($data)) {
             return redirect()->intended('/adm');
 
         }elseif (Auth::guard('prodi')->attempt($data)) {
-            return redirect()->intended('/prodi/index');
+            return redirect()->intended('/prodi');
 
         }elseif (Auth::guard('keuangan')->attempt($data)) {
-            return redirect()->intended('/keuangan/index');
+            return redirect()->intended('/keuangan');
 
         }else{
             return redirect('/index')->with('info','Username Atau Password Salah');
