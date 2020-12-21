@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\AdminnController;
 use App\Http\Controllers\Admin\KeuController;
 
-
+use App\Http\Controllers\LoginController;
 
 //Keuangan
 use App\Http\Controllers\Keuangan\KeuanganController;
@@ -124,3 +124,5 @@ Route::resource('/profil', ProfilController::class);
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/index', [LoginController::class, 'index'])->middleware('guest:mahasiswa','guest:prodi','guest:admin','guest:keuangan')->name('login');
