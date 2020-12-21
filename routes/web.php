@@ -122,7 +122,7 @@ Route::resource('/profil', ProfilController::class);
 
 //menu
 Route::get('/', function () {
-    return view('index');
+    return view('/');
 });
 
 Route::get('/index', [LoginController::class, 'index'])->middleware('guest:mahasiswa','guest:prodi','guest:admin','guest:keuangan')->name('login');
