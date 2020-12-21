@@ -48,6 +48,7 @@ class ProdiController extends Controller
             'ketua'         => 'required',
             'nidn'          => 'required',
             'gambar'        => 'required|image|max:1999',
+            'username'      => 'required',
             'password'      => 'required',
         ]);
 
@@ -63,7 +64,8 @@ class ProdiController extends Controller
         $prodi->ketua       = $request->input('ketua');
         $prodi->nidn        = $request->input('nidn');
         $prodi->gambar      = $gambarStore;
-        $prodi->password    = Hash::make(($request->input('password'));       
+        $prodi->username        = $request->input('username');
+        $prodi->password    = Hash::make($request->input('password'));       
         $prodi->save();
 
         return redirect('/prodii')->with('sukses','Data Prodi berhasil ditambah');
@@ -113,6 +115,7 @@ class ProdiController extends Controller
             'prodi'         => 'required',
             'ketua'         => 'required',
             'nidn'          => 'required',
+            'username'          => 'required',
         ]);
 
         if ($request->hasFIle('gambar')) {
@@ -136,10 +139,12 @@ class ProdiController extends Controller
             $prodi->gambar      = $request->input('gambardb');
         }
 
+        $prodi->username      = $request->input('username');
+
         if ($request->input('password') == '') {
             $prodi->password    = $request->input('pass');
         }else{
-            $prodi->password    = Hash::make(($request->input('password')); 
+            $prodi->password    = Hash::make($request->input('password')); 
         }
     
         $prodi->save();

@@ -13,7 +13,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card shadow">
-                <div class="card-header"><a href="/admin/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a></div>
+                <div class="card-header"><a href="/adminn/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a></div>
                 <div class="card-body">
                   <div class="table-responsive">
                      <table class="table table-bordered" id="dataTable">
@@ -41,20 +41,20 @@
                             <td>
 
                               {{-- sok nu ieu mah sorangan we --}}
-                            <form action="/admin/{{ $a->id }}" method="post" class="d-inline">
+                            <form action="/adminn/{{ $a->id }}" method="post" class="d-inline">
                                 @csrf
                                 @method('GET')
                               <button class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></button>
                               {{--  --}}
                             </form>
                               
-                              <form action="/admin/{{ $a->id }}/edit" method="post" class="d-inline">
+                              <form action="/adminn/{{ $a->id }}/edit" method="post" class="d-inline">
                                 @csrf
                                 @method('GET')
                                 <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Apakah anda yakin ingin edit?')"><i class="fas fa-edit"></i></>
                               </form>
                               
-                              <form action="/admin/{{ $a->id }}" method="post" class="d-inline">
+                              <form action="/adminn/{{ $a->id }}" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm ml-1" onclick="return confirm('Apakah anda yakin ingin hapus?')"><i class="fas fa-trash"></i></>

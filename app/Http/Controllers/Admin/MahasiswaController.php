@@ -82,7 +82,7 @@ class MahasiswaController extends Controller
         $mahasiswa->jurusan         = $request->input('jurusan');
         $mahasiswa->alamat          = $request->input('alamat');
         $mahasiswa->email           = $request->input('email');
-        $mahasiswa->password        = Hash::make(($request->input('password')); 
+        $mahasiswa->password        = Hash::make($request->input('password')); 
         $mahasiswa->tempat          = $request->input('tempat');
         $mahasiswa->tgllahir        = $request->input('tgllahir');
         $mahasiswa->telp            = $request->input('telp');
@@ -165,7 +165,7 @@ class MahasiswaController extends Controller
         if ($request->input('password') == '') {
             $mahasiswa->password    = $request->input('pass');
         }else{
-            $mahasiswa->password    = Hash::make(($request->input('password')); 
+            $mahasiswa->password    = Hash::make($request->input('password')); 
         }
         
         

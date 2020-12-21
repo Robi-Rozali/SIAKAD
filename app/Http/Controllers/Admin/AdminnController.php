@@ -118,8 +118,6 @@ class AdminnController extends Controller
             'telp'       => 'required',
             'alamat'     => 'required',
             'username'   => 'required',
-            'password'   => 'required',
-            'gambar'     => 'required|image|max:1999',
         ]);
 
         if ($request->hasFIle('gambar')) {
@@ -150,7 +148,7 @@ class AdminnController extends Controller
         
         $admin->save();
 
-        return redirect('/admin')->with('sukses','Data Admin berhasil ditambah');
+        return redirect('/adminn')->with('sukses','Data Admin berhasil ditambah');
     }
 
     /**
@@ -165,6 +163,6 @@ class AdminnController extends Controller
         Storage::delete('public/gambar/'.$admin->gambar);
         $admin->delete();
 
-        return redirect('/admin')->with('sukses','Data Admin berhasil dihapus');
+        return redirect('/adminn')->with('sukses','Data Admin berhasil dihapus');
     }
 }

@@ -73,6 +73,11 @@
           <span>Kelas</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="\keu">
+          <i class="fas fa-university"></i>
+          <span>BAUK</span></a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="\ruang">
           <i class="fas fa-university"></i>
           <span>Jurusan</span></a>

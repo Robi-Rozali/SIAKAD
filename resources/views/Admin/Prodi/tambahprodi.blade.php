@@ -72,6 +72,16 @@
                       </div>
 
                       <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">Username</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}">
+                          @error('username') 
+                              <small class="text-danger">{{ $message }}</small>
+                          @enderror
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Password</label>
                         <div class="col-sm-9">
                           <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}">
@@ -84,7 +94,7 @@
                       <hr>
                       <div class="form-group">
                          <button type="submit" class="btn btn-primary mb-2">Simpan</button>
-                         <a href="/prodi" class="btn btn-danger mb-2">Keluar</a>
+                         <a href="/prodii" class="btn btn-danger mb-2">Keluar</a>
                       </div>
   
                     </form>

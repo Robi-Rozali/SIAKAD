@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\MahasiswaController;
 use App\Http\Controllers\Admin\RuangController;
 use App\Http\Controllers\Admin\KelasController;
 use App\Http\Controllers\Admin\AdminnController;
+use App\Http\Controllers\Admin\KeuController;
 
 
 
@@ -62,6 +63,7 @@ Route::get('/mahasiswa/cetak/pdf', [MahasiswaController::class, 'cetak']);
 Route::resource('/ruang', RuangController::class);
 Route::resource('/kelas', KelasController::class);
 Route::resource('/adminn', AdminnController::class);
+Route::resource('/keu', KeuController::class);
 
 //Prodi
 Route::get('/prodi', [JurusanController::class, 'index']);

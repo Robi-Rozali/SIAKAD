@@ -13,7 +13,37 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        return view('');
+    }
+
+    public function login(Request $request){
+        $request->validate([
+            'nim' => 'required',
+            'nidn' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+
+        ]);
+        $data = $request->only('nim','nidn','username','password');
+
+        if (Auth::guard('mahasiswa')->attempt($data)) {
+            return redirect()->intended('/mahasiswa/dashboard');
+        }elseif (Auth::guard('admin')->attempt($data)) {
+            return redirect()->intended('/admin/index');
+        }else{
+            return redirect('/index')->with('info','Username Atau Password Salah');
+        }
+    }
+
+    public function logout(){
+        if (Auth::guard('mahasiswa')->check()){
+            Auth::guard('mahasiswa')->logout();
+        }
+        if (Auth::guard('admin')->check()){
+            Auth::guard('admin')->logout();
+        }
+
+        return redirect('/index');
     }
 
     /**

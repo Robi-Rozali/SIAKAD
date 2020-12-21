@@ -5,7 +5,7 @@
         <div class="container-fluid">
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">PRODI</h1>
+            <h1 class="h3 mb-0 text-gray-800">BAUK</h1>
             @if(session('sukses'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{session('sukses')}}
@@ -20,18 +20,15 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card shadow">
-                <div class="card-header"><a href="/prodii/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a></div>
+                <div class="card-header"><a href="/keu/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a></div>
                 <div class="card-body">
                   <div class="table-responsive">
                      <table class="table table-bordered" id="dataTable">
                       <thead>
                         <tr>
                             <th>NO</th>
-                            <th>Foto Ketua Prodi</th>
-                            {{-- <th>Nama Prodi</th> --}}
-                            <th>Prodi</th>
-                            <th>Ketua Prodi</th>
-                            <th>NIDN</th>
+                            <th>Nama</th>
+                            <th>Username</th>
                             <th>AKSI</th>
                         </tr>
                         </thead>
@@ -39,29 +36,19 @@
                         @php
                           $no=1;
                         @endphp
-                        @foreach ($prodi as $p)
+                        @foreach ($keuangan as $k)
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td><img src="/storage/gambar/{{ $p->gambar }}" alt="" width="100"></td>
-                            {{-- <td>{{ $p->nama }}</td> --}}
-                            <td>{{ $p->prodi }}</td>
-                            <td>{{ $p->ketua }}</td>
-                            <td>{{ $p->nidn }}</td>
+                            <td>{{ $k->nama }}</td>
+                            <td>{{ $k->username }}</td>
                             <td>
-
-                            <form action="/prodii/{{ $p->id }}" method="post" class="d-inline">
-                                @csrf
-                                @method('GET')  
-                              <button class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></button>
-                            </form>
-
-                            <form action="/prodii/{{ $p->id }}/edit" method="post" class="d-inline">
+                              <form action="/keu/{{ $k->id }}/edit" method="post" class="d-inline">
                                 @csrf
                                 @method('GET')
                                 <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Apakah anda yakin ingin edit?')"><i class="fas fa-edit"></i></>
                               </form>
-
-                            <form action="/prodii/{{ $p->id }}" method="post" class="d-inline">
+                              
+                              <form action="/keu/{{ $k->id }}" method="post" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm ml-1" onclick="return confirm('Apakah anda yakin ingin hapus?')"><i class="fas fa-trash"></i></>
