@@ -54,7 +54,6 @@
               <th>No</th>
               <th>Jenis Transaksi</th>
               <th>Kewajiban</th>
-              <th>%</th>
               <th>Tot. Kewajiban</th>
               <th>Jumlah Bayar</th>
               <th>Tunggakan</th>
@@ -69,7 +68,6 @@
               <td>{{ $no++ }}</td>
               <td>{{ $p->jenisbayar}}</td>
               <td>{{ $p->jumlah }}</td>
-              <td>0</td>
               <td>{{ $p->jumlah }}</td>
               <td>xxxxxx</td>
               <td>xxxxxx</td>

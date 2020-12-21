@@ -104,6 +104,7 @@ Route::get('/khs/{tahun}/{nim}', [KhsController::class, 'nilai']);
 Route::get('/krs', [KrsController::class, 'index']);
 
 Route::get('/nilaisementara', [NilaisementaraController::class, 'index']);
+Route::post('/nilaisementara/cetaknilai/pdf', [NilaisementaraController::class, 'cetaknilai']);
 
 Route::get('/perubahan', [PerubahanController::class, 'index']);
 

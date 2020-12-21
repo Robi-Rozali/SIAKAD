@@ -124,7 +124,16 @@
                           <td id="ipks">{{ $ipks }}</td>
                         </tr>
                       </table>
-                    </div>  
+                    </div> 
+                    <div>
+                          <form action="/nilaisementara/cetaknilai/pdf" method="post">
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" name="id" id="id">
+                            <button type="submit" class="btn btn-info"><i class="fas fa-print"></i> Cetak</button>  
+                          </form>
+                          
+                        </div> 
                   </div>
                   </div>
                 </div>
