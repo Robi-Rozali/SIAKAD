@@ -15,7 +15,7 @@
                 <div class="card shadow">
                   <div class="card-header">Edit Data Prodi</div>
                   <div class="card-body">
-                    <form action="/prodi/{{ $prodi->id }}" method="post" enctype="multipart/form-data">
+                    <form action="/prodii/{{ $prodi->id }}" method="post" enctype="multipart/form-data">
                       @csrf
                       @method('PUT')
   

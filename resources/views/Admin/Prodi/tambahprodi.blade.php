@@ -15,7 +15,7 @@
                 <div class="card shadow">
                   <div class="card-header">Tambah Data Prodi</div>
                   <div class="card-body">
-                    <form action="/prodi" method="post" enctype="multipart/form-data">
+                    <form action="/prodii" method="post" enctype="multipart/form-data">
                       @csrf
                       @method('POST')
   

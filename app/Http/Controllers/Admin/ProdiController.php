@@ -43,7 +43,6 @@ class ProdiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama'          => 'required',
             'prodi'         => 'required',
             'ketua'         => 'required',
             'nidn'          => 'required',
@@ -59,7 +58,6 @@ class ProdiController extends Controller
         $pathgambar         = $request->file('gambar')->storeAs('public/gambar',$gambarStore);
 
         $prodi = new Prodi;
-        $prodi->nama        = $request->input('nama');
         $prodi->prodi       = $request->input('prodi');
         $prodi->ketua       = $request->input('ketua');
         $prodi->nidn        = $request->input('nidn');
@@ -111,11 +109,10 @@ class ProdiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama'          => 'required',
             'prodi'         => 'required',
             'ketua'         => 'required',
             'nidn'          => 'required',
-            'username'          => 'required',
+            'username'      => 'required',
         ]);
 
         if ($request->hasFIle('gambar')) {
@@ -127,7 +124,6 @@ class ProdiController extends Controller
         }
 
         $prodi = Prodi::find($id);
-        $prodi->nama        = $request->input('nama');
         $prodi->prodi       = $request->input('prodi');
         $prodi->ketua       = $request->input('ketua');
         $prodi->nidn        = $request->input('nidn');
