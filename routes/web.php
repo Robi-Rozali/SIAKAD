@@ -120,9 +120,6 @@ Route::get('/pembayaran', [PembayaranController::class, 'index']);
 
 Route::resource('/profil', ProfilController::class);
 
-//menu
-Route::get('/', function () {
-    return view('/');
-});
 
-Route::get('/index', [LoginController::class, 'index'])->middleware('guest:mahasiswa','guest:prodi','guest:admin','guest:keuangan')->name('login');
+// ora ora ora ora ora
+Route::get('/', [LoginController::class, 'index'])->middleware('guest:mahasiswa','guest:prodi','guest:admin','guest:keuangan')->name('login');
