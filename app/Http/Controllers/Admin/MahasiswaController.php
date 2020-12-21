@@ -62,6 +62,7 @@ class MahasiswaController extends Controller
             'jurusan'       => 'required',
             'alamat'        => 'required',
             'email'         => 'required',
+            'username'      => 'required',
             'password'      => 'required',
             'tempat'        => 'required',
             'tgllahir'      => 'required',
@@ -82,6 +83,7 @@ class MahasiswaController extends Controller
         $mahasiswa->jurusan         = $request->input('jurusan');
         $mahasiswa->alamat          = $request->input('alamat');
         $mahasiswa->email           = $request->input('email');
+        $mahasiswa->username        = $request->input('username');
         $mahasiswa->password        = Hash::make($request->input('password')); 
         $mahasiswa->tempat          = $request->input('tempat');
         $mahasiswa->tgllahir        = $request->input('tgllahir');
@@ -138,6 +140,7 @@ class MahasiswaController extends Controller
             'jurusan'       => 'required',
             'alamat'        => 'required',
             'email'         => 'required',
+            'username'      => 'required',
             'tempat'        => 'required',
             'tgllahir'      => 'required',
             'telp'          => 'required',
@@ -158,6 +161,7 @@ class MahasiswaController extends Controller
         $mahasiswa->jurusan         = $request->input('jurusan');
         $mahasiswa->alamat          = $request->input('alamat');
         $mahasiswa->email           = $request->input('email');
+        $mahasiswa->username           = $request->input('username');
         $mahasiswa->tempat          = $request->input('tempat');
         $mahasiswa->tgllahir        = $request->input('tgllahir');
         $mahasiswa->telp            = $request->input('telp');
