@@ -43,7 +43,7 @@
         <div class="col-md-5">
           <div class="card shadow w-100 mt-5">
             <div class="card-body text-center ">
-              <form method="post" action="/index" class="">
+              <form method="post" action="/" class="">
                 @csrf
                 @method('POST')
                 <div class="form-group mt-4">
@@ -59,6 +59,7 @@
                 </div>
                   <button type="submit" class="btn btn-primary btn-block" id="loginbtn">Log in</button>
                 </div>
+              </form>
             </div>
           </div>
       </div>

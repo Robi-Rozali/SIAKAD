@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -18,21 +19,24 @@ class LoginController extends Controller
 
     public function login(Request $request){
         $request->validate([
-            'nim'       => 'required',
             'username'  => 'required',
             'password'  => 'required',
 
         ]);
-        $data = $request->only('nim','username','password');
+        $data = $request->only('username','password');
 
         if (Auth::guard('mahasiswa')->attempt($data)) {
             return redirect()->intended('/mhs/dashboard');
+
         }elseif (Auth::guard('admin')->attempt($data)) {
-            return redirect()->intended('/adm/index');
+            return redirect()->intended('/adm');
+
         }elseif (Auth::guard('prodi')->attempt($data)) {
             return redirect()->intended('/prodi/index');
+
         }elseif (Auth::guard('keuangan')->attempt($data)) {
             return redirect()->intended('/keuangan/index');
+
         }else{
             return redirect('/index')->with('info','Username Atau Password Salah');
         }
@@ -52,7 +56,7 @@ class LoginController extends Controller
             Auth::guard('keuangan')->logout();
         }
 
-        return redirect('/index');
+        return redirect('/');
     }
 
     /**
