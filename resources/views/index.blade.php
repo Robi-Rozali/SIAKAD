@@ -24,7 +24,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <div class="tulisan lead">Fake Login</div>
+            <div class="tulisan lead"></div>
           </li>
         </ul>
       </div>
@@ -43,7 +43,9 @@
         <div class="col-md-5">
           <div class="card shadow w-100 mt-5">
             <div class="card-body text-center ">
-              <form method="post" action="dashboard.html" class="user">
+              <form method="post" action="/index" class="">
+                @csrf
+                @method('POST')
                 <div class="form-group mt-4">
                     <div class="text-left">
                     <input type="text" class="form-control form-control-user " id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan NPM Anda" name="username">

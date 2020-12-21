@@ -46,6 +46,45 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        'mahasiswa' => [
+            'driver' => 'session',
+            'provider' => 'mahasiswa'
+        ],
+
+        'mahasiswa-api' => [
+            'driver' => 'token',
+            'provider' => 'mahasiswa'
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin'
+        ],
+
+        'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admin'
+        ],
+
+        'prodi' => [
+            'driver' => 'session',
+            'provider' => 'prodi'
+        ],
+
+        'prodi-api' => [
+            'driver' => 'token',
+            'provider' => 'prodi'
+        ],
+
+        'keuangan' => [
+            'driver' => 'session',
+            'provider' => 'keuangan'
+        ],
+
+        'keuangan-api' => [
+            'driver' => 'token',
+            'provider' => 'keuangan'
+        ],
     ],
 
     /*
@@ -69,6 +108,23 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'mahasiswa' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Mahasiswa::class,
+        ],
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+        'prodi' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Prodi::class,
+        ],
+        'keuangan' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Keuangan::class,
         ],
 
         // 'users' => [

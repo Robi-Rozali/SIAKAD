@@ -21,9 +21,13 @@ class RedirectIfAuthenticated
     {
         
         if (Auth::guard('mahasiswa')->check()){
-            return redirect('/mahasiswa/dashboard');
+            return redirect('/mhs/dashboard');
         }elseif (Auth::guard('admin')->check()) {
-            return redirect('/admin/index');
+            return redirect('/adm/index');
+        }elseif (Auth::guard('prodi')->check()) {
+            return redirect('/prodi/index');
+        }elseif (Auth::guard('keuangan')->check()) {
+            return redirect('/keuangan/index');
         }
         // $guards = empty($guards) ? [null] : $guards;
 

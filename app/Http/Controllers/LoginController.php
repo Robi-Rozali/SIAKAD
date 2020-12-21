@@ -13,23 +13,26 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('');
+        return view('index');
     }
 
     public function login(Request $request){
         $request->validate([
-            'nim' => 'required',
-            'nidn' => 'required',
-            'username' => 'required',
-            'password' => 'required',
+            'nim'       => 'required',
+            'username'  => 'required',
+            'password'  => 'required',
 
         ]);
-        $data = $request->only('nim','nidn','username','password');
+        $data = $request->only('nim','username','password');
 
         if (Auth::guard('mahasiswa')->attempt($data)) {
-            return redirect()->intended('/mahasiswa/dashboard');
+            return redirect()->intended('/mhs/dashboard');
         }elseif (Auth::guard('admin')->attempt($data)) {
-            return redirect()->intended('/admin/index');
+            return redirect()->intended('/adm/index');
+        }elseif (Auth::guard('prodi')->attempt($data)) {
+            return redirect()->intended('/prodi/index');
+        }elseif (Auth::guard('keuangan')->attempt($data)) {
+            return redirect()->intended('/keuangan/index');
         }else{
             return redirect('/index')->with('info','Username Atau Password Salah');
         }
@@ -41,6 +44,12 @@ class LoginController extends Controller
         }
         if (Auth::guard('admin')->check()){
             Auth::guard('admin')->logout();
+        }
+        if (Auth::guard('prodi')->check()){
+            Auth::guard('prodi')->logout();
+        }
+        if (Auth::guard('keuangan')->check()){
+            Auth::guard('keuangan')->logout();
         }
 
         return redirect('/index');
