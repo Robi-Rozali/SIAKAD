@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
+use PDF;
 
 use App\Models\Nilai;
 
@@ -19,7 +21,7 @@ class NilaisementaraController extends Controller
      */
     public function index()
     {
-            $nim = 'A3.1700040';
+            $nim = 'A2.1700081';
         $data = [
             'nilai' => Nilai::where('nim', '=', $nim)->first(),
             'nilaisemua' => Nilai::where('nim', '=', $nim)->get(),
@@ -104,4 +106,14 @@ class NilaisementaraController extends Controller
     {
         //
     }
+
+    public function cetaknilai(Request $request){
+        $nim = 'A2.1700081';
+        $data = [
+           'nilai' => Nilai::where('nim', '=', $nim)->first(),
+            'nilaisemua' => Nilai::where('nim', '=', $nim)->get(),
+        ];
+        $pdf = PDF::loadview('mahasiswa.perwalian.cetaknilai',$data);
+        return $pdf->stream('Nilaisementara.pdf'); 
+}
 }
