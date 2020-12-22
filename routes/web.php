@@ -96,6 +96,7 @@ Route::resource('/pembayarankeu', PembayarankeuController::class);
 Route::get('/mhs', [MhsController::class, 'index'])->middleware('auth:mahasiswa');
 
 Route::get('/perwalian', [Perwaliancontroller::class, 'index'])->middleware('auth:mahasiswa');
+Route::post('/perwalian', [Perwaliancontroller::class, 'store'])->middleware('auth:mahasiswa');
 
 Route::get('/khs', [KhsController::class, 'index'])->middleware('auth:mahasiswa');
 Route::get('/khs/{tahun}/{nim}', [KhsController::class, 'nilai'])->middleware('auth:mahasiswa');

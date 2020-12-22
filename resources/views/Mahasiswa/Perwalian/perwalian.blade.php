@@ -8,15 +8,10 @@
               <div class="card shadow">
                 <div class="card-header">Perwalian (FRS)</div>
                 <div class="card-body">
-                    <form action="">
-                        @csrf
-                        @method('POST')
-
                     <div class="form-group row">
                         <label for="" class="col-sm-2">NIM</label>
                         <div class="col-sm-5 teks-hitam">
                           {{ $mhs->nim }}
-                          <input type="hidden" value="{{ $mhs->nim }}" name="nim[]">
                         </div>
                         <div class="col-sm-4"></div>
                       </div>
@@ -24,7 +19,6 @@
                         <label for="" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-5 teks-hitam">
                           {{ $mhs->nama }}
-                          <input type="hidden" value="{{ $mhs->nama }}" name="nama[]">
                         </div>
                         <div class="col-sm-4"></div>
                       </div>
@@ -39,6 +33,9 @@
                         <label for="">Daftar Mata Kuliah Yang Bisa Diambil</label>
                     </div>
                     
+                    <form action="/perwalian" method="post">
+                        @csrf
+                        @method('POST')
                     <div class="row">
                         <div class="col-md-12">
                         <div class="table-responsive">
@@ -59,21 +56,12 @@
                                 @foreach ($krm as $k)
                                 <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>
-                                    {{ $k->kode }}
-                                    <input type="hidden" value="{{ $k->kode }}" name="kode[]">
-                                </td>
-                                <td>
-                                    {{ $k->matakuliah }}
-                                    <input type="hidden" value="{{ $k->matakuliah }}" name="matakuliah[]">
-                                </td>
-                                <td>
-                                    {{ $k->sks }}
-                                    <input type="hidden" value="{{ $k->sks }}" name="sks[]">
-                                </td>
+                                <td>{{ $k->kode }}</td>
+                                <td>{{ $k->matakuliah }}</td>
+                                <td>{{ $k->sks }}</td>
                                 <td>
                                     <div class="form-check text-center">
-                                        <input class="form-check-input" type="checkbox" value="1" name="cek" id="defaultCheck1">
+                                        <input class="form-check-input" type="checkbox" value="{{ $k->id }}" name="id[0][{{ $k->id }}]" id="id_{{ $k->id }}">
                                     </div>
                                 </td>
                                 </tr>
@@ -123,7 +111,7 @@
                         <hr class="sidebar-divider">
                         <div class="">
                             <button type="submit" class="btn btn-primary mb-2">Simpan</button>
-                            <button type="reset" class="btn btn-light mb-2">Batal</button>
+                            <button type="submit" class="btn btn-light mb-2">Batal</button>
                         </div>
 
 

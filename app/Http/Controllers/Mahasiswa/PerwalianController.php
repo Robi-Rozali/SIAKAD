@@ -41,4 +41,31 @@ class PerwalianController extends Controller
         ];
     	return view('mahasiswa.perwalian.perwalian')->with($data);
     }
+
+    public function store(Request $request){
+    	$kur = Kurikulum::all();
+    	foreach ($kur as $kuri) {
+    		$kurikulums[$kuri->id]['semester']=$kuri->semester;
+    		$kurikulums[$kuri->id]['kode']=$kuri->kode;
+    		$kurikulums[$kuri->id]['matakuliah']=$kuri->matakuliah;
+    		$kurikulums[$kuri->id]['sks']=$kuri->sks;
+    	}
+
+    	foreach($request->id[0] as $value){
+    		// dd($key);
+    		// dd($request->id[0]);
+    			$data = new Perwalian;
+    			$data->nim = Auth::guard('mahasiswa')->user()->nim;
+    			$data->nama = Auth::guard('mahasiswa')->user()->nama;
+    			$data->jurusan = Auth::guard('mahasiswa')->user()->jurusan;
+    			$data->semester = $kurikulums[$value]['semester'];
+    			$data->kode = $kurikulums[$value]['kode'];
+    			$data->matakuliah = $kurikulums[$value]['matakuliah'];
+    			$data->sks = $kurikulums[$value]['sks'];
+    			$data->save();
+        }
+
+        return back()->with('sukses','Data Jadwal berhasil ditambah');
+    }
+
 }
