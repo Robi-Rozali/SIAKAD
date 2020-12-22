@@ -93,32 +93,29 @@ Route::resource('/biaya', BiayaController::class);
 Route::resource('/pembayarankeu', PembayarankeuController::class);
 
 //Mahasiswa
-Route::get('/mhs', [MhsController::class, 'index']);
-// Route::get('/', function () {
-//     return view('mahasiswa.dashboard');
-// });
+Route::get('/mhs', [MhsController::class, 'index'])->middleware('auth:mahasiswa');
 
-Route::get('/perwalian', [Perwaliancontroller::class, 'index']);
+Route::get('/perwalian', [Perwaliancontroller::class, 'index'])->middleware('auth:mahasiswa');
 
-Route::get('/khs', [KhsController::class, 'index']);
-Route::get('/khs/{tahun}/{nim}', [KhsController::class, 'nilai']);
+Route::get('/khs', [KhsController::class, 'index'])->middleware('auth:mahasiswa');
+Route::get('/khs/{tahun}/{nim}', [KhsController::class, 'nilai'])->middleware('auth:mahasiswa');
 
-Route::get('/krs', [KrsController::class, 'index']);
+Route::get('/krs', [KrsController::class, 'index'])->middleware('auth:mahasiswa');
 
-Route::get('/nilaisementara', [NilaisementaraController::class, 'index']);
-Route::post('/nilaisementara/cetaknilai/pdf', [NilaisementaraController::class, 'cetaknilai']);
+Route::get('/nilaisementara', [NilaisementaraController::class, 'index'])->middleware('auth:mahasiswa');
+Route::post('/nilaisementara/cetaknilai/pdf', [NilaisementaraController::class, 'cetaknilai'])->middleware('auth:mahasiswa');
 
-Route::get('/perubahan', [PerubahanController::class, 'index']);
+Route::get('/perubahan', [PerubahanController::class, 'index'])->middleware('auth:mahasiswa');
 
-Route::get('/pilihkelas', [PilihkelasController::class, 'index']);
+Route::get('/pilihkelas', [PilihkelasController::class, 'index'])->middleware('auth:mahasiswa');
 
-Route::get('/jadwalkuliah', [JadwalkuliahController::class, 'index']);
+Route::get('/jadwalkuliah', [JadwalkuliahController::class, 'index'])->middleware('auth:mahasiswa');
 
-Route::get('/jadwalujian', [JadwalujianController::class, 'index']);
+Route::get('/jadwalujian', [JadwalujianController::class, 'index'])->middleware('auth:mahasiswa');
 
-Route::get('/pembayaran', [PembayaranController::class, 'index']);
+Route::get('/pembayaran', [PembayaranController::class, 'index'])->middleware('auth:mahasiswa');
 
-Route::resource('/profil', ProfilController::class);
+Route::resource('/profil', ProfilController::class)->middleware('auth:mahasiswa');
 
 
 // ora ora ora ora ora

@@ -51,7 +51,7 @@
                     <input type="text" class="form-control form-control-user " id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Masukan NPM Anda" name="username">
                 </div>
                 <div class="form-group text-left">
-                    <input type="text" class="form-control form-control-user mt-4" id="exampleInputPassword" placeholder="Masukan Password Anda" name="password">
+                    <input type="password" class="form-control form-control-user mt-4" id="exampleInputPassword" placeholder="Masukan Password Anda" name="password">
                 </div>
                 <div class="rememberpass text-left">
                   <input type="checkbox" name="rememberusername" id="rememberusername" value="1"  />

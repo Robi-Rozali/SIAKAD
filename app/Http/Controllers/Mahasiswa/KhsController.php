@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Nilai;
 
@@ -16,7 +17,7 @@ class KhsController extends Controller
      */
     public function index()
     {
-        $nim = 'A2.1700081';
+        $nim = Auth::guard('mahasiswa')->user()->nim;
         $data = [
             'nilai' => Nilai::where('nim', '=', $nim)->first(),
             'semester' => Nilai::where('nim', '=', $nim)

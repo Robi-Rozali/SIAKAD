@@ -38,7 +38,7 @@ class LoginController extends Controller
             return redirect()->intended('/keuangan');
 
         }else{
-            return redirect('/index')->with('info','Username Atau Password Salah');
+            return redirect('/')->with('info','Username Atau Password Salah');
         }
     }
 
