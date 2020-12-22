@@ -1,170 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Daftar Nilai Sementara</title>
-	<link rel="">
-
-	<style>
-		.header{
-			width: 100%;
-			color: #212121;
-		}
-		small{
-			font-size: 12px;
-		}
-		.judul{
-			display: block;
-			margin: 0;
-			padding: 0;
-		}
-		table{
-			border-collapse: collapse;
-		}
-		.table{
-			width: 100%;
-			margin-bottom: 1rem;
-			color: #212529;
-		}
-		.table th,
-		.table td{
-			padding: 5px;
-			vertical-align: top;
-			border-top: 1px solid #3d3e48;
-		}
-		.table thead th {
-			vertical-align: bottom;
-			border-bottom: 2px solid #3d3e48;
-		}
-		.table tbody + tbody{
-			border-top: 2px solid #3d3e48;
-		}
-		.table-bordered{
-			border: 1px solid #3d3e48;
-		}
-		.table-bordered th,
-		.table-bordered td {
-			border: 1px solid #3d3e48;
-		}
-		.table-bordered thead th,
-		.table-bordered thead td {
-			border-bottom-width: 2px;
-		}
-	</style>
-	</head>
-	<body>
-		<table>
-			<tr>
-				<td width="100" align="center"></td>
-			</tr>
-		</table>
-	<center>
-		<h5>Daftar Nilai Sementara</h4>
-		<h6>STMIK - SUMEDANG</h5>
-	</center>
-	<div>
-	<div class="col-md-12">
-      <table>
-       <tr>
-       <td>NIM</td>
-       <td>:</td>
-       <td>{{ $nilai->nim }}</td>
-       </tr>
-       <tr>
-       <td>Nama</td>
-       <td>:</td>
-       <td>{{ $nilai->nama }}</td>
-       </tr>
-       <tr>
-       <td>Tahun Akademik</td>
-       <td>:</td>
-       <td>{{ $nilai->tahun }}</td>
-       </tr>
-       <tr>
-       <td>Jurusan / Prodi</td>
-       <td>:</td>
-       <td>{{ $nilai->jurusan }}</td>
-       </tr>
-   </table>
-</div>
-	<table class='table table-bordered'>
-		<thead>
-			<tr>
-				<th>NO</th>
-                <th>Kode</th>
-                <th>Mata Kuliah</th>
-                <th>SKS</th>
-                <th>Nilai</th>
-                <th>Keterangan</th>
-			</tr>
-		</thead>
-		<tbody>
-			@php
-              $no=1;
-              $jumlah_sks = 0;
-              $nilai = 0;
-              $mutu = 0;
-            @endphp
-            @foreach ($nilaisemua as $n)
-            @php
-                              
-             $sks = $n->sks;
-             $grade =$n->grade;
-             if($grade == 'A'){
-             $nilai = 4;
-             }else if($grade == 'B'){
-             $nilai = 3;
-             }else if($grade == 'C'){
-             $nilai = 2;
-             }else if($grade == 'D'){
-             $nilai = 1;
-             }else if($grade == 'E'){
-             $nilai = 0;
-                              }
-             $mutu += $sks * $nilai;
-             $jumlah_sks = $jumlah_sks + $sks;
-             $ipks = number_format((float)$mutu/$jumlah_sks, 2, '.', '');
-             $jumlah_sks =$jumlah_sks;
-             $jumlah_mutu = $mutu;
-
-    
-            @endphp 
-			<tr>
-				<td>{{ $no++ }}</td>
-                <td>{{ $n->kode }}</td>
-                <td>{{ $n->matakuliah }}</td>
-                <td>{{ $n->sks }}</td>
-                <td>{{ $n->grade }}</td>
-                <td></td>
-			</tr>
-			@endforeach
-		</tbody>
-	</table>
-	 <div class="col-md-12">
-      <table>
-       <tr>
-       <td>Jumlah SKS</td>
-       <td>:</td>
-       <td id="jumlah_sks">{{ $jumlah_sks }}</td>
-       </tr>
-       <tr>
-       <td>Jumlah Angka Mutu</td>
-       <td>:</td>
-       <td id="jumlah_mutu">{{ $jumlah_mutu }}</td>
-       </tr>
-       <tr>
-       <td>IPK</td>
-       <td>:</td>
-       <td id="ipks">{{ $ipks }}</td>
-      </tr>
-    </table>
- </div> 
-
-</body>
-</html>
-
 
 
 {{-- nu ieu --}}
@@ -173,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bukti {{ $jenis }}</title>
+  <title>Daftar Nilai Sementara</title>
 
   <style>
     .header{
@@ -261,36 +94,18 @@
     }
 
     .col-md {
-        -ms-flex: 0 0 41.666667%;
-        flex: 0 0 41.666667%;
-        max-width: 41.666667%;
+        -ms-flex: 0 0 45.666667%;
+        flex: 0 0 45.666667%;
+        max-width: 45.666667%;
     }
   </style>  
 </head>
 <body>
-  {{-- <table border="0" class="header mt">
-    <tr>
-      <td class="bg-dark">
-        <h4>bukti pendaftaran</h4>
-      </td>
-    </tr>
-  </table> --}}
-  
+ 
   <table style=" width: 100%;margin-top: 20px;margin-bottom: 20px" border="0">
-    {{-- <tr>
-      <td rowspan="4" align="center"><img src="{{ asset('images/stmik-sumedang.png') }}" alt="" style="width: 100px"></td>
-    </tr>
+
     <tr>
-      <td>Uji Kompetensi STMIK Sumedang</td>
-    </tr>
-    <tr>
-      <td>Jl. Angkrek Situ No.19 Sumedang 45323 | Telp. (0261) 207 395</td>
-    </tr>
-    <tr>
-      <td>Website : https://ujikom.stmik-sumedang.ac.id | Email: info@stmik-sumedang.ac.id</td>
-    </tr> --}}
-    <tr>
-      <td width="100" align="center"><img src="{{ public_path('images/stmik-sumedang.png') }}" width="120" alt=""></td>
+      <td width="100" align="center"><img src="{{ public_path('img/stmik-sumedang.png') }}" width="120" alt=""></td>
       <td align="center">
       <h4 class="judul">SEKOLAH TINGGI MANAJEMEN INFORMATIKA DAN KOMPUTER</h4>
       <h5 class="judul">(STMIK) SUMEDANG</h5>
@@ -308,76 +123,107 @@
   <hr style="margin: 0 0 2px 0;padding: 0;border: 1.5px solid #000">
   <hr style="margin: 0 0 0 0;padding: 0;">
 
-  <h3 align="center" style="text-transform: uppercase;">Bukti {{ $jenis }}</h3>
+  <h3 align="center" style="text-transform: uppercase;">Daftar Nilai Sementara</h3>
 
-<div class="col-md">
-  <table class="table" style="margin-top: 20px;">
+  <table class="table" style="margin-top: 20px;width: 50%">
     <tbody>
       <tr>
-        <td style="width: 100px">NIK</td>
+        <td style="width: 100px">NIM</td>
         <td style="width: 10px">:</td>
-        <td>{{ $detail->nik }}</td>
+        <td>{{ $nilai->nim }}</td>
       </tr>
       <tr>
-        <td style="width: 100px">Nama Lengkap</td>
+        <td style="width: 100px">Nama</td>
         <td style="width: 10px">:</td>
-        <td>{{ $detail->nama_lengkap }}</td>
+        <td>{{ $nilai->nama }}</td>
       </tr>
       <tr>
-        <td style="width: 100px">Email</td>
+        <td style="width: 150px">Tahun Akademik</td>
         <td style="width: 10px">:</td>
-        <td>{{ $email }}</td>
+        <td>{{ $nilai->tahun }}</td>
       </tr>
       <tr>
-        <td style="width: 100px">Institusi</td>
+        <td style="width: 100px">Jurusan / Prodi</td>
         <td style="width: 10px">:</td>
-        <td>{{ str_replace('_', ' ', $detail->institusi) }}</td>
+        <td>{{ $nilai->jurusan }}</td>
       </tr>
     </tbody>
   </table>
-</div>
+
 
   <table class="table table-bordered" style="margin-top: 20px">
     <thead>
       <tr style="background-color: #eee">
-        <th>Skema Kompetensi</th>
-        <th>Jenis Kompetensi</th>
-        <th>Biaya</th>
-        @if ($jenis == 'pendaftaran' )
-          <th>Tanggal Pendaftaran</th>
-        @else
-          <th>Waktu Terkonfirmasi</th>  
-        @endif
-        
+        <th>NO</th>
+                <th>Kode</th>
+                <th>Mata Kuliah</th>
+                <th>SKS</th>
+                <th>Nilai</th>
+                <th>Keterangan</th>
       </tr>
     </thead>
     <tbody>
+      @php
+              $no=1;
+              $jumlah_sks = 0;
+              $nilai = 0;
+              $mutu = 0;
+            @endphp
+            @foreach ($nilaisemua as $n)
+            @php
+                              
+             $sks = $n->sks;
+             $grade =$n->grade;
+             if($grade == 'A'){
+             $nilai = 4;
+             }else if($grade == 'B'){
+             $nilai = 3;
+             }else if($grade == 'C'){
+             $nilai = 2;
+             }else if($grade == 'D'){
+             $nilai = 1;
+             }else if($grade == 'E'){
+             $nilai = 0;
+                              }
+             $mutu += $sks * $nilai;
+             $jumlah_sks = $jumlah_sks + $sks;
+             $ipks = number_format((float)$mutu/$jumlah_sks, 2, '.', '');
+             $jumlah_sks =$jumlah_sks;
+             $jumlah_mutu = $mutu;
+
+    
+            @endphp 
       <tr>
-        <td>{{ $detail->nama_kompetensi }}</td>
-        <td>{{ $detail->jenis_kompetensi }}</td>
-        <td>Rp. {{ number_format($detail->tagihan,'0',',','.') }}</td>
-        @if ($jenis == 'pendaftaran')
-          <td>{{ $detail->tanggal_pengajuan }}</td>
-        @else
-          <td>{{ $detail->waktu_pembayaran }}</td>  
-        @endif
-        
+        <td>{{ $no++ }}</td>
+                <td>{{ $n->kode }}</td>
+                <td>{{ $n->matakuliah }}</td>
+                <td>{{ $n->sks }}</td>
+                <td>{{ $n->grade }}</td>
+                <td></td>
       </tr>
-      @if ($jenis == 'pembayaran')
-      <tr>
-        <td colspan="2" align="right" style="background-color: #eee">Dibayar</td>
-        <td colspan="2">Rp. {{ number_format($detail->tagihan,'0',',','.') }}</td>
-      </tr>
-      @endif
+      @endforeach
+      
     </tbody>
   </table>
+ <div class="col-md-12">
+      <table>
+       <tr>
+       <td>Jumlah SKS</td>
+       <td>:</td>
+       <td id="jumlah_sks">{{ $jumlah_sks }}</td>
+       </tr>
+       <tr>
+       <td>Jumlah Angka Mutu</td>
+       <td>:</td>
+       <td id="jumlah_mutu">{{ $jumlah_mutu }}</td>
+       </tr>
+       <tr>
+       <td>IPK</td>
+       <td>:</td>
+       <td id="ipks">{{ $ipks }}</td>
+      </tr>
+    </table>
+ </div> 
 
-    <h3 style="margin-top: 50px;margin-bottom: 5px;text-align: center">Keterangan</h3>
-    <hr style="margin: 0 0 2px 0;padding: 0;border: 1.5px solid #000">
-  @if ($jenis == 'pendaftaran' )
-    <p>Jika sudah melakukan pembayaran, unggahkan struk pembayaran untuk mengkonfirmasikan pembayaran.</p>
-  @else
-    <p>Untuk pelaksanaan Uji Kompetensi dilaksanakan sesuai dengan jadwal yang tertera.</p>
-  @endif
 </body>
 </html>
