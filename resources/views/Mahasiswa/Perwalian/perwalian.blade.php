@@ -26,8 +26,9 @@
                     <div class="form-group row">
                         <label for="" class="col-sm-2">Max Pengambilan</label>
                         <div class="col-sm-2">
-                          <input type="text" class="form-control" value="21" readonly>
+                          <input type="text" class="form-control" id="jumlahsks" value="21" readonly>
                         </div>
+
                     </div>
                     <div class="teks-hitam">
                         <label for="">Daftar Mata Kuliah Yang Bisa Diambil</label>
@@ -58,14 +59,20 @@
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $k->kode }}</td>
                                 <td>{{ $k->matakuliah }}</td>
-                                <td>{{ $k->sks }}</td>
+                                <td id="sks">{{ $k->sks }}</td>
                                 <td>
                                     <div class="form-check text-center">
-                                        <input class="form-check-input" type="checkbox" value="{{ $k->id }}" name="id[0][{{ $k->id }}]" id="id_{{ $k->id }}">
+                                        <input class="form-check-input" type="checkbox" value="{{ $k->id }}" name="id[0][{{ $k->id }}]" id="id_{{ $k->id }}" onclick="Sks('{{ $k->id }}','{{ $k->sks }}')" required>
                                     </div>
                                 </td>
                                 </tr>
                                 @endforeach
+                                <tr>
+                                    <td align="right" colspan="3">SKS yang diambil :</td>
+                                    <td colspan="2">
+                                        <input type="text" id="totsks" class="form-control" value="" readonly style="width: 50px">
+                                    </td>
+                                </tr>
                             </tbody>
                             </table>
                         </div>
@@ -110,8 +117,8 @@
                         </div>
                         <hr class="sidebar-divider">
                         <div class="">
-                            <button type="submit" class="btn btn-primary mb-2">Simpan</button>
-                            <button type="submit" class="btn btn-light mb-2">Batal</button>
+                            <button type="submit" id="btnsubmit" disabled class="btn btn-primary mb-2">Simpan</button>
+                            <button type="reset" class="btn btn-light mb-2">Batal</button>
                         </div>
 
 
@@ -122,4 +129,39 @@
         </div>
         </div>
       <!-- End of Main Content -->
+@endsection
+
+@section('script')
+
+<script type="text/javascript">
+
+    {{-- Nu Sks na kudu 21 mun teu 21 moal bisa di simpen --}}
+    {{-- atau jumlah sks na kudu sarua jeung Max Pengambilan, karek bisa di simpen tombol na --}}
+
+
+    var jumlah = 0;
+    var jumlahsks = $('#jumlahsks').val();
+    // var sks = $('#sks').text();
+    function Sks(id,sks){
+
+        if ($(`#id_${id}`).is(':checked')) {
+            jumlah = jumlah + parseInt(sks);
+            $('#totsks').val(jumlah);
+            if($('#totsks').val() == jumlahsks){
+                $('#btnsubmit').prop('disabled', false);
+            }else{
+                $('#btnsubmit').prop('disabled', true);
+            }
+        }else{
+            jumlah = jumlah - parseInt(sks);
+            $('#totsks').val(jumlah);
+            if($('#totsks').val() == jumlahsks){
+                $('#btnsubmit').prop('disabled', false);
+            }else{
+                $('#btnsubmit').prop('disabled', true);
+            }
+        }
+    }
+</script>
+
 @endsection
