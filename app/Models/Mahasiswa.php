@@ -16,7 +16,7 @@ class Mahasiswa extends Authenticatable
     protected $primaryKey = 'id';
 
     protected $fillable = [
-    	'nim',
+    	'username',
     	'password',
     ];
 
