@@ -8,7 +8,7 @@
               <div class="card shadow">
                 <div class="card-header">Profil</div>
                 <div class="card-body">
-                  <form action="/mahasiswa/{{ Auth::guard('mahasiswa')->user()->nim }}"method="post" enctype="multipart/form-data">
+                  <form action="/mahasiswa/{{ Auth::guard('mahasiswa')->user()->id }}"method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

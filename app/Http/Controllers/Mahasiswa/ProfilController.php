@@ -89,7 +89,7 @@ class profilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $nim)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'nim'           => 'required',
@@ -110,7 +110,7 @@ class profilController extends Controller
             $pathgambar         = $request->file('gambar')->storeAs('public/gambar',$gambarStore);
         }
 
-        $mhs = Mahasiswa::find($nim);
+        $mhs = Mahasiswa::find($id);
         $mhs->nim         = $request->input('nim');
         $mhs->nama        = $request->input('nama');
         $mhs->jurusan     = $request->input('jurusan');
