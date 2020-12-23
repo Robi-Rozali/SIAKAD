@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Mahasiswa;
 use App\Models\Kurikulum;
+use App\Models\Perwalian;
 
 class PerwalianadmController extends Controller
 {
@@ -18,7 +19,8 @@ class PerwalianadmController extends Controller
     public function index()
     {
         $data = [
-            'Kurikulum' => Kurikulum::all(),
+            'perwalianadm' => Perwalian::all(),
+            'semester' => Kurikulum::select('semester')->groupBy('semester')->get(),
         ];
         return view('Prodi.perwalian.perwalianadm');
     }
