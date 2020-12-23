@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Mahasiswa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Mahasiswa;
+use App\Models\Prodi;
+
 
 class profilController extends Controller
 {
@@ -17,7 +20,13 @@ class profilController extends Controller
      */
     public function index()
     {
-        return view('Mahasiswa.profil.profil');
+        $nim = Auth::guard('mahasiswa')->user()->nim;
+        $data = [
+            'mhs' => Mahasiswa::where('nim', '=', $nim)->first(),
+            'datamhs' => Mahasiswa::where('nim', '=', $nim)->get(),
+        ];
+        return view('Mahasiswa.Profil.profil')->with($data);
+    
     }
 
     /**
@@ -27,7 +36,11 @@ class profilController extends Controller
      */
     public function create()
     {
-        //
+     $data = [
+            'prodi' => Prodi::all(),
+        ];
+        return view('Mahasiswa.Profil.edit')->with($data);
+
     }
 
     /**
@@ -49,10 +62,6 @@ class profilController extends Controller
      */
     public function show($id)
     {
-        $data = [
-            'mahasiswa'     => Mahasiswa::find($id),
-        ];
-        return view('Mahasiswa.profil.profil')->with($data);
     }
 
     /**
@@ -61,13 +70,16 @@ class profilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($nim)
     {
+        $nim = Auth::guard('mahasiswa')->user()->nim;
         $data = [
-            'mahasiswa' => Mahasiswa::find($id),
-        ];
+            'mhs' => Mahasiswa::where('nim', '=', $nim)->first(),
+            'datamhs' => Mahasiswa::where('nim', '=', $nim)->get(),
+            'prodi' => Prodi::all(),
 
-        return view('Mahasiswa.profil.edit')->with($data);
+        ];
+        return view('Mahasiswa.Profil.edit')->with($data);
     }
 
     /**
@@ -77,7 +89,7 @@ class profilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $nim)
     {
         $request->validate([
             'nim'           => 'required',
@@ -98,34 +110,34 @@ class profilController extends Controller
             $pathgambar         = $request->file('gambar')->storeAs('public/gambar',$gambarStore);
         }
 
-        $mahasiswa = Mahasiswa::find($id);
-        $mahasiswa->nim         = $request->input('nim');
-        $mahasiswa->nama        = $request->input('nama');
-        $mahasiswa->jurusan     = $request->input('jurusan');
-        $mahasiswa->alamat      = $request->input('alamat');
-        $mahasiswa->email       = $request->input('email');
-        $mahasiswa->tempat      = $request->input('tempat');
-        $mahasiswa->tgllahir    = $request->input('tgllahir');
-        $mahasiswa->telp        = $request->input('telp');
+        $mhs = Mahasiswa::find($nim);
+        $mhs->nim         = $request->input('nim');
+        $mhs->nama        = $request->input('nama');
+        $mhs->jurusan     = $request->input('jurusan');
+        $mhs->alamat      = $request->input('alamat');
+        $mhs->email       = $request->input('email');
+        $mhs->tempat      = $request->input('tempat');
+        $mhs->tgllahir    = $request->input('tgllahir');
+        $mhs->telp        = $request->input('telp');
 
         if ($request->input('password') == '') {
-            $mahasiswa->password    = $request->input('pass');
+            $mhs->password    = $request->input('pass');
         }else{
-            $mahasiswa->password    = md5($request->input('password'));
+            $mhs->password    = Hash::make($request->input('password'));
         }
         
         
         if ($request->hasFile('gambar')) {
-            Storage::delete('public/gambar/'.$mahasiswa->gambar);
-            $mahasiswa->gambar      = $gambarStore;
+            Storage::delete('public/gambar/'.$mhs->gambar);
+            $mhs->gambar      = $gambarStore;
         }else{
-            $mahasiswa->gambar      = $request->input('gambardb');
+            $mhs->gambar      = $request->input('gambardb');
         }
         
 
-        $mahasiswa->save();
+        $mhs->save();
 
-        return redirect('/mahasiswa')->with('sukses','Data Mahasiswa berhasil diedit');
+        return redirect('/mhs')->with('sukses','Data Mahasiswa berhasil diedit');
     }
 
     /**
