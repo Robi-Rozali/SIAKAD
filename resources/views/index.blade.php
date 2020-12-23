@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/custom.css">
-    <link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" type="text/css">
+    {{-- sweetalert --}}
+    <link href="{{ asset('Admin/vendor/sweetalert/css/sweetalert2.css') }}" rel="stylesheet">
 
     <title>Sistem Informasi Akademik STMIK</title>
   </head>
@@ -16,7 +18,7 @@
     <nav class="navbar navbar-expand-lg navbar-siakad sticky-top shadow-sm">
       <div class="container-fluid">
         <a href="#" class="navbar-brand">
-          <img src="img/logo.png" class="d-inline" style="width: 200px" alt="logo">
+          <img src="{{ asset('img/logo.png') }}" class="d-inline" style="width: 200px" alt="logo">
         </a>
       <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -109,7 +111,7 @@
   <div class="container-fluid bg-utama">
     <div class="row">
       <div class="col-md-3 my-5">
-        <img src="img/logo.png" class="d-inline" style="width: 200px" alt="logo">
+        <img src="{{ asset('img/logo.png') }}" class="d-inline" style="width: 200px" alt="logo">
         <p class="lead mt-3 tulisan">STMIK Sumedang menjadi Sekolah Tinggi yang unggul dalam bidang manajemen informatika dan komputer di Jawa Barat pada tahun 2022</p>
       </div>
       <div class="col-md-3 my-5">
@@ -150,14 +152,23 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="js/jquery-3.5.1.slim.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/popper.min.js"></script>
+    <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }} "></script>
+     {{-- sweetalert --}}
+    <script src="{{ asset('Admin/vendor/sweetalert/js/sweetalert2.all.min.js') }} "></script>
 
     <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     -->
+    <script>
+      Swal.fire(
+        'JoJo',
+        'ora ora ora ora ora ora ora ora ora ora ora ora ora ora ora ora',
+      )
+    </script>
+
   </body>
 </html>
