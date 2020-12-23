@@ -59,7 +59,7 @@
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $k->kode }}</td>
                                 <td>{{ $k->matakuliah }}</td>
-                                <td id="sks">{{ $k->sks }}</td>
+                                <td>{{ $k->sks }}</td>
                                 <td>
                                     <div class="form-check text-center">
                                         <input class="form-check-input" type="checkbox" value="{{ $k->id }}" name="id[0][{{ $k->id }}]" id="id_{{ $k->id }}">
