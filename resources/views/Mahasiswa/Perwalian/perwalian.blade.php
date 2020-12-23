@@ -62,7 +62,7 @@
                                 <td id="sks">{{ $k->sks }}</td>
                                 <td>
                                     <div class="form-check text-center">
-                                        <input class="form-check-input" type="checkbox" value="{{ $k->id }}" name="id[0][{{ $k->id }}]" id="id_{{ $k->id }}"  required>
+                                        <input class="form-check-input" type="checkbox" value="{{ $k->id }}" name="id[0][{{ $k->id }}]" id="id_{{ $k->id }}">
                                     </div>
                                 </td>
                                 </tr>
