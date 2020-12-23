@@ -133,35 +133,6 @@
 
 @section('script')
 
-<script type="text/javascript">
 
-    {{-- Nu Sks na kudu 21 mun teu 21 moal bisa di simpen --}}
-    {{-- atau jumlah sks na kudu sarua jeung Max Pengambilan, karek bisa di simpen tombol na --}}
-
-
-    var jumlah = 0;
-    var jumlahsks = $('#jumlahsks').val();
-    // var sks = $('#sks').text();
-    function Sks(id,sks){
-
-        if ($(`#id_${id}`).is(':checked')) {
-            jumlah = jumlah + parseInt(sks);
-            $('#totsks').val(jumlah);
-            if($('#totsks').val() == jumlahsks){
-                $('#btnsubmit').prop('disabled', false);
-            }else{
-                $('#btnsubmit').prop('disabled', true);
-            }
-        }else{
-            jumlah = jumlah - parseInt(sks);
-            $('#totsks').val(jumlah);
-            if($('#totsks').val() == jumlahsks){
-                $('#btnsubmit').prop('disabled', false);
-            }else{
-                $('#btnsubmit').prop('disabled', true);
-            }
-        }
-    }
-</script>
 
 @endsection
