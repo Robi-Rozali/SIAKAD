@@ -22,7 +22,7 @@ class PerwalianadmController extends Controller
             'perwalianadm' => Perwalian::all(),
             'semester' => Kurikulum::select('semester')->groupBy('semester')->get(),
         ];
-        return view('Prodi.perwalian.perwalianadm');
+        return view('Prodi.perwalian.perwalianadm')->with($data);
     }
 
     /**
