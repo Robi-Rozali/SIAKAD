@@ -137,7 +137,7 @@ class profilController extends Controller
 
         $mhs->save();
 
-        return redirect('/mhs')->with('sukses','Data Mahasiswa berhasil diedit');
+        return redirect('/profil')->with('sukses','Data Mahasiswa berhasil diedit');
     }
 
     /**
