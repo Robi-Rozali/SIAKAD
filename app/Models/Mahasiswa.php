@@ -16,12 +16,28 @@ class Mahasiswa extends Authenticatable
     protected $primaryKey = 'id';
 
     protected $fillable = [
+        'nim',
+        'nama',
+        'jenis_kelamin',
+        'jurusan',
+        'alamat',
+        'email',
     	'username',
     	'password',
+        'tempat',
+        'tgllahir',
+        'telp',
+        'gambar',
     ];
 
     protected $hidden = [
     	'password',
     	'remember_token',
     ];
+
+    public static function getMahasiswa()
+    {
+        $records = DB::table('mahasiswa')->select('id','nim','nama','jenis_kelamin','jurusan','alamat','email','username','password','tempat','tgllahir','telp','gambar',);
+        return $records;
+    }
 }
