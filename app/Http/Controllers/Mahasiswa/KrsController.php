@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use PDF;
+
+use App\Models\Perwalian;
 
 class KrsController extends Controller
 {
@@ -14,8 +19,15 @@ class KrsController extends Controller
      */
     public function index()
     {
-         return view('mahasiswa.perwalian.krs');
+        $nim = Auth::guard('mahasiswa')->user()->nim;
+        $data = [
+            'krs' => Perwalian::where('nim', '=', $nim)->first(),
+            'semester' => Perwalian::where('nim', '=', $nim)
+                        ->select('semester')->groupBy('semester')->get(),  
+        ];
+        return view('mahasiswa.perwalian.krs')->with($data);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -81,5 +93,24 @@ class KrsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function krs($semester,$nim){
+        $krs = Perwalian::where('semester','=',$semester)
+                        ->where('nim', '=', $nim)->get();
+        return response()->json([
+            'data' => $krs,
+        ]);
+    }
+
+    public function cetakkrs(Request $request){
+        $nim = Auth::guard('mahasiswa')->user()->nim;
+        $data = [
+           'krs' => Perwalian::where('nim', '=', $nim)->first(),
+           'semester' => Perwalian::where('nim', '=', $nim)
+                        ->select('semester')->groupBy('semester')->get(), 
+        ];
+        $pdf = PDF::loadview('mahasiswa.perwalian.cetakkrs',$data);
+        return $pdf->stream('Kartu_Rencana_Studi.pdf'); 
     }
 }

@@ -102,6 +102,8 @@ Route::get('/khs', [KhsController::class, 'index'])->middleware('auth:mahasiswa'
 Route::get('/khs/{tahun}/{nim}', [KhsController::class, 'nilai'])->middleware('auth:mahasiswa');
 
 Route::get('/krs', [KrsController::class, 'index'])->middleware('auth:mahasiswa');
+Route::get('/krs/{tahun}/{nim}', [KrsController::class, 'krs'])->middleware('auth:mahasiswa');
+Route::post('/krs/cetakkrs/pdf', [KrsController::class, 'cetakkrs'])->middleware('auth:mahasiswa');
 
 Route::get('/nilaisementara', [NilaisementaraController::class, 'index'])->middleware('auth:mahasiswa');
 Route::post('/nilaisementara/cetaknilai/pdf', [NilaisementaraController::class, 'cetaknilai'])->middleware('auth:mahasiswa');
