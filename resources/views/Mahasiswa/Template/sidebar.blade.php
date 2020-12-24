@@ -15,7 +15,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="dashboard.html">
+        <a class="nav-link" href="/mhs">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -80,9 +80,8 @@
         </a>
         <div id="collapsestatuspembayaran" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Nilai:</h6>
+            <h6 class="collapse-header">Pembayaran:</h6>
             <a class="collapse-item" href="\pembayaran">Riwayat Pembayaran </a>
-            <a class="collapse-item" href="utilities-border.html">Tagihan/Invoice</a>
           </div>
         </div>
       </li>

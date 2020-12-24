@@ -109,7 +109,7 @@ class NilaisementaraController extends Controller
     }
 
     public function cetaknilai(Request $request){
-        $nim = 'A2.1700081';
+        $nim = Auth::guard('mahasiswa')->user()->nim;
         $data = [
            'nilai' => Nilai::where('nim', '=', $nim)->first(),
             'nilaisemua' => Nilai::where('nim', '=', $nim)->get(),

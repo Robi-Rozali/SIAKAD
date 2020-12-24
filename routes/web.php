@@ -115,6 +115,7 @@ Route::get('/jadwalkuliah', [JadwalkuliahController::class, 'index'])->middlewar
 Route::get('/jadwalujian', [JadwalujianController::class, 'index'])->middleware('auth:mahasiswa');
 
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->middleware('auth:mahasiswa');
+Route::get('/pembayaran/{semester}/{nim}', [PembayaranController::class, 'bayar'])->middleware('auth:mahasiswa');
 
 Route::get('/profil', [ProfilController::class, 'index'])->middleware('auth:mahasiswa');
 
