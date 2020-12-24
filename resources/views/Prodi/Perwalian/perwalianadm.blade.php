@@ -18,6 +18,9 @@
               <div class="card shadow">
                 <div class="card-header">Perwalian (FRS)</div>
                 <div class="card-body">
+                    <form action="/perwalianadm" method="post">
+                      @csrf
+                      @method('POST')
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
@@ -45,13 +48,15 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-3 my-auto">Semester</label>
                                 <div class="col-sm-5">
-                                    <select class="form-control"  name="semester" id="">
-                                        <option selected disabled>-- pilih --</option>
-                                        <option value="">Semester 1</option>
-                                        <option value="">Semester 2</option>
-                                        <option value="">Semester 3</option>
-                                        <option value="">Semester 4</option>
+                                    <select class="form-control" name="" id="semester">
+                                      <option value="">--Pilih--</option>
+                                      @foreach ($semester as $s)
+                                      <option value="{{$s->semester}}">{{ str_replace('_', ' ', $s->semester) }}</option>
+                                      @endforeach
                                     </select>
+                                      @error('semester') 
+                                          <small class="text-danger">{{ $message }}</small>
+                                      @enderror
                                 </div>
                             </div>
 

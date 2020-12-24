@@ -2,12 +2,12 @@
 
 @section('konten')
         <!-- Begin Page Content -->
-        <div class="container-fluid mb-5">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="card shadow">
-                <div class="card-header">Profil</div>
-                <div class="card-body">
+        <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="card shadow">
+                  <div class="card-header">Profil</div>
+                  <div class="card-body">
                   <form action="/profil/{{ Auth::guard('mahasiswa')->user()->id }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
