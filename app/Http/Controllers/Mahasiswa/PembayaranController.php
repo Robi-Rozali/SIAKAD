@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Pembayarankeu;
 use App\Models\Biaya;
@@ -17,11 +19,11 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-         $nim = 'A2.1700081';
-         $tahun = '2020';
+        $nim = Auth::guard('mahasiswa')->user()->nim;
         $data = [
-            'pembayaran' => Pembayarankeu::where('nim', '=', $nim)->first(),
-            'pembayaran_semua' => Pembayarankeu::where('nim', '=', $nim)->get(),
+            'semester' => Pembayarankeu::where('nim', '=', $nim)
+                                    ->select('semester')
+                                    ->groupBy('semester')->get(),
         ];
         return view('Mahasiswa.pembayaran.pembayaran')->with($data);
     }
@@ -91,4 +93,36 @@ class PembayaranController extends Controller
     {
         //
     }
+
+    public function bayar($semester,$nim){
+    if ($semester == '1') {
+        $bayar = Pembayarankeu::where('pembayaran.semester','=',$semester)
+            ->where('pembayaran.nim', '=', $nim)
+            ->join('biaya','pembayaran.jurusan','=','biaya.jurusan')
+            ->join('perwalian','pembayaran.nim','=','perwalian.nim')
+            ->where('biaya.semester','=',$semester)
+            ->where('perwalian.semester','=',$semester)
+            ->select('pembayaran.jenisbayar','pembayaran.jumlah','biaya.semester','biaya.pendaftaran','biaya.upp','biaya.usb','biaya.sks','biaya.ppspp','biaya.almamater',DB::raw('SUM(perwalian.sks) as jumlahsks'))
+            ->groupBy('pembayaran.jenisbayar','pembayaran.jumlah','biaya.semester','biaya.pendaftaran','biaya.upp','biaya.usb','biaya.sks','biaya.ppspp','biaya.almamater')
+            ->get();
+    }else{
+        $bayar = Pembayarankeu::where('pembayaran.semester','=',$semester)
+            ->where('pembayaran.nim', '=', $nim)
+            ->join('biaya','pembayaran.jurusan','=','biaya.jurusan')
+            ->join('perwalian','pembayaran.nim','=','perwalian.nim')
+            ->where('biaya.semester','=','1')
+            ->where('perwalian.semester','=',$semester)
+            ->select('pembayaran.jenisbayar','pembayaran.jumlah','biaya.semester','biaya.upp','biaya.sks',DB::raw('SUM(perwalian.sks) as jumlahsks'))
+            ->groupBy('pembayaran.jenisbayar','pembayaran.jumlah','biaya.semester','biaya.upp','biaya.sks')
+            ->get();
+    }
+
+           // dd($bayar);          
+        return response()->json([
+            'data' => $bayar,
+        ]);
+    }
+
+
+
 }

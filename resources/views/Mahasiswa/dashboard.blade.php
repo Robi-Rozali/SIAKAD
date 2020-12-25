@@ -18,7 +18,7 @@
                         NIM :
                       </label>
                       <div class="col-sm-5 teks-hitam">
-                        A3.1700040
+                        {{ Auth::guard('mahasiswa')->user()->nim }}
                       </div>
                       <div class="col-sm-4"></div>
                     </div>
@@ -27,7 +27,7 @@
                         Nama :
                       </label>
                       <div class="col-sm-5 teks-hitam">
-                        ROBI ROZALI
+                        {{ Auth::guard('mahasiswa')->user()->nama }}
                       </div>
                       <div class="col-sm-4"></div>
                     </div>
@@ -36,28 +36,20 @@
                         Program Studi / Jenjang :
                       </label>
                       <div class="col-sm-5 teks-hitam">
-                       Sistem Informasi / S1
+                       {{ Auth::guard('mahasiswa')->user()->jurusan }}
                       </div>
                       <div class="col-sm-4"></div>
                     </div>
                     <div class="form-group row">
                       <label for="foto" class="col-sm-3">
-                        Bidang Konsentrasi
+                        Tahun Akademik
                       </label>
                       <div class="col-sm-5 teks-hitam">
-                       -
+                       {{ Auth::guard('mahasiswa')->user()->tahun }}
                       </div>
                       <div class="col-sm-4"></div>
                     </div>
-                    <div class="form-group row">
-                      <label for="foto" class="col-sm-3">
-                        Kelas :
-                      </label>
-                      <div class="col-sm-5 teks-hitam">
-                       Reguler
-                      </div>
-                      <div class="col-sm-4"></div>
-                    </div>
+                
                     <div class="form-group row">
                       <label for="foto" class="col-sm-3">
                         IPK
@@ -91,4 +83,41 @@
 
         </div>
       <!-- End of Main Content -->
+@endsection
+
+@section('script')
+<script>
+  var ctx = document.getElementById("myAreaChart");
+var myLineChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["Smtr 1", "Smtr 2", "Smtr 3", "Smtr 4", "Smtr 5", "Smtr 6", "Smtr 7", "Smtr 8"],
+    datasets: [{
+      label: "Semester",
+
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "rgba(78, 115, 223, 1)",
+
+      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointBorderColor: "rgba(78, 115, 223, 1)",
+
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+
+      data: [3,4,3,4,3.5,3,3.9,4]
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    }, 
+  }
+});
+</script>
 @endsection

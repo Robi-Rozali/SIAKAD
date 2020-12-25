@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\Models\Kurikulum;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class KurikulumImport implements ToModel
+class KurikulumImport implements ToModel,WithHeadingRow
 {
     /**
     * @param array $row
@@ -20,7 +21,7 @@ class KurikulumImport implements ToModel
             'sks'           => $row['sks'],
             'semester'      => $row['semester'],
             'jurusan'       => $row['jurusan'],
-            'tahun'         => $row['tahun'],
+            'Tahun'         => $row['tahun'],
         ]);
     }
 }

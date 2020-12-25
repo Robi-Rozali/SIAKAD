@@ -55,42 +55,42 @@ use App\Http\Controllers\Prodi\KurikulumController;
 
 // Admin
 Route::get('/adm', [AdminController::class, 'index'])->middleware('auth:admin');
-Route::resource('/prodii', ProdiController::class);
-Route::resource('/mahasiswa', MahasiswaController::class);
-Route::post('/mahasiswa/import/csv', [MahasiswaController::class, 'importcsv']);
-Route::get('/mahasiswa/export/csv', [MahasiswaController::class, 'exportcsv']);
-Route::get('/mahasiswa/cetak/pdf', [MahasiswaController::class, 'cetak']);
-Route::resource('/ruang', RuangController::class);
-Route::resource('/kelas', KelasController::class);
-Route::resource('/adminn', AdminnController::class);
-Route::resource('/keu', KeuController::class);
+Route::resource('/prodii', ProdiController::class)->middleware('auth:admin');
+Route::resource('/mahasiswa', MahasiswaController::class)->middleware('auth:admin');
+Route::post('/mahasiswa/import/csv', [MahasiswaController::class, 'importcsv'])->middleware('auth:admin');
+Route::get('/mahasiswa/export/csv', [MahasiswaController::class, 'exportcsv'])->middleware('auth:admin');
+Route::get('/mahasiswa/cetak/pdf', [MahasiswaController::class, 'cetak'])->middleware('auth:admin');
+Route::resource('/ruang', RuangController::class)->middleware('auth:admin');
+Route::resource('/kelas', KelasController::class)->middleware('auth:admin');
+Route::resource('/adminn', AdminnController::class)->middleware('auth:admin');
+Route::resource('/keu', KeuController::class)->middleware('auth:admin');
 
 //Prodi
-Route::get('/prodi', [JurusanController::class, 'index']);
-Route::get('/nilai', [NilaiController::class, 'index']);
-Route::get('/khsadm/{id}', [KhsadmController::class, 'cari']);
-Route::post('/khsadm/cetak/pdf', [KhsadmController::class, 'cetak']);
+Route::get('/prodi', [JurusanController::class, 'index'])->middleware('auth:prodi');
+Route::get('/nilai', [NilaiController::class, 'index'])->middleware('auth:prodi');
+Route::get('/khsadm/{id}', [KhsadmController::class, 'cari'])->middleware('auth:prodi');
+Route::post('/khsadm/cetak/pdf', [KhsadmController::class, 'cetak'])->middleware('auth:prodi');
 
-Route::resource('/inputjadwal', InputjadwalController::class);
-Route::get('/inputjadwal/{prodi}/{smtr}/{tahun}', [InputjadwalController::class, 'matkul']);
-Route::get('/inputjadwal/detail/{id}', [InputjadwalController::class, 'detail']);
+Route::resource('/inputjadwal', InputjadwalController::class)->middleware('auth:prodi');
+Route::get('/inputjadwal/{prodi}/{smtr}/{tahun}', [InputjadwalController::class, 'matkul'])->middleware('auth:prodi');
+Route::get('/inputjadwal/detail/{id}', [InputjadwalController::class, 'detail'])->middleware('auth:prodi');
 
 Route::get('/khsadm', [KhsadmController::class, 'index']);
-Route::get('/perwalianadm', [PerwalianadmController::class, 'index']);
-Route::get('/perwalianadm/{prodi}/{smtr}/{tahun}', [PerwalianadmController::class, 'matakuliah']);
-Route::resource('/kurikulum', KurikulumController::class);
-Route::post('/kurikulum/import/csv', [KurikulumController::class, 'importcsv']);
+Route::resource('/perwalianadm', PerwalianadmController::class)->middleware('auth:prodi');
+Route::get('/perwalianadm/{prodi}/{smtr}/{tahun}', [PerwalianadmController::class, 'matakuliah'])->middleware('auth:prodi');
+Route::resource('/kurikulum', KurikulumController::class)->middleware('auth:prodi');
+Route::post('/kurikulum/import/csv', [KurikulumController::class, 'importcsv'])->middleware('auth:prodi');
 
-Route::get('/kurikulum/export/csv', [KurikulumController::class, 'exportcsv']);
+Route::get('/kurikulum/export/csv', [KurikulumController::class, 'exportcsv'])->middleware('auth:prodi');
 
 // Dosen
-Route::resource('/dosen', DosenController::class);
+Route::resource('/dosen', DosenController::class)->middleware('auth:admin');
 
 //Keuangan
-Route::get('/keuangan', [KeuanganController::class, 'index']);
-Route::get('/keuangan', [DashboardController::class, 'index']);
-Route::resource('/biaya', BiayaController::class);
-Route::resource('/pembayarankeu', PembayarankeuController::class);
+Route::get('/keuangan', [KeuanganController::class, 'index'])->middleware('auth:keuangan');
+Route::get('/keuangan', [DashboardController::class, 'index'])->middleware('auth:keuangan');
+Route::resource('/biaya', BiayaController::class)->middleware('auth:keuangan');
+Route::resource('/pembayarankeu', PembayarankeuController::class)->middleware('auth:keuangan');
 
 //Mahasiswa
 Route::get('/mhs', [MhsController::class, 'index'])->middleware('auth:mahasiswa');
@@ -102,6 +102,8 @@ Route::get('/khs', [KhsController::class, 'index'])->middleware('auth:mahasiswa'
 Route::get('/khs/{tahun}/{nim}', [KhsController::class, 'nilai'])->middleware('auth:mahasiswa');
 
 Route::get('/krs', [KrsController::class, 'index'])->middleware('auth:mahasiswa');
+Route::get('/krs/{tahun}/{nim}', [KrsController::class, 'krs'])->middleware('auth:mahasiswa');
+Route::post('/krs/cetakkrs/pdf', [KrsController::class, 'cetakkrs'])->middleware('auth:mahasiswa');
 
 Route::get('/nilaisementara', [NilaisementaraController::class, 'index'])->middleware('auth:mahasiswa');
 Route::post('/nilaisementara/cetaknilai/pdf', [NilaisementaraController::class, 'cetaknilai'])->middleware('auth:mahasiswa');
@@ -115,6 +117,7 @@ Route::get('/jadwalkuliah', [JadwalkuliahController::class, 'index'])->middlewar
 Route::get('/jadwalujian', [JadwalujianController::class, 'index'])->middleware('auth:mahasiswa');
 
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->middleware('auth:mahasiswa');
+Route::get('/pembayaran/{semester}/{nim}', [PembayaranController::class, 'bayar'])->middleware('auth:mahasiswa');
 
 Route::get('/profil', [ProfilController::class, 'index'])->middleware('auth:mahasiswa');
 
