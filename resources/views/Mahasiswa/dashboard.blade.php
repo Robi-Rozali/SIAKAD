@@ -189,4 +189,49 @@ var myBar = new Chart(ctx, {
 });
 
 </script>
+
+<script>
+var ctx = document.getElementById('versi').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Smtr 1", "Smtr 2", "Smtr 3", "Smtr 4", "Smtr 5", "Smtr 6", "Smtr 7", "Smtr 8"],
+        datasets: [{
+            label: '# Semester',
+            data: [4,4,3.5,3.6,4,3.9,4,4],
+            backgroundColor: [
+                'rgba(62, 101, 160, 1)',
+                'rgba(101, 62, 160, 1)',
+                'rgba(160, 101, 62, 1)',
+                'rgba(62, 160, 101, 1)',
+                'rgba(255, 101, 255, 1)',
+                'rgba(62, 255, 255, 1)',
+                'rgba(62, 255, 160, 1)',
+                'rgba(255, 101, 160, 1)',
+            ],
+            borderColor: [
+                'rgba(62, 101, 160, 1)',
+                'rgba(101, 62, 160, 1)',
+                'rgba(160, 101, 62, 1)',
+                'rgba(62, 160, 101, 1)',
+                'rgba(255, 101, 255, 1)',
+                'rgba(62, 255, 255, 1)',
+                'rgba(62, 255, 160, 1)',
+                'rgba(255, 101, 160, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
 @endsection
