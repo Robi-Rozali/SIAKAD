@@ -69,8 +69,8 @@
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
-                      <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+                      <div class="chart-bar">
+                        <canvas id="myBar"></canvas>
                       </div>
                     </div>
                  </div>
@@ -84,5 +84,109 @@
 @endsection
 
 @section('script')
+<script>
+ var ctx = document.getElementById("myBar");
+var myBar = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["smst 1", "smst 2", "smst 3", "smst 4", "smst 5", "smst 6", "smst 7", "smst 8"],
+    datasets: [{
 
+      backgroundColor:[
+                'rgba(255, 0, 0, 0.2)',
+                'rgba(0, 255, 0, 0.2)',
+                'rgba(0, 0, 255, 0.2)',
+                'rgba(251, 127, 80, 0.2)',
+                'rgba(251, 140, 1, 0.2)',
+                'rgba(172, 255, 48, 0.2)',
+                'rgba(253, 215, 3, 0.2)',
+                'rgba(218, 112, 214, 0.2)',
+               
+            ],
+      hoverBackgroundColor:[
+                'rgba(255, 0, 0, 0.2)',
+                'rgba(0, 255, 0, 0.2)',
+                'rgba(0, 0, 255, 0.2)',
+                'rgba(251, 127, 80, 0.2)',
+                'rgba(251, 140, 1, 0.2)',
+                'rgba(172, 255, 48, 0.2)',
+                'rgba(253, 215, 3, 0.2)',
+                'rgba(218, 112, 214, 0.2)',
+               
+            ],
+      borderColor: [
+                'rgba(255, 0, 0, 0.2)',
+                'rgba(0, 255, 0, 0.2)',
+                'rgba(0, 0, 255, 0.2)',
+                'rgba(251, 127, 80, 0.2)',
+                'rgba(251, 140, 1, 0.2)',
+                'rgba(172, 255, 48, 0.2)',
+                'rgba(253, 215, 3, 0.2)',
+                'rgba(218, 112, 214, 0.2)',
+               
+            ],
+      data: [3, 3, 4, 4, 3, 4, 4, 2],
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'labels'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          maxTicksLimit: 8
+        },
+        maxBarThickness: 25,
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 4,
+          maxTicksLimit: 8,
+          padding: 10,
+          // Include a dollar sign in the ticks
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+    },
+  }
+});
+
+</script>
 @endsection
