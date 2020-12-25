@@ -129,7 +129,7 @@
       <tr>
         <td style="width: 100px">NIM</td>
         <td style="width: 10px">:</td>
-        <td>{{ Auth::guard('mahasiswa')->user()->nim }}</td>
+        <td id="nimbray">{{ Auth::guard('mahasiswa')->user()->nim }}</td>
       </tr>
       <tr>
         <td style="width: 100px">Nama</td>
@@ -141,13 +141,13 @@
         <td style="width: 10px">:</td>
         <td>{{ Auth::guard('mahasiswa')->user()->jurusan }}</td>
       </tr>
-      @foreach ($semester as $s)
+
       <tr>
         <td style="width: 100px">Semester</td>
         <td style="width: 10px">:</td>
-        <td id="semester">{{ $s->semester }}</td>
+        <td id="cari_semester">{{ $smt->semester }}</td>
       </tr>
-      @endforeach
+
     </tbody>
   </table>
 
@@ -161,8 +161,8 @@
         <th>SKS</th>
       </tr>
     </thead>
-    <tbody>
-      @php
+    <tbody id="table_perwalian">
+    {{--   @php
               $no=1;
               $jumlah_sks = 0;
             @endphp
@@ -180,7 +180,7 @@
         <td>{{ $s->matakuliah }}</td>
         <td>{{ $s->sks }}</td>
       </tr>
-      @endforeach
+      @endforeach --}}
     </tbody>
     </table>
       <div class="col-md-12">
@@ -199,6 +199,7 @@
       var semester = $('#semester').val();
       var nim = $('#nimbray').val();
       var jumlah_sks = 0;
+      $('.tr-semester').remove();
         $.get('/krs/'+semester+'/'+nim,function(data){
           $.each(data, function(i, value){
             var n = 1;

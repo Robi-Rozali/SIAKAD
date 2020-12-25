@@ -107,8 +107,9 @@ class KrsController extends Controller
         $nim = Auth::guard('mahasiswa')->user()->nim;
         $data = [
            'krs' => Perwalian::where('nim', '=', $nim)->first(),
-           'semester' => Perwalian::where('nim', '=', $nim)
-                        ->select('semester')->groupBy('semester')->get(), 
+           'smt' => Perwalian::where('nim', '=', $nim)
+                        ->select('semester')->groupBy('semester')->get(),
+                         
         ];
         $pdf = PDF::loadview('mahasiswa.perwalian.cetakkrs',$data);
         return $pdf->stream('Kartu_Rencana_Studi.pdf'); 
