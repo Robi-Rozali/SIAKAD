@@ -4,6 +4,13 @@ namespace App\Http\Controllers\Prodi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use App\Models\Nilai;
+use App\Exports\NilaiExport;
+use App\Imports\NilaiImport;
+
+use Maatwebsite\Excel\Facades\Excel;
 
 class NilaiController extends Controller
 {
@@ -13,8 +20,12 @@ class NilaiController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('prodi.nilai.nilai');
+    { 
+        $data = [
+            'nilai' => Nilai::all(),
+            'semester' => Nilai::select('semester')->groupBy('semester')->get(),
+        ];
+        return view('prodi.nilai.nilai')->with($data);
     }
 
     /**
@@ -35,7 +46,23 @@ class NilaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+         $request->validate([
+            'nim'           => 'required',
+            'nama'          => 'required',
+            'jurusan'       => 'required',
+            'tahun'         => 'required',
+            'kode'          => 'required',
+            'matakuliah'    => 'required',
+            'sks'           => 'required',
+            'kehadiran'     => 'required',
+            'tugas'         => 'required',
+            'uts'           => 'required',
+            'uas'           => 'required',
+            'grade'         => 'required',
+            
+        ]);
+     }
     }
 
     /**
@@ -82,4 +109,35 @@ class NilaiController extends Controller
     {
         //
     }
+    public function nilai($semester,$nim){
+        $nilai = Nilai::where('semester','=',$semester)
+                        ->where('nim', '=', $nim)->get();
+        return response()->json([
+            'data' => $nilai,
+        ]);
+    }
+    public function carimhs($nim){
+
+        $nilai = Nilai::where('nim', '=', $nim)
+                ->select('nama','jurusan','semester')->groupBy('nama','jurusan','semester')->get();
+
+        return response()->json([
+            'data' =>$nilai,
+        ]);
+    }
+    public function importcsv(Request $request){
+        $validatedData = $request->validate([
+            'file' => 'required',
+        ]);
+
+        Excel::import(new NilaiImport, $request->file('file'));
+
+        return redirect('/nilai')->with('sukses','The file has been import');
+    }
+
+    public function exportcsv(){
+        return Excel::download(new NilaiExport, 'Nilai.xls');
+        
+    }
+
 }

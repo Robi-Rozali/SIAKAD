@@ -68,6 +68,8 @@ Route::resource('/keu', KeuController::class)->middleware('auth:admin');
 //Prodi
 Route::get('/prodi', [JurusanController::class, 'index'])->middleware('auth:prodi');
 Route::get('/nilai', [NilaiController::class, 'index'])->middleware('auth:prodi');
+Route::get('/nilai/{nim}', [NilaiController::class, 'carimhs'])->middleware('auth:prodi');
+Route::get('/nilai/{semester}/{nim}', [NilaiController::class, 'nilai'])->middleware('auth:prodi');
 Route::get('/khsadm/{id}', [KhsadmController::class, 'cari'])->middleware('auth:prodi');
 Route::post('/khsadm/cetak/pdf', [KhsadmController::class, 'cetak'])->middleware('auth:prodi');
 
@@ -80,8 +82,10 @@ Route::resource('/perwalianadm', PerwalianadmController::class)->middleware('aut
 Route::get('/perwalianadm/{prodi}/{smtr}/{tahun}', [PerwalianadmController::class, 'matakuliah'])->middleware('auth:prodi');
 Route::resource('/kurikulum', KurikulumController::class)->middleware('auth:prodi');
 Route::post('/kurikulum/import/csv', [KurikulumController::class, 'importcsv'])->middleware('auth:prodi');
-
 Route::get('/kurikulum/export/csv', [KurikulumController::class, 'exportcsv'])->middleware('auth:prodi');
+
+Route::post('/nilai/import/csv', [NilaiController::class, 'importcsv'])->middleware('auth:prodi');
+Route::get('/nilai/export/csv', [NilaiController::class, 'exportcsv'])->middleware('auth:prodi');
 
 // Dosen
 Route::resource('/dosen', DosenController::class)->middleware('auth:admin');
