@@ -4,7 +4,7 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/mhs">
         <div class="sidebar-brand-icon">
-          <img src="img/stmik.png" class="d-inline" style="width: 50px" alt="logo">
+          <img src="{{ asset('img/stmik.png') }}" class="d-inline" style="width: 50px" alt="logo">
         </div>
         <div class="sidebar-brand-text text-left tulisan-logo">Sistem Informasi Akademik</div>
       </a>

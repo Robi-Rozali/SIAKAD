@@ -70,7 +70,7 @@
                     <!-- Card Body -->
                     <div class="card-body">
                       <div class="chart-bar">
-                        <canvas id="myBar"></canvas>
+                        <canvas id="versi"></canvas>
                       </div>
                     </div>
                  </div>
@@ -125,7 +125,7 @@ var myBar = new Chart(ctx, {
                 'rgba(218, 112, 214, 0.2)',
                
             ],
-      data: [3, 3, 4, 4, 3, 4, 4, 2],
+      data: [3, 3, 3, 3, 3, 2, 2, 2],
     }],
   },
   options: {
@@ -197,8 +197,8 @@ var myChart = new Chart(ctx, {
     data: {
         labels: ["Smtr 1", "Smtr 2", "Smtr 3", "Smtr 4", "Smtr 5", "Smtr 6", "Smtr 7", "Smtr 8"],
         datasets: [{
-            label: '# Semester',
-            data: [4,4,3.5,3.6,4,3.9,4,4],
+            label: 'Semester',
+            data: [2,2,3,3,2,3,3,2],
             backgroundColor: [
                 'rgba(62, 101, 160, 1)',
                 'rgba(101, 62, 160, 1)',
@@ -227,7 +227,9 @@ var myChart = new Chart(ctx, {
       scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero: true
+                    beginAtZero: true,
+                    min: 0,
+                    max: 4,
                 }
             }]
         }

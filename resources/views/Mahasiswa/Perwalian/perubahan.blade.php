@@ -6,75 +6,186 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card shadow">
-                <div class="card-header">Perubahan (KRS)</div>
+                <div class="card-header">Perubahan FRS</div>
                 <div class="card-body">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2">NIM</label>
+                        <div class="col-sm-5 teks-hitam">
+                          {{ $mhs->nim }}
+                        </div>
+                        <div class="col-sm-4"></div>
+                      </div>
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2 col-form-label">Nama</label>
+                        <div class="col-sm-5 teks-hitam">
+                          {{ $mhs->nama }}
+                        </div>
+                        <div class="col-sm-4"></div>
+                      </div>
+                    
+                    <div class="form-group row">
+                        <label for="" class="col-sm-2">Max Pengambilan</label>
+                        <div class="col-sm-2">
+                          <input type="text" class="form-control" id="jumlahsks" value="21" readonly>
+                        </div>
 
-                  <div class="form-group row">
-                    <label for="foto" class="col-sm-3">
-                      NIM
-                    </label>
-                    <div class="col-sm-5 teks-hitam">
-                      A3.1700040
                     </div>
-                    <div class="col-sm-4"></div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="foto" class="col-sm-3">
-                      Nama
-                    </label>
-                    <div class="col-sm-5 teks-hitam">
-                      ROBI ROZALI
+                    <div class="teks-hitam">
+                        <label for="">Daftar Mata Kuliah Yang Bisa Diambil (Wajib)</label>
                     </div>
-                    <div class="col-sm-4"></div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="" class="col-sm-3">Max Pengambilan</label>
-                    <div class="col-sm-2">
-                      24
-                    </div>
-                </div>
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="table-responsive">
-                        <table class="table table-striped">
-                          <thead>
-                            <tr>
-                              <th>No</th>
-                              <th>Kode</th>
-                              <th>Mata Kuliah</th>
-                              <th>SKS</th>
-                              <th class="text-center">Batalkan</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>SI1044</td>
-                              <td>Kerja Praktek</td>
-                              <td>2</td>
-                              <td>
-                                <div class="form-check text-center">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                  </div>
+                    
+                    <form action="/perubahan" method="post">
+                        @csrf
+                        @method('POST')
+                    <div class="row">
+                        <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th>No</th>
+                                <th>Kode</th>
+                                <th>Mata Kuliah</th>
+                                <th>SKS</th>
+                                <th class="text-center">Ambil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                $no=1;
+                                @endphp
+                                @foreach ($krm as $k)
+                                <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $k->kode }}</td>
+                                <td>{{ $k->matakuliah }}</td>
+                                <td>{{ $k->sks }}</td>
+                                <td>
+                                    <div class="form-check text-center">
+                                        <input class="form-check-input" type="checkbox" value="{{ $k->kode }}" name="id[0][{{ $k->kode }}]" id="id_{{ $k->kode }}">
+                                    </div>
                                 </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                                </tr>
+                                @endforeach
+                                <tr>
+                                    <td align="right" colspan="3">SKS yang diambil :</td>
+                                    <td colspan="2">
+                                        <input type="text" id="totsks" class="form-control" value="" readonly style="width: 50px">
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                        </div>  
+                    </div>
+                @if (count($nguli) > 0)
+                    
+                    <div class="teks-hitam">
+                        <label for="">Daftar Mata Kuliah Yang Diulang (Wajib di Ambil )</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th>No</th>
+                                <th>Kode</th>
+                                <th>Mata Kuliah</th>
+                                <th>SKS</th>
+                                <th class="text-center">Ambil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                $no=1;
+                                @endphp
+                                @foreach ($nguli as $ng)
+                                <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $ng->kode }}</td>
+                                <td>{{ $ng->matakuliah }}</td>
+                                <td>{{ $ng->sks }}</td>
+                                <td>
+                                   <div class="form-check text-center">
+                                        <input class="form-check-input" type="checkbox" value="{{ $ng->kode }}" name="id[0][{{ $ng->kode }}]" id="id_{{ $ng->kode }}">
+                                    </div>
+                                </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                            </table>
+                        </div>
+                        </div>  
+                    </div>
+                @else
+
+                @endif
+                @if (count($ngambil) > 0)
+                    
+                    <div class="teks-hitam">
+                        <label for="">Daftar Mata Kuliah Pilihan yang bisa di ambil</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th>No</th>
+                                <th>Kode</th>
+                                <th>Mata Kuliah</th>
+                                <th>SKS</th>
+                                <th class="text-center">Ambil</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                $no=1;
+                                @endphp
+                                @foreach ($ngambil as $bil)
+                                <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $bil->kode }}</td>
+                                <td>{{ $bil->matakuliah }}</td>
+                                <td>{{ $bil->sks }}</td>
+                                <td>
+                                   <div class="form-check text-center">
+                                        <input class="form-check-input" type="checkbox" value="{{ $bil->kode }}" name="id[0][{{ $bil->kode }}]" id="id_{{ $bil->kode }}">
+                                    </div>
+                                </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                            </table>
+                        </div>
+                        </div>  
+                    </div>
+                @else
+
+                @endif
+
+                        <div class="teks-hitam">
+                        Apakah Pilihan Anda Sudah Tepat ?
+                        </div>
                         <hr class="sidebar-divider">
                         <div class="">
-                            <button type="submit" class="btn btn-primary mb-2">Simpan</button>
-                            <button type="submit" class="btn btn-light mb-2">Batal</button>
+                            <button type="submit" id="btnsubmit" class="btn btn-primary mb-2">Simpan</button>
+                            <button type="reset" class="btn btn-light mb-2">Batal</button>
                         </div>
-                      </div>
+
+
+                        </form>
                     </div>  
-                  </div>
-
                 </div>
-              </div>
-            </div>  
-          </div>
-
+            </div>
+        </div>
         </div>
       <!-- End of Main Content -->
+@endsection
+
+@section('script')
+
+
+
 @endsection
