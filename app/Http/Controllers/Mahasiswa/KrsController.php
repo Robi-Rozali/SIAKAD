@@ -105,13 +105,15 @@ class KrsController extends Controller
 
     public function cetakkrs(Request $request){
         $nim = Auth::guard('mahasiswa')->user()->nim;
+        $semester = $request->input('oioi');
         $data = [
-           'krs' => Perwalian::where('nim', '=', $nim)->first(),
+           'krs' => Perwalian::where('nim', '=', $nim)
+                        ->where('semester','=',$semester)->first(),
            'smt' => Perwalian::where('nim', '=', $nim)
-                        ->select('semester')->groupBy('semester')->get(),
-                         
+                        ->where('semester', '=', $semester)
+                        ->select('semester','kode','matakuliah','sks')->get(),
         ];
         $pdf = PDF::loadview('mahasiswa.perwalian.cetakkrs',$data);
-        return $pdf->stream('Kartu_Rencana_Studi.pdf'); 
+         return $pdf->stream('Kartu_Rencana_Studi.pdf'); 
     }
 }

@@ -113,6 +113,7 @@ Route::get('/nilaisementara', [NilaisementaraController::class, 'index'])->middl
 Route::post('/nilaisementara/cetaknilai/pdf', [NilaisementaraController::class, 'cetaknilai'])->middleware('auth:mahasiswa');
 
 Route::get('/perubahan', [PerubahanController::class, 'index'])->middleware('auth:mahasiswa');
+Route::post('/perubahan', [PerubahanController::class, 'store'])->middleware('auth:mahasiswa');
 
 Route::get('/pilihkelas', [PilihkelasController::class, 'index'])->middleware('auth:mahasiswa');
 

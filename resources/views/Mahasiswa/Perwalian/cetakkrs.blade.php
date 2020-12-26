@@ -145,7 +145,7 @@
       <tr>
         <td style="width: 100px">Semester</td>
         <td style="width: 10px">:</td>
-        <td id="cari_semester">{{ $smt->semester }}</td>
+        <td id="cari_semester">{{ $krs->semester }}</td>
       </tr>
 
     </tbody>
@@ -162,11 +162,11 @@
       </tr>
     </thead>
     <tbody id="table_perwalian">
-    {{--   @php
+      @php
               $no=1;
               $jumlah_sks = 0;
             @endphp
-            @foreach ($semester as $s)
+            @foreach ($smt as $s)
             @php
                               
              $sks = $s->sks;
@@ -175,51 +175,18 @@
 
             @endphp
       <tr>
-        <td>{{ $no++ }}</td>
-        <td>{{ $s->kode }}</td>
+        <td align="center">{{ $no++ }}</td>
+        <td align="center">{{ $s->kode }}</td>
         <td>{{ $s->matakuliah }}</td>
-        <td>{{ $s->sks }}</td>
+        <td align="center">{{ $s->sks }}</td>
       </tr>
-      @endforeach --}}
+      @endforeach
+      <tr>
+        <td colspan="3" align="right"  style="background-color: #eee">Jumlah SKS</td>
+        <td align="center">{{ $jumlah_sks }}</td>
+      </tr>
     </tbody>
     </table>
-      <div class="col-md-12">
-          <table>
-          <tr>
-          <td>Jumlah SKS</td>
-          <td>:</td>
-          <td id="jumlah_sks"></td>
-          </tr> 
-          </table>
-      </div>
-
-      @section('script')
-    <script type="text/javascript">
-    function Cari(){
-      var semester = $('#semester').val();
-      var nim = $('#nimbray').val();
-      var jumlah_sks = 0;
-      $('.tr-semester').remove();
-        $.get('/krs/'+semester+'/'+nim,function(data){
-          $.each(data, function(i, value){
-            var n = 1;
-            for(var i = 0, length1 = value.length; i < length1; i++){
-              var form = `
-                <tr id="tr" class='tr-semester'>
-                  <td>${n++}</td>
-                  <td>${value[i].kode}</td>
-                  <td>${value[i].matakuliah}</td>
-                  <td>${value[i].sks}</td>
-                </tr>`;
-              $('#table_perwalian').append(form);
-              jumlah_sks = jumlah_sks + value[i].sks;
-              $('#jumlah_sks').text(jumlah_sks);
-            }
-          });
-        })
-    }
-  </script>
-@endsection
-  
+ 
 </body>
 </html>

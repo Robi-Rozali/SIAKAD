@@ -80,7 +80,7 @@
                           <form action="/krs/cetakkrs/pdf" method="post">
                             @csrf
                             @method('POST')
-                            <input type="hidden" name="id" id="id">
+                            <input type="hidden" name="oioi" id="oioi">
                             <button type="submit" class="btn btn-info"><i class="fas fa-print"></i> Cetak</button>  
                           </form>
                           
@@ -98,6 +98,7 @@
     <script type="text/javascript">
     function Cari(){
       var semester = $('#semester').val();
+      $('#oioi').val(semester);
       var nim = $('#nimbray').val();
       var d = document.getElementById('display');
       var rt = document.getElementById('row_table');
