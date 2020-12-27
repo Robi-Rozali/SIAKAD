@@ -146,7 +146,7 @@
 <script type="text/javascript">
     function Carimhs(){
       var id = $('#inputcari').val();
-        $.get('/nilai/'+id,function(data){
+        $.get('/datanilai/'+id,function(data){
           var jrs = data.data[0].jurusan;
           $('#id').val(data.data[0].nim);
           $('#nama').val(data.data[0].nama);
@@ -170,7 +170,7 @@
       var nilai = 0;
       var mutu = 0;
       $('.tr-semester').remove();
-        $.get('/nilai/'+semester+'/'+nim,function(data){
+        $.get('/datanilai/'+semester+'/'+nim,function(data){
           $.each(data, function(i, value){
             var n = 1;
             for(var i = 0, length1 = value.length; i < length1; i++){
