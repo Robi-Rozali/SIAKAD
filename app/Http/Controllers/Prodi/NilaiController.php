@@ -35,7 +35,10 @@ class NilaiController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'nilai' => Nilai::all(),
+        ];
+        return view('Prodi.nilai.tambahnilai')->with($data);
     }
 
     /**
@@ -46,7 +49,6 @@ class NilaiController extends Controller
      */
     public function store(Request $request)
     {
-        {
          $request->validate([
             'nim'           => 'required',
             'nama'          => 'required',
@@ -62,7 +64,22 @@ class NilaiController extends Controller
             'grade'         => 'required',
             
         ]);
-     }
+        $nilai = new Nilai;
+        $nilai->nim         = $request->input('nim');
+        $nilai->nama        = $request->input('nama');
+        $nilai->jurusan     = $request->input('jurusan');
+        $nilai->tahun       = $request->input('tahun');
+        $nilai->kode        = $request->input('kode');
+        $nilai->matakuliah  = $request->input('matakuliah');
+        $nilai->sks         = $request->input('sks');
+        $nilai->kehadiran   = $request->input('kehadiran');
+        $nilai->tugas       = $request->input('tugas');
+        $nilai->uts         = $request->input('uts');
+        $nilai->uas         = $request->input('uas');
+        $nilai->grade       = $request->input('grade');
+        $nilai->save();
+
+        return redirect('/nilai')->with('sukses','Data Nilai berhasil ditambah');
     }
 
     /**
@@ -84,7 +101,11 @@ class NilaiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = [
+            'nilai' => Nilai::find($id),
+        ];
+
+        return view('prodi.nilai.edit')->with($data);
     }
 
     /**
@@ -96,7 +117,37 @@ class NilaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nim'           => 'required',
+            'nama'          => 'required',
+            'jurusan'       => 'required',
+            'tahun'         => 'required',
+            'kode'          => 'required',
+            'matakuliah'    => 'required',
+            'sks'           => 'required',
+            'kehadiran'     => 'required',
+            'tugas'         => 'required',
+            'uts'           => 'required',
+            'uas'           => 'required',
+            'grade'         => 'required',
+            
+        ]);
+        $nilai = Nilai::find($id);
+        $nilai->nim         = $request->input('nim');
+        $nilai->nama        = $request->input('nama');
+        $nilai->jurusan     = $request->input('jurusan');
+        $nilai->tahun       = $request->input('tahun');
+        $nilai->kode        = $request->input('kode');
+        $nilai->matakuliah  = $request->input('matakuliah');
+        $nilai->sks         = $request->input('sks');
+        $nilai->kehadiran   = $request->input('kehadiran');
+        $nilai->tugas       = $request->input('tugas');
+        $nilai->uts         = $request->input('uts');
+        $nilai->uas         = $request->input('uas');
+        $nilai->grade       = $request->input('grade');
+        $nilai->save();
+
+        return redirect('/nilai')->with('sukses','Data Nilai berhasil ditambah');
     }
 
     /**

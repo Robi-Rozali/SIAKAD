@@ -67,7 +67,7 @@ Route::resource('/keu', KeuController::class)->middleware('auth:admin');
 
 //Prodi
 Route::get('/prodi', [JurusanController::class, 'index'])->middleware('auth:prodi');
-Route::get('/nilai', [NilaiController::class, 'index'])->middleware('auth:prodi');
+Route::resource('/nilai', NilaiController::class)->middleware('auth:prodi');
 Route::get('/nilai/{nim}', [NilaiController::class, 'carimhs'])->middleware('auth:prodi');
 Route::get('/nilai/{semester}/{nim}', [NilaiController::class, 'nilai'])->middleware('auth:prodi');
 Route::get('/khsadm/{id}', [KhsadmController::class, 'cari'])->middleware('auth:prodi');

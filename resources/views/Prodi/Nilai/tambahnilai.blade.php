@@ -13,13 +13,9 @@
               <div class="col-md-2"></div>
               <div class="col-md-8">
                 <div class="card shadow">
-                  <div class="card-header">Tambah Data Mahasiswa</div>
+                  <div class="card-header">Tambah Nilai Mahasiswa</div>
                   <div class="card-body">
                     <form action="">
-                        <div class="form-group ml-auto">
-                            <button type="submit" class="btn btn-success mb-2 ">Import data</button>
-                            <button type="submit" class="btn btn-success mb-2 ">Export data</button>
-                        </div>
                       <div class="form-group row ">
                         <label for="" class="col-sm-3 col-form-label text-right">NIM</label>
                         <div class="col-sm-9">
