@@ -14,7 +14,7 @@
               <div class="card shadow">
                 <div class="card-header">
                   <a href="tambahnilai.html" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah</a>
-                  <a href="/nilai/export/csv" class="btn btn-success"><i class="fas fa-file-alt"></i> Export</a>
+                  <a href="/exportnilai" class="btn btn-success"><i class="fas fa-file-alt"></i> Export</a>
                   <button type="button" class="btn btn-primary d-inline" data-toggle="modal" data-target="#import"> <i class="fas fa-file-alt"></i> Import</button>
                 </div>
                 <div class="card-body">

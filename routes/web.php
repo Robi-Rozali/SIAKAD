@@ -85,7 +85,7 @@ Route::post('/kurikulum/import/csv', [KurikulumController::class, 'importcsv'])-
 Route::get('/kurikulum/export/csv', [KurikulumController::class, 'exportcsv'])->middleware('auth:prodi');
 
 Route::post('/nilai/import/csv', [NilaiController::class, 'importcsv'])->middleware('auth:prodi');
-Route::get('/nilai/export/csv', [NilaiController::class, 'exportcsv'])->middleware('auth:prodi');
+Route::get('/exportnilai', [NilaiController::class, 'exportcsv'])->middleware('auth:prodi');
 
 // Dosen
 Route::resource('/dosen', DosenController::class)->middleware('auth:admin');
