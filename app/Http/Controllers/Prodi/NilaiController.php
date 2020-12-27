@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Nilai;
+use App\Models\Mahasiswa;
 use App\Exports\NilaiExport;
 use App\Imports\NilaiImport;
 
@@ -24,6 +25,7 @@ class NilaiController extends Controller
         $data = [
             'nilai' => Nilai::all(),
             'semester' => Nilai::select('semester')->groupBy('semester')->get(),
+            'tahun' => Mahasiswa::select('tahun')->groupBy('tahun')->get(),
         ];
         return view('prodi.nilai.nilai')->with($data);
     }
@@ -174,6 +176,15 @@ class NilaiController extends Controller
 
         return response()->json([
             'data' =>$nilai,
+        ]);
+    }
+    public function tambahmhs($nim){
+
+        $mahasiswa = Mahasiswa::where('nim', '=', $nim)
+                ->select('nama','jurusan','semester')->groupBy('nama','jurusan','semester')->get();
+
+        return response()->json([
+            'data' =>$mahasiswa,
         ]);
     }
     public function importcsv(Request $request){

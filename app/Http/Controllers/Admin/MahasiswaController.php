@@ -67,6 +67,7 @@ class MahasiswaController extends Controller
             'tempat'        => 'required',
             'tgllahir'      => 'required',
             'telp'          => 'required',
+            'tahun'         => 'required',
             'gambar'        => 'required|image|max:1999',
         ]);
 
@@ -89,6 +90,7 @@ class MahasiswaController extends Controller
         $mahasiswa->tgllahir        = $request->input('tgllahir');
         $mahasiswa->telp            = $request->input('telp');
         $mahasiswa->gambar          = $gambarStore;
+        $mahasiswa->tahun           = $request->input('tahun');
         $mahasiswa->save();
 
         return redirect('/mahasiswa')->with('sukses','Data Mahasiswa berhasil ditambah');
@@ -144,6 +146,7 @@ class MahasiswaController extends Controller
             'tempat'        => 'required',
             'tgllahir'      => 'required',
             'telp'          => 'required',
+            'tahun'         => 'required',
         ]);
 
         if ($request->hasFIle('gambar')) {
@@ -161,10 +164,11 @@ class MahasiswaController extends Controller
         $mahasiswa->jurusan         = $request->input('jurusan');
         $mahasiswa->alamat          = $request->input('alamat');
         $mahasiswa->email           = $request->input('email');
-        $mahasiswa->username           = $request->input('username');
+        $mahasiswa->username        = $request->input('username');
         $mahasiswa->tempat          = $request->input('tempat');
         $mahasiswa->tgllahir        = $request->input('tgllahir');
         $mahasiswa->telp            = $request->input('telp');
+        $mahasiswa->tahun           = $request->input('tahun');
 
         if ($request->input('password') == '') {
             $mahasiswa->password    = $request->input('pass');

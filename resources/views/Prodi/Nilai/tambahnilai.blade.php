@@ -36,6 +36,13 @@
                           <input type="text" name="#" class="form-control">
                         </div>
                       </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">Semester</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="#" class="form-control">
+                        </div>
+                      </div>
   
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Tahun Akademik</label>
@@ -113,7 +120,7 @@
                       <hr>
                       <div class="form-group">
                          <button type="submit" class="btn btn-primary mb-2">Simpan</button>
-                         <button type="submit" class="btn btn-danger mb-2">Keluar</button>
+                         <a href="/nilai" class="btn btn-danger mb-2">Keluar</a>
                       </div>
   
                     </form>
@@ -126,4 +133,23 @@
 
         </div>
       <!-- End of Main Content -->
+@endsection
+@section('script')
+<script type="text/javascript">
+    function Carimhs(){
+      var id = $('#inputcari').val();
+        $.get('/nilai/'+id,function(data){
+          var jrs = data.data[0].jurusan;
+          $('#id').val(data.data[0].nim);
+          $('#nama').val(data.data[0].nama);
+          $('#jurusan').val(jrs.replace('_',' '));
+
+          for (var i = 0; i < data.data.length; i++) {
+            var smtr = data.data[i].semester;
+             $('#semester').append(`<option value="${smtr}">${smtr.replace('_',' ')}</option>`);
+          }
+        
+        });
+    }
+    </script>
 @endsection

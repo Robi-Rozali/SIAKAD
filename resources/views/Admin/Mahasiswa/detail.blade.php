@@ -57,6 +57,10 @@
                                     <td>Alamat</td>
                                     <td><strong>{{ $mahasiswa->alamat }}</strong></td>
                                 </tr>
+                                <tr>
+                                    <td>Tahun Akademik</td>
+                                    <td><strong>{{ $mahasiswa->tahun }}</strong></td>
+                                </tr>
                             </table>
                         </div>
                   </div>

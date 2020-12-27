@@ -28,6 +28,7 @@ class Mahasiswa extends Authenticatable
         'tgllahir',
         'telp',
         'gambar',
+        'tahun',
     ];
 
     protected $hidden = [
@@ -37,7 +38,7 @@ class Mahasiswa extends Authenticatable
 
     public static function getMahasiswa()
     {
-        $records = DB::table('mahasiswa')->select('id','nim','nama','jenis_kelamin','jurusan','alamat','email','username','password','tempat','tgllahir','telp','gambar',);
+        $records = DB::table('mahasiswa')->select('id','nim','nama','jenis_kelamin','jurusan','alamat','email','username','password','tempat','tgllahir','telp','gambar','tahun');
         return $records;
     }
 }
