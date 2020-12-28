@@ -71,6 +71,7 @@ Route::resource('/nilai', NilaiController::class)->middleware('auth:prodi');
 
 Route::get('/datanilai/{nim}', [NilaiController::class, 'carimhs'])->middleware('auth:prodi');
 Route::get('/datanilai/{semester}/{nim}', [NilaiController::class, 'nilai'])->middleware('auth:prodi');
+// Route::get('/datanilai/{nim}', [NilaiController::class, 'tambahmhs'])->middleware('auth:prodi');
 Route::get('/khsadm/{id}', [KhsadmController::class, 'cari'])->middleware('auth:prodi');
 Route::post('/khsadm/cetak/pdf', [KhsadmController::class, 'cetak'])->middleware('auth:prodi');
 

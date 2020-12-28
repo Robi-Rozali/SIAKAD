@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Nilai;
 use App\Models\Mahasiswa;
+use App\Models\Prodi;
 use App\Exports\NilaiExport;
 use App\Imports\NilaiImport;
 
@@ -25,7 +26,8 @@ class NilaiController extends Controller
         $data = [
             'nilai' => Nilai::all(),
             'semester' => Nilai::select('semester')->groupBy('semester')->get(),
-            'tahun' => Mahasiswa::select('tahun')->groupBy('tahun')->get(),
+            // 'tahun' => Mahasiswa::select('tahun')->groupBy('tahun')->get(),
+            'prodi' => Prodi::select('prodi')->get(),
         ];
         return view('prodi.nilai.nilai')->with($data);
     }
@@ -38,7 +40,7 @@ class NilaiController extends Controller
     public function create()
     {
         $data = [
-            'nilai' => Nilai::all(),
+            'prodi' => Prodi::select('prodi')->get(),
         ];
         return view('Prodi.nilai.tambahnilai')->with($data);
     }
@@ -55,6 +57,7 @@ class NilaiController extends Controller
             'nim'           => 'required',
             'nama'          => 'required',
             'jurusan'       => 'required',
+            'semester'      => 'required',
             'tahun'         => 'required',
             'kode'          => 'required',
             'matakuliah'    => 'required',
@@ -63,6 +66,7 @@ class NilaiController extends Controller
             'tugas'         => 'required',
             'uts'           => 'required',
             'uas'           => 'required',
+            'jumlah'        => 'required',
             'grade'         => 'required',
             
         ]);
@@ -70,6 +74,7 @@ class NilaiController extends Controller
         $nilai->nim         = $request->input('nim');
         $nilai->nama        = $request->input('nama');
         $nilai->jurusan     = $request->input('jurusan');
+        $nilai->semester     = $request->input('semester');
         $nilai->tahun       = $request->input('tahun');
         $nilai->kode        = $request->input('kode');
         $nilai->matakuliah  = $request->input('matakuliah');
@@ -78,6 +83,7 @@ class NilaiController extends Controller
         $nilai->tugas       = $request->input('tugas');
         $nilai->uts         = $request->input('uts');
         $nilai->uas         = $request->input('uas');
+        $nilai->jumlah      = $request->input('jumlah');
         $nilai->grade       = $request->input('grade');
         $nilai->save();
 
@@ -123,6 +129,7 @@ class NilaiController extends Controller
             'nim'           => 'required',
             'nama'          => 'required',
             'jurusan'       => 'required',
+            'semester'      => 'required',
             'tahun'         => 'required',
             'kode'          => 'required',
             'matakuliah'    => 'required',
@@ -131,6 +138,7 @@ class NilaiController extends Controller
             'tugas'         => 'required',
             'uts'           => 'required',
             'uas'           => 'required',
+            'jumlah'        => 'required',
             'grade'         => 'required',
             
         ]);
@@ -138,6 +146,7 @@ class NilaiController extends Controller
         $nilai->nim         = $request->input('nim');
         $nilai->nama        = $request->input('nama');
         $nilai->jurusan     = $request->input('jurusan');
+        $nilai->semester    = $request->input('semester');
         $nilai->tahun       = $request->input('tahun');
         $nilai->kode        = $request->input('kode');
         $nilai->matakuliah  = $request->input('matakuliah');
@@ -146,6 +155,7 @@ class NilaiController extends Controller
         $nilai->tugas       = $request->input('tugas');
         $nilai->uts         = $request->input('uts');
         $nilai->uas         = $request->input('uas');
+        $nilai->jumlah      = $request->input('jumlah');
         $nilai->grade       = $request->input('grade');
         $nilai->save();
 
@@ -178,15 +188,15 @@ class NilaiController extends Controller
             'data' =>$nilai,
         ]);
     }
-    public function tambahmhs($nim){
+    // public function tambahmhs($nim){
 
-        $mahasiswa = Mahasiswa::where('nim', '=', $nim)
-                ->select('nama','jurusan','semester')->groupBy('nama','jurusan','semester')->get();
+    //     $mahasiswa = Mahasiswa::where('nim', '=', $nim)
+    //             ->select('nama','jurusan','tahun')->get();
 
-        return response()->json([
-            'data' =>$mahasiswa,
-        ]);
-    }
+    //     return response()->json([
+    //         'data' =>$mahasiswa,
+    //     ]);
+    // }
     public function importcsv(Request $request){
         $validatedData = $request->validate([
             'file' => 'required',
