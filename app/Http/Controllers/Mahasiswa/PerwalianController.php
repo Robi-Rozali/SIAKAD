@@ -41,7 +41,7 @@ class PerwalianController extends Controller
                         ->where('semester','=',$sksprev)
                     ->where('grade','=','D')
                     ->orWhere([['grade','=','E'],['semester','=',$sksprev]])->get();
-                    
+
                     if ($p->maksks > 1 && $p->maksks < 8 ) {
                                             
                         if (count($ngulang) > 0) {
@@ -97,14 +97,19 @@ class PerwalianController extends Controller
                     }
 	            }
 	    	}
-            // dd(count($perwalian));
-    	}elseif($numero_uno == '1'){
-
-    		$kurikulum = Kurikulum::where('jurusan', '=', $jurusan)
-	            				->where('tahun', '=', $tahun)
-	            				->where('semester', '=', '1')->get();
-            
+            // dd($p->maksks);
+            if ($p->maksks +1 == '1') {
+                // if($numero_uno == '1'){
+                    $kurikulum = Kurikulum::where('jurusan', '=', $jurusan)
+                                ->where('tahun', '=', $tahun)
+                                ->where('semester', '=', '1')->get();
+                // }
+            }
     	}
+
+
+
+
     	
         $data = [
             'mhs' => Mahasiswa::where('nim', '=', $nim)->first(),
