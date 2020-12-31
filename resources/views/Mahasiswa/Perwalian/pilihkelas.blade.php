@@ -56,38 +56,32 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-12">
+                      <div class="table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
                             <th>No</th>
-                            <th>Kode Mata Kuliah</th>
+                            <th>Kode MatKul</th>
                             <th>Mata Kuliah</th>
-                            <th>Kelas Yang Tersedia</th>
+                            <th>Kelas</th>
+                            <th>Ruang</th>
+                            <th>hari</th>
+                            <th>Jam</th>
+                            <th>Nama Dosen</th>
+                            <th>Kapasitas</th>
+                            <th>Sisa</th>
+                            <th>Pilih</th>
                           </tr>
                         </thead>
-                        <tbody>
-                           @php
-                              $no=1;
-                            @endphp
-                            @foreach ($jadwal as $j)
-                            <tr>
-                              <td>{{ $no++ }}</td>
-                              <td>{{ $j->kode }}</td>
-                              <td>{{ $j->matakuliah }}</td>
-                              <td>{{ $j->kelas }}</td>
-                              <td>{{ $j->ruang }}</td>
-                              <td>{{ $j->hari }}</td>
-                              <td>{{ $j->jam }}</td>
-                              <td>{{ $j->namadosen }}</td>
-                            </tr>
-                            @endforeach
-                          
+                        <tbody id="data-kelas">
+                        
                         </tbody>
                       </table>
+                      </div>
                     </div>
 
 
-                    <div class="col-md-4 mt-2">
+                    {{-- <div class="col-md-4 mt-2">
                       <p class="bg-utama py-2 pl-2">No</p>
                     </div>
                     <div class="col-md-8 mt-2">
@@ -135,7 +129,7 @@
                         <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
                         <label class="form-check-label" for="exampleRadios2">Kelas: B | Ruang: R3 | Hari: Rabu | Jam: 13.00-15.00 | Kapasitas : 40 Orang | Sisa : 28 Orang </label>
                       </div>
-                    </div>
+                    </div> --}}
                   </div>
                 </div>
                 <div class="card-footer">
@@ -147,4 +141,57 @@
           </div>
         </div>
       <!-- End of Main Content -->
+@endsection
+
+@section('script')
+<script>
+  $(document).ready(function(){
+    var arr = @php
+    echo $jadwal;
+    @endphp;
+    var merge = [].concat.apply([],arr);
+            var n = 1;
+            for(var i = 0, length1 = merge.length; i < length1; i++){
+              var form = `
+                <tr id="tr${merge[i].id}" class='tr-semester'>
+                  <td>${n++}</td>
+                  <td>${merge[i].kode}</td>
+                  <td>${merge[i].matakuliah}</td>
+                  <td>${merge[i].kelas}</td>
+                  <td>${merge[i].ruang}</td>
+                  <td>${merge[i].hari}</td>
+                  <td>${merge[i].jam}</td>
+                  <td>${merge[i].namadosen}</td>
+                  <td>${merge[i].namadosen}</td>
+                  <td>${merge[i].namadosen}</td>
+                  <td>
+                    <div class="form-check text-center">
+                      <input class="form-check-input" type="checkbox" value="" name="id" id="id_${merge[i].id}" onclick="Pilih('${merge[i].id}')">
+                    </div>
+                  </td>
+                </tr>`;
+              $('#data-kelas').append(form);
+            }
+
+
+    Swal.fire(
+        'Info',
+        'karek bisa nampilkeun, tampilan na dikieu keun we, ke tinggal di sort berdasarkan kelas (acan ieu mah), cobaan pilih jadwal na',
+        'info'
+    );
+         
+  });
+
+  function Pilih(id){
+    var tr = document.getElementById(`tr${id}`);
+        if ($(`#id_${id}`).is(':checked')) {
+            tr.style.backgroundColor = '#d4edda';
+
+            // teks warna hitam
+            // tr.style.color = '#000';
+        }else{
+            tr.style.backgroundColor = '#fff';
+        }
+  }
+</script>
 @endsection

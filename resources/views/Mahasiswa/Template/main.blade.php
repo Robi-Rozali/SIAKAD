@@ -19,6 +19,8 @@
   <link href="{{ asset('Admin/css/sb-admin-2.css') }} " rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('css/custom.css') }} ">
 
+  {{-- sweetalert --}}
+    <link href="{{ asset('Admin/vendor/sweetalert/css/sweetalert2.css') }}" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -100,6 +102,10 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('Admin/js/demo/chart-bar-demo.js') }} "></script>
   <script src="{{ asset('Admin/js/demo/chart-pie-demo.js') }} "></script>
+
+    {{-- sweetalert --}}
+    <script src="{{ asset('Admin/vendor/sweetalert/js/sweetalert2.all.min.js') }} "></script>
+
 
   @yield('script')
 

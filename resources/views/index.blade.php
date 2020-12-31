@@ -165,7 +165,6 @@
     -->
 @if (session('info'))
     <script>
-    <script>
       Swal.fire(
         'Peringatan',
         '{{ session('info') }}',

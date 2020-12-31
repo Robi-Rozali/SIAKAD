@@ -30,55 +30,25 @@ class PilihkelasController extends Controller
         $maks = Perwalian::where('nim','=',$nim)
                         ->select(DB::raw('max(semester) as maksks'))->first();
 
-        // dd($maks->maksks);
-
         $perwalian = Perwalian::where('nim','=',$nim)
                         ->where('semester','=',$maks->maksks)
                         ->select('kode','semester')->groupBy('kode','semester')->get();
         
-        // dd($perwalian);
-        // $n = 0;
+
         foreach($perwalian as $p){
             $kd[] = $p->kode;
             $sms[] = $p->semester;
         }
 
-        // $jadwal = Inputjadwal::where('kode','=',$kd)
-        //                     ->where('semester','=',$sms)
-        //                     ->get();
-        // dd($jadwal);
-        $n = 0;
-        foreach($kd as $a){
-            $jadwal = Inputjadwal::where('kode','=',$kd[$n])
-                            ->where('semester','=',$sms[$n])
-                            ->get();
+        for ($i=0; $i < count($kd) ; $i++) { 
+            $jadwal[] = Inputjadwal::where('kode','=',$kd[$i])
+                            ->where('semester','=',$sms[$i])
+                            ->select('id','kode','matakuliah','kelas','ruang','hari','jam','namadosen')->get();
         }
-        // dd($jadwal);
-        // for ($i=0; $i < count($jadwal) ; $i++) { 
-        //     dd($jadwal[$i][$i]['kode']);
-        // }
-          
-        // dd(count($perwalian));
-         
-        // for ($i=0; $i < count($kd) ; $i++) { 
-           
-        // }
-        
-        // dd($jadwal);
-        
-
-        // for ($i=0; $i < count($kd) ; $i++) { 
-        //     $jadwal = Inputjadwal::where('kode','=',$kd[$i])
-        //                 ->where('semester','=',$sms[$i])
-        //                 ->get();
-
-        // }
-
-
 
         $data = [
             'krs' => Perwalian::where('nim', '=', $nim)->first(),
-            'jadwal' => $jadwal,  
+            'jadwal' => json_encode($jadwal),  
         ];
         return view('mahasiswa.perwalian.pilihkelas')->with($data);
     }
