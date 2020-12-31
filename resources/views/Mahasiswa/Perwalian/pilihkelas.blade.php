@@ -14,7 +14,7 @@
                       NIM
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                      A3.1700040
+                      {{ Auth::guard('mahasiswa')->user()->nim }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -23,7 +23,7 @@
                       Nama
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                      ROBI ROZALI
+                      {{ Auth::guard('mahasiswa')->user()->nama }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -32,7 +32,7 @@
                       Jurusan / Prog
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                     Sistem Informasi / S1
+                     {{ Auth::guard('mahasiswa')->user()->jurusan }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -41,7 +41,7 @@
                       Tahun Akademik / Per
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                     2020/2021 / 1
+                     {{ Auth::guard('mahasiswa')->user()->tahun }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -55,6 +55,38 @@
                 <div class="card-header">Kelas Yang Dipilih :</div>
                 <div class="card-body">
                   <div class="row">
+                    <div class="col-md-12">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Kode Mata Kuliah</th>
+                            <th>Mata Kuliah</th>
+                            <th>Kelas Yang Tersedia</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                           @php
+                              $no=1;
+                            @endphp
+                            @foreach ($jadwal as $j)
+                            <tr>
+                              <td>{{ $no++ }}</td>
+                              <td>{{ $j->kode }}</td>
+                              <td>{{ $j->matakuliah }}</td>
+                              <td>{{ $j->kelas }}</td>
+                              <td>{{ $j->ruang }}</td>
+                              <td>{{ $j->hari }}</td>
+                              <td>{{ $j->jam }}</td>
+                              <td>{{ $j->namadosen }}</td>
+                            </tr>
+                            @endforeach
+                          
+                        </tbody>
+                      </table>
+                    </div>
+
+
                     <div class="col-md-4 mt-2">
                       <p class="bg-utama py-2 pl-2">No</p>
                     </div>

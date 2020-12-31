@@ -97,7 +97,8 @@ class KrsController extends Controller
 
     public function krs($semester,$nim){
         $krs = Perwalian::where('semester','=',$semester)
-                        ->where('nim', '=', $nim)->get();
+                        ->where('nim', '=', $nim)
+                        ->select('kode','matakuliah','sks')->groupBy('kode','matakuliah','sks')->get();
         return response()->json([
             'data' => $krs,
         ]);
@@ -111,7 +112,7 @@ class KrsController extends Controller
                         ->where('semester','=',$semester)->first(),
            'smt' => Perwalian::where('nim', '=', $nim)
                         ->where('semester', '=', $semester)
-                        ->select('semester','kode','matakuliah','sks')->get(),
+                        ->select('semester','kode','matakuliah','sks')->groupBy('semester','kode','matakuliah','sks')->get(),
         ];
         $pdf = PDF::loadview('mahasiswa.perwalian.cetakkrs',$data);
          return $pdf->stream('Kartu_Rencana_Studi.pdf'); 
