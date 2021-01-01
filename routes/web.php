@@ -118,6 +118,7 @@ Route::get('/perubahan', [PerubahanController::class, 'index'])->middleware('aut
 Route::post('/perubahan', [PerubahanController::class, 'store'])->middleware('auth:mahasiswa');
 
 Route::get('/pilihkelas', [PilihkelasController::class, 'index'])->middleware('auth:mahasiswa');
+Route::post('/pilihkelas', [PilihkelasController::class, 'store'])->middleware('auth:mahasiswa');
 
 Route::get('/jadwalkuliah', [JadwalkuliahController::class, 'index'])->middleware('auth:mahasiswa');
 

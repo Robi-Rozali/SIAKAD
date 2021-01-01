@@ -9,4 +9,18 @@ class Pilihkelas extends Model
 {
     use HasFactory;
     protected $table = 'pilihkelas';
+
+    protected $fillable = [
+    	'nim',
+    	'nama',
+    	'jurusan',
+    	'tahun',
+    	'kode',
+    	'matakuliah',
+    	'kelas',
+    	'ruang',
+    	'hari',
+    	'jam',
+    ];
+
 }

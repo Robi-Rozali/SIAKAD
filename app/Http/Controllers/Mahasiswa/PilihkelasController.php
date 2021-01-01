@@ -48,7 +48,7 @@ class PilihkelasController extends Controller
 
         $data = [
             'krs' => Perwalian::where('nim', '=', $nim)->first(),
-            'jadwal' => json_encode($jadwal),  
+            'jadwal' => $jadwal,  
         ];
         return view('mahasiswa.perwalian.pilihkelas')->with($data);
     }
@@ -71,7 +71,35 @@ class PilihkelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $jadwal = Inputjadwal::all();
+        foreach ($jadwal as $jdwl) {            
+            $jadwals[$jdwl->id]['kode']=$jdwl->kode;
+            $jadwals[$jdwl->id]['matakuliah']=$jdwl->matakuliah;
+            $jadwals[$jdwl->id]['kelas']=$jdwl->kelas;
+            $jadwals[$jdwl->id]['ruang']=$jdwl->ruang;
+            $jadwals[$jdwl->id]['hari']=$jdwl->hari;
+            $jadwals[$jdwl->id]['jam']=$jdwl->jam;
+            $jadwals[$jdwl->id]['tahun']=$jdwl->tahun;
+        }
+        // dd($jdwl);
+
+        foreach($request->id[0] as $key => $value){
+            // dd($request->id);
+                $data = new Pilihkelas;
+                $data->nim = Auth::guard('mahasiswa')->user()->nim;
+                $data->nama = Auth::guard('mahasiswa')->user()->nama;
+                $data->jurusan = Auth::guard('mahasiswa')->user()->jurusan;
+                $data->tahun = $jadwals[$key]['tahun'];
+                $data->kode = $jadwals[$key]['kode'];
+                $data->matakuliah = $jadwals[$key]['matakuliah'];
+                $data->kelas = $jadwals[$key]['kelas'];
+                $data->ruang = $jadwals[$key]['ruang'];
+                $data->hari = $jadwals[$key]['hari'];
+                $data->jam = $jadwals[$key]['jam'];
+                $data->save();
+        }
+
+        return back()->with('sukses','Data Jadwal berhasil ditambah');
     }
 
     /**
