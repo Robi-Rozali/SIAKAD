@@ -126,11 +126,6 @@ class NilaiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nim'           => 'required',
-            'nama'          => 'required',
-            'jurusan'       => 'required',
-            'semester'      => 'required',
-            'tahun'         => 'required',
             'kode'          => 'required',
             'matakuliah'    => 'required',
             'sks'           => 'required',
@@ -143,11 +138,6 @@ class NilaiController extends Controller
             
         ]);
         $nilai = Nilai::find($id);
-        $nilai->nim         = $request->input('nim');
-        $nilai->nama        = $request->input('nama');
-        $nilai->jurusan     = $request->input('jurusan');
-        $nilai->semester    = $request->input('semester');
-        $nilai->tahun       = $request->input('tahun');
         $nilai->kode        = $request->input('kode');
         $nilai->matakuliah  = $request->input('matakuliah');
         $nilai->sks         = $request->input('sks');
