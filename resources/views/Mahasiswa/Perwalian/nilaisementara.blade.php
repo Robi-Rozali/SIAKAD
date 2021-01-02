@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
-
+ @if (count($nilaisemua) > 0)
                   <div class="row">
                     <div class="col-md-12">
                       <div class="table-responsive">
@@ -64,6 +64,7 @@
                             </tr>
                           </thead>
                           <tbody>
+               
                             @php
                               $no=1;
                               $jumlah_sks = 0;
@@ -102,6 +103,7 @@
                               <td id="grade">{{ $n->grade }}</td>
                             </tr>
                           @endforeach
+
                           </tbody>
                         </table>
                       </div>
@@ -135,10 +137,13 @@
                           
                         </div> 
                   </div>
+                  @else
+                      
+                      @endif
                   </div>
                 </div>
               </div>
-           
+            
       <!-- End of Main Content -->
 @endsection
 @section('script')

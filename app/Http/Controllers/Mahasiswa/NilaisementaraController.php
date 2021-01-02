@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use PDF;
 
 use App\Models\Nilai;
+use App\Models\Mahasiswa;
 
 
 
@@ -24,7 +25,7 @@ class NilaisementaraController extends Controller
     {
             $nim = Auth::guard('mahasiswa')->user()->nim;
         $data = [
-            'nilai' => Nilai::where('nim', '=', $nim)->first(),
+            'nilai' => Mahasiswa::where('nim', '=', $nim)->first(),
             'nilaisemua' => Nilai::where('nim', '=', $nim)->get(),
         ];
         return view('mahasiswa.perwalian.nilaisementara')->with($data);
