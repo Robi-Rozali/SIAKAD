@@ -73,13 +73,13 @@ class PilihkelasController extends Controller
     {
         $jadwal = Inputjadwal::all();
         foreach ($jadwal as $jdwl) {            
-            $jadwals[$jdwl->id]['kode']=$jdwl->kode;
-            $jadwals[$jdwl->id]['matakuliah']=$jdwl->matakuliah;
-            $jadwals[$jdwl->id]['kelas']=$jdwl->kelas;
-            $jadwals[$jdwl->id]['ruang']=$jdwl->ruang;
-            $jadwals[$jdwl->id]['hari']=$jdwl->hari;
-            $jadwals[$jdwl->id]['jam']=$jdwl->jam;
-            $jadwals[$jdwl->id]['tahun']=$jdwl->tahun;
+            $jadwals[$jdwl->kode]['kode']=$jdwl->kode;
+            $jadwals[$jdwl->kode]['matakuliah']=$jdwl->matakuliah;
+            $jadwals[$jdwl->kode]['kelas']=$jdwl->kelas;
+            $jadwals[$jdwl->kode]['ruang']=$jdwl->ruang;
+            $jadwals[$jdwl->kode]['hari']=$jdwl->hari;
+            $jadwals[$jdwl->kode]['jam']=$jdwl->jam;
+            $jadwals[$jdwl->kode]['tahun']=$jdwl->tahun;
         }
         // dd($jdwl);
 
