@@ -40,7 +40,7 @@ class NilaiController extends Controller
     public function create()
     {
         $data = [
-            'prodi' => Prodi::select('prodi')->get(),
+            'mahasiswa' => Mahasiswa::all(),
         ];
         return view('Prodi.nilai.tambahnilai')->with($data);
     }
@@ -123,7 +123,7 @@ class NilaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'kode'          => 'required',
@@ -137,7 +137,7 @@ class NilaiController extends Controller
             'grade'         => 'required',
             
         ]);
-        $nilai = Nilai::find($id);
+        $nilai = Nilai::find($request->input('idnilai'));
         $nilai->kode        = $request->input('kode');
         $nilai->matakuliah  = $request->input('matakuliah');
         $nilai->sks         = $request->input('sks');
@@ -162,6 +162,14 @@ class NilaiController extends Controller
     {
         //
     }
+
+    public function nilaimhs($id){
+        $nilai = Nilai::where('id', '=', $id)->get();
+        return response()->json([
+            'data' => $nilai,
+        ]);
+    }
+
     public function nilai($semester,$nim){
         $nilai = Nilai::where('semester','=',$semester)
                         ->where('nim', '=', $nim)->get();
@@ -169,6 +177,7 @@ class NilaiController extends Controller
             'data' => $nilai,
         ]);
     }
+
     public function carimhs($nim){
 
         $nilai = Nilai::where('nim', '=', $nim)
@@ -178,15 +187,15 @@ class NilaiController extends Controller
             'data' =>$nilai,
         ]);
     }
-    // public function tambahmhs($nim){
+    public function tambahmhs($nim){
 
-    //     $mahasiswa = Mahasiswa::where('nim', '=', $nim)
-    //             ->select('nama','jurusan','tahun')->get();
+        $mahasiswa = Mahasiswa::where('nim', '=', $nim)
+                ->select('nama','jurusan','semester','tahun')->get();
 
-    //     return response()->json([
-    //         'data' =>$mahasiswa,
-    //     ]);
-    // }
+        return response()->json([
+            'data' =>$mahasiswa,
+        ]);
+    }
     public function importcsv(Request $request){
         $validatedData = $request->validate([
             'file' => 'required',

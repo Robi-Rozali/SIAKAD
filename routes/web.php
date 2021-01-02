@@ -68,24 +68,22 @@ Route::resource('/keu', KeuController::class)->middleware('auth:admin');
 //Prodi
 Route::get('/prodi', [JurusanController::class, 'index'])->middleware('auth:prodi');
 Route::resource('/nilai', NilaiController::class)->middleware('auth:prodi');
-
 Route::get('/datanilai/{nim}', [NilaiController::class, 'carimhs'])->middleware('auth:prodi');
 Route::get('/datanilai/{semester}/{nim}', [NilaiController::class, 'nilai'])->middleware('auth:prodi');
-// Route::get('/datanilai/{nim}', [NilaiController::class, 'tambahmhs'])->middleware('auth:prodi');
+Route::get('/editnilai/{kode}', [NilaiController::class, 'nilaimhs'])->middleware('auth:prodi');
+Route::post('/editnilai/', [NilaiController::class, 'update'])->middleware('auth:prodi');
+Route::get('/tambahnilai/{nim}', [NilaiController::class, 'tambahmhs'])->middleware('auth:prodi');
 Route::get('/khsadm/{id}', [KhsadmController::class, 'cari'])->middleware('auth:prodi');
 Route::post('/khsadm/cetak/pdf', [KhsadmController::class, 'cetak'])->middleware('auth:prodi');
-
 Route::resource('/inputjadwal', InputjadwalController::class)->middleware('auth:prodi');
 Route::get('/inputjadwal/{prodi}/{smtr}/{tahun}', [InputjadwalController::class, 'matkul'])->middleware('auth:prodi');
 Route::get('/inputjadwal/detail/{id}', [InputjadwalController::class, 'detail'])->middleware('auth:prodi');
-
 Route::get('/khsadm', [KhsadmController::class, 'index']);
 Route::resource('/perwalianadm', PerwalianadmController::class)->middleware('auth:prodi');
 Route::get('/perwalianadm/{prodi}/{smtr}/{tahun}', [PerwalianadmController::class, 'matakuliah'])->middleware('auth:prodi');
 Route::resource('/kurikulum', KurikulumController::class)->middleware('auth:prodi');
 Route::post('/kurikulum/import/csv', [KurikulumController::class, 'importcsv'])->middleware('auth:prodi');
 Route::get('/kurikulum/export/csv', [KurikulumController::class, 'exportcsv'])->middleware('auth:prodi');
-
 Route::post('/nilai/import/csv', [NilaiController::class, 'importcsv'])->middleware('auth:prodi');
 Route::get('/exportnilai', [NilaiController::class, 'exportcsv'])->middleware('auth:prodi');
 

@@ -27,11 +27,23 @@
                           @enderror
                         </div>
                       </div>
+                      {{-- <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">NIM</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                 <input type="text" class="form-control" id="inputmhs" placeholder="Cari Mahasiswa" value="" name="nim">
+
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button" id="tambahmhs" onclick="Tambahmhs()"><i class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                      </div> --}}
   
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Nama</label>
                         <div class="col-sm-9">
-                          <input type="text" id="" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
+                          <input type="text" id="nama" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
                           @error('nama') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -41,12 +53,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Jurusan</label>
                         <div class="col-sm-9">
-                          <select class="form-control @error('jurusan') is-invalid @enderror" name="jurusan"  value="{{ old('jurusan') }}">
-                            <option nama="#" value="">--Pilih--</option>
-                            @foreach ($prodi as $p)
-                            <option nama="#" value="{{$p->prodi}}">{{$p->prodi}}</option>
-                            @endforeach
-                          </select>
+                          <input type="text" id="jurusan" name="jurusan" class="form-control @error('jurusan') is-invalid @enderror" value="{{ old('jurusan') }}">
                           @error('jurusan') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -56,7 +63,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Semester</label>
                         <div class="col-sm-9">
-                          <input type="text" name="semester" class="form-control @error('semester') is-invalid @enderror" value="{{ old('semester') }}">
+                          <input type="text" id="semester" name="semester" class="form-control @error('semester') is-invalid @enderror" value="{{ old('semester') }}">
                           @error('semester') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -66,7 +73,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Tahun Akademik</label>
                         <div class="col-sm-9">
-                          <input type="text" id="" name="tahun" class="form-control @error('tahun') is-invalid @enderror" value="{{ old('tahun') }}">
+                          <input type="text" id="tahun" name="tahun" class="form-control @error('tahun') is-invalid @enderror" value="{{ old('tahun') }}">
                           @error('tahun') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -178,15 +185,17 @@
         </div>
       <!-- End of Main Content -->
 @endsection
-{{-- @section('script')
+@section('script')
 <script type="text/javascript">
     function Tambahmhs(){
       var id = $('#inputmhs').val();
         $.get('/tambahnilai/'+id,function(data){
           var jrs = data.data[0].jurusan;
+          var smtr = data.data[0].semester;
           $('#id').val(data.data[0].nim);
           $('#nama').val(data.data[0].nama);
           $('#jurusan').val(jrs.replace('_',' '));
+          $('#semester').val(jrs.replace('_',' '));
           $('#tahun').val(data.data[0].tahun);
 
           // for (var i = 0; i < data.data.length; i++) {
@@ -197,4 +206,4 @@
         });
     }
     </script>
-@endsection --}}
+@endsection
