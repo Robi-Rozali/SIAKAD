@@ -26,7 +26,7 @@
                     <label for="" class="col-sm-3 col-form-label">NIM</label>
                     <div class="col-sm-3">
                         <div class="input-group">
-                             <input type="text" class="form-control" id="inputcari" placeholder="Cari Mahasiswa" value="" name="cari">
+                             <input type="text" class="form-control" id="inputcari" placeholder="Cari Mahasiswa" value="" name="nim">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button" id="carimhs" onclick="Carimhs()"><i class="fas fa-search"></i></button>
                             </div>
@@ -141,6 +141,95 @@
           </div>
         </div>
       </div>
+
+      <div class="modal" tabindex="-1" role="dialog" id='editnilai'>
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Ubah Nilai</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="/editnilai/" method="post" enctype="multipart/form-data">
+                      @csrf
+                      @method('POST')
+                      <input type="text" name="idnilai" id="idnilai" hidden>
+                      <div class="form-group row ">
+                        <label for="" class="col-sm-3 col-form-label text-right">Kode Mata Kuliah</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="kode" class="form-control" readonly id="kode">
+                        </div>
+                      </div>
+  
+                      <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">Mata Kuliah</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="matakuliah" class="form-control" readonly id="matakuliah">
+                        </div>
+                      </div>
+  
+                      <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">SKS</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="sks" class="form-control" readonly id="sks">
+                        </div>
+                      </div>
+  
+                      <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">Kehadiran</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="kehadiran" class="form-control" id="kehadiran">
+                        </div>
+                      </div>
+  
+                      <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">Tugas</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="tugas" class="form-control" id="tugas">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">UTS</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="uts" class="form-control" id="uts">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">UAS</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="uas" class="form-control" id="uas">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">Jumlah</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="jumlah" class="form-control" id="jumlah">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="" class="col-sm-3 col-form-label text-right">Grade</label>
+                        <div class="col-sm-9">
+                          <input type="text" name="grade" class="form-control" id="grade">
+                        </div>
+                      </div>
+                      <hr> 
+                    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary mb-2">Simpan</button>
+                         <a href="/nilai" class="btn btn-danger mb-2">Keluar</a>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
 @endsection
 @section('script')
 <script type="text/javascript">
@@ -157,6 +246,26 @@
              $('#semester').append(`<option value="${smtr}">${smtr.replace('_',' ')}</option>`);
           }
         
+        });
+    }
+
+     function Editnilai(id){
+        $.get('/editnilai/'+id,function(data){
+          $('#editnilai').modal('show');
+    
+          $('#idnilai').val(data.data[0].id);
+          $('#kode').val(data.data[0].kode);
+          $('#matakuliah').val(data.data[0].matakuliah);
+          $('#sks').val(data.data[0].sks);
+          $('#kehadiran').val(data.data[0].kehadiran);
+          $('#tugas').val(data.data[0].tugas);
+          $('#uts').val(data.data[0].uts);
+          $('#uas').val(data.data[0].uas);
+          $('#jumlah').val(data.data[0].jumlah);
+          $('#grade').val(data.data[0].grade);
+          // $('#nama').val(data.data[0].nama);
+          // $('#jurusan').val(jrs.replace('_',' '));
+
         });
     }
     </script>
@@ -186,11 +295,9 @@
                   <td>${value[i].uas}</td>
                   <td>${value[i].jumlah}</td>
                   <td>${value[i].grade}</td>
-                  <td><form action="/Nilai/${value[i].id}/edit" method="post" class="d-inline">
-                                @csrf
-                                @method('GET')
-                                <button type="submit" class="btn btn-primary btn-sm" onclick="return confirm('Apakah anda yakin ingin edit?')"><i class="fas fa-edit"></i></>
-                              </form></td>
+                  <td>
+                    <button type="submit" class="btn btn-primary btn-sm" id="nilai" data-toggle="modal" data-target="#editnilai" onclick="Editnilai('${value[i].id}')"><i class="fas fa-edit"></i></>
+                  </td>
                 </tr>`;
               $('#table_nilai').append(form);
               
