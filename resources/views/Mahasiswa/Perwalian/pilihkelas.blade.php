@@ -98,7 +98,7 @@
                             <td>{{ $jadwal[$i][$j]->namadosen }}</td>
                             <td>
                               <div class="form-check text-center">
-                                <input class="form-check-input" type="checkbox" value="" name="id[0][{{ $jadwal[$i][$j]->id }}]" id="id_{{ $jadwal[$i][$j]->id }}" onclick="Pilih('{{ $jadwal[$i][$j]->id }}')">
+                                <input class="form-check-input" type="radio" value="" name="id[0][{{ $jadwal[$i][$j]->kode }}]" id="id_{{ $jadwal[$i][$j]->id }}" >
                               </div>
                             </td>
                           </tr>
@@ -155,25 +155,25 @@
     //     $('#data-kelas').append(form);
     // }
 
-    Swal.fire(
-        'Info',
-        'Karek bisa nyimpen',
-        'info'
-      );
+    
   });
 
 
 
   function Pilih(id){
     var tr = document.getElementById(`tr${id}`);
-    if ($(`#id_${id}`).is(':checked')) {
+    var bo = document.getElementById(`id_${id}`);
+
+    if (bo.checked = true) {
       tr.style.backgroundColor = '#d4edda';
 
       // teks warna hitam
       // tr.style.color = '#000';
     }else{
-      tr.style.backgroundColor = '#fff';
+       tr.style.backgroundColor = '#fff';
     }
+
+   
   }
 </script>
 @endsection
