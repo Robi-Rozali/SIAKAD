@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Nilai;
+use App\Models\Mahasiswa;
 
 class KhsController extends Controller
 {
@@ -19,7 +20,7 @@ class KhsController extends Controller
     {
         $nim = Auth::guard('mahasiswa')->user()->nim;
         $data = [
-            'nilai' => Nilai::where('nim', '=', $nim)->first(),
+            'nilai' => Mahasiswa::where('nim', '=', $nim)->first(),
             'semester' => Nilai::where('nim', '=', $nim)
                             ->select('semester')->groupBy('semester')->get(),
         ];
