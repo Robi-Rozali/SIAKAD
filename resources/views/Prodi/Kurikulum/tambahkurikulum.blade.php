@@ -77,8 +77,8 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Tahun Akademik</label>
                         <div class="col-sm-9">
-                          <input type="text" name="tahun" class="form-control @error('tahun') is-invalid @enderror" value="{{ old('tahun') }}">
-                          @error('tahun') 
+                          <input type="text" name="Tahun" class="form-control @error('Tahun') is-invalid @enderror" value="{{ old('Tahun') }}">
+                          @error('Tahun') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
                         </div>

@@ -19,7 +19,7 @@
                       
                         <div class="col-auto">
                 
-                          <input type="text" class="form-control" id="inputcari" placeholder="Cari Mahasiswa" value="" name="cari">
+                          <input type="text" class="form-control" id="inputcari" placeholder="Cari Mahasiswa" value="" name="nim">
                         </div>
                         <div class="col-auto">
                           <button type="button" id="cari" onclick="Cari()" class="btn btn-primary mb-2">Cari</button>

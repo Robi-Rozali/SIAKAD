@@ -38,17 +38,17 @@
                                 <label for="" class="col-sm-3 col-form-label">Nama</label>
                                 <div class="col-sm-9">
                                   <div class="input-group">
-                                        <input type="text" class="form-control" name="nama" aria-describedby="button-nim" id="nama">
-                                        <div class="input-group-append">
+                                        <input type="text" class="form-control" name="nama" aria-describedby="button-nim" id="nama" readonly>
+                                        {{-- <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button" id="button-nim"><i class="fas fa-search"></i></button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-sm-3 my-auto">Semester</label>
                                 <div class="col-sm-5">
-                                    <input type="text" name="semester" id="semester" class="form-control">
+                                    <input type="text" name="semester" id="semester" class="form-control" readonly>
                                 </div>
                             </div>
 

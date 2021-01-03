@@ -75,11 +75,11 @@
       <!-- Nav Item - Utilities Collapse Menu -->
       <!-- Nav Item - Pages Collapse Menu -->
             <!-- Nav Item - Charts -->
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link" href="charts.html">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Pengguna Sistem</span></a>
-      </li>
+      </li> --}}
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
