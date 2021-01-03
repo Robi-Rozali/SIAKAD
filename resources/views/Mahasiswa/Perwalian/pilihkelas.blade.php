@@ -98,7 +98,7 @@
                             <td>{{ $jadwal[$i][$j]->namadosen }}</td>
                             <td>
                               <div class="form-check text-center">
-                                <input class="form-check-input" type="radio" value="" name="id[0][{{ $jadwal[$i][$j]->kode }}]" id="id_{{ $jadwal[$i][$j]->id }}" >
+                                <input class="form-check-input" type="radio" value="" name="id[0][{{ $jadwal[$i][$j]->kode }}]" id="id_{{ $jadwal[$i][$j]->id }}">
                               </div>
                             </td>
                           </tr>
@@ -127,53 +127,20 @@
 
 @section('script')
 <script>
-  $(document).ready(function(){
-  //   var arr = @ php
-  //   echo $jadwal;
-  //   @ endphp;
-  //   var merge = [].concat.apply([],arr);
-    // var n = 1;
-    // for(var i = 0, length1 = merge.length; i < length1; i++){
-    //   var form = `
-    //     <tr id="tr${merge[i].id}" class='tr-semester'>
-    //       <td>${n++}</td>
-    //       <td>${merge[i].kode}</td>
-    //       <td>${merge[i].matakuliah}</td>
-    //       <td>${merge[i].kelas}</td>
-    //       <td>${merge[i].ruang}</td>
-    //       <td>${merge[i].hari}</td>
-    //       <td>${merge[i].jam}</td>
-    //       <td>${merge[i].namadosen}</td>
-    //       <td>${merge[i].namadosen}</td>
-    //       <td>${merge[i].namadosen}</td>
-    //       <td>
-    //         <div class="form-check text-center">
-    //           <input class="form-check-input" type="checkbox" value="" name="id[0][${merge[i].id}]" id="id_${merge[i].id}" onclick="Pilih('${merge[i].id}')">
-    //         </div>
-    //       </td>
-    //     </tr>`;
-    //     $('#data-kelas').append(form);
-    // }
-
-    
-  });
-
-
-
   function Pilih(id){
-    var tr = document.getElementById(`tr${id}`);
-    var bo = document.getElementById(`id_${id}`);
+    // console.log(id)
+    var tr = $(`.tr${id}`);
+    var radio = $(`.id_${id}`);
+    // console.log(radio)
+    console.log(tr)
 
-    if (bo.checked = true) {
+    var tr_smt = $(`.tr-semester`);
+    // console.log(tr_smt)
+    tr_smt.style.backgroundColor = '#fff';
+
+    if (radio.checked = true) {
       tr.style.backgroundColor = '#d4edda';
-
-      // teks warna hitam
-      // tr.style.color = '#000';
-    }else{
-       tr.style.backgroundColor = '#fff';
     }
-
-   
   }
 </script>
 @endsection

@@ -65,7 +65,14 @@ Route::resource('/kelas', KelasController::class)->middleware('auth:admin');
 Route::resource('/adminn', AdminnController::class)->middleware('auth:admin');
 Route::resource('/keu', KeuController::class)->middleware('auth:admin');
 
+
+
+
+
 //Prodi
+Route::get('/disposisi/{nim}', [PerwalianadmController::class,'disposisi'])->middleware('auth:prodi');
+
+
 Route::get('/prodi', [JurusanController::class, 'index'])->middleware('auth:prodi');
 Route::resource('/nilai', NilaiController::class)->middleware('auth:prodi');
 Route::get('/datanilai/{nim}', [NilaiController::class, 'carimhs'])->middleware('auth:prodi');
@@ -79,7 +86,9 @@ Route::resource('/inputjadwal', InputjadwalController::class)->middleware('auth:
 Route::get('/inputjadwal/{prodi}/{smtr}/{tahun}', [InputjadwalController::class, 'matkul'])->middleware('auth:prodi');
 Route::get('/inputjadwal/detail/{id}', [InputjadwalController::class, 'detail'])->middleware('auth:prodi');
 Route::get('/khsadm', [KhsadmController::class, 'index']);
+
 Route::resource('/perwalianadm', PerwalianadmController::class)->middleware('auth:prodi');
+
 Route::get('/perwalianadm/{prodi}/{smtr}/{tahun}', [PerwalianadmController::class, 'matakuliah'])->middleware('auth:prodi');
 Route::resource('/kurikulum', KurikulumController::class)->middleware('auth:prodi');
 Route::post('/kurikulum/import/csv', [KurikulumController::class, 'importcsv'])->middleware('auth:prodi');
@@ -87,14 +96,39 @@ Route::get('/kurikulum/export/csv', [KurikulumController::class, 'exportcsv'])->
 Route::post('/nilai/import/csv', [NilaiController::class, 'importcsv'])->middleware('auth:prodi');
 Route::get('/exportnilai', [NilaiController::class, 'exportcsv'])->middleware('auth:prodi');
 
+
+
+
+
+
+
+
 // Dosen
 Route::resource('/dosen', DosenController::class)->middleware('auth:admin');
+
+
+
+
+
 
 //Keuangan
 Route::get('/keuangan', [KeuanganController::class, 'index'])->middleware('auth:keuangan');
 Route::get('/keuangan', [DashboardController::class, 'index'])->middleware('auth:keuangan');
 Route::resource('/biaya', BiayaController::class)->middleware('auth:keuangan');
 Route::resource('/pembayarankeu', PembayarankeuController::class)->middleware('auth:keuangan');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Mahasiswa
 Route::get('/mhs', [MhsController::class, 'index'])->middleware('auth:mahasiswa');
@@ -128,6 +162,20 @@ Route::get('/pembayaran/{semester}/{nim}', [PembayaranController::class, 'bayar'
 Route::get('/profil', [ProfilController::class, 'index'])->middleware('auth:mahasiswa');
 
 Route::resource('/profil', ProfilController::class,)->middleware('auth:mahasiswa');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // ora ora ora ora ora
