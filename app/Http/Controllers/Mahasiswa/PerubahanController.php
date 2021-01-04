@@ -21,12 +21,12 @@ class PerubahanController extends Controller
         $jurusan = Auth::guard('mahasiswa')->user()->jurusan;
         $tahun = Auth::guard('mahasiswa')->user()->tahun;
 
-
-// $ubah = Perwalian::where('nim','=',$nim)
-                // ->select(DB::raw('max(semester) as nilaisks'))->first();
         $perwalian = Perwalian::where('nim','=',$nim)
-                    // ->where('semester','=',$ubah->nilaisks)
+                    ->where('atas','=','0')
                     ->select(DB::raw('max(semester) as maksks'))->get();
+
+        $nilai = Nilai::where('nim','=',$nim)->get();
+        $numero_uno = count($perwalian);
 
         $kurikulum = [];
         $nguli = [];
@@ -34,21 +34,22 @@ class PerubahanController extends Controller
         
         if (count($perwalian) > 0) {
             foreach ($perwalian as $p) {
-                $sksprev = $p->maksks - 2;
-                $ngulang = Nilai::where('nim','=',$nim)
+                if ($p->maksks != 1) {
+                        $sksprev = $p->maksks - 1;
+                        $ngulang = Nilai::where('nim','=',$nim)
                         ->where('semester','=',$sksprev)
-                        ->where('grade','=','D')
-                        ->orWhere([['grade','=','E'],['semester','=',$sksprev]])
-                        ->get();
-                    
-                                          
+                    ->where('grade','=','D')
+                    ->orWhere([['grade','=','E'],['semester','=',$sksprev]])->get();
+
+                    if ($p->maksks > 1 && $p->maksks < 8 ) {
+                                            
                         if (count($ngulang) > 0) {
                             foreach ($ngulang as $ng) {
                             if ($ng->grade == 'D' || 'E') {
-                                
+                                $sksnext = $p->maksks + 1;
                                 $kurikulum = Kurikulum::where('jurusan', '=', $jurusan)
                                 ->where('tahun', '=', $tahun)
-                                ->where('semester', '=', $p->maksks)->get();
+                                ->where('semester', '=', $sksnext)->get();
 
                                 $nguli = Kurikulum::where('jurusan', '=', $jurusan)
                                 ->where('tahun', '=', $tahun)
@@ -63,26 +64,59 @@ class PerubahanController extends Controller
                         }
 
                         }else{
-                           
+
+                            $sksnext = $p->maksks + 1;
                                     $kurikulum = Kurikulum::where('jurusan', '=', $jurusan)
                                 ->where('tahun', '=', $tahun)
-                                ->where('semester', '=', $p->maksks)->get();
+                                ->where('semester', '=', $sksnext)->get();
 
-                                $sksngam = $p->maksks + 2;
+                            $sksngam = $p->maksks + 2;
                                     $ngambil = Kurikulum::where('jurusan', '=', $jurusan)
                                 ->where('tahun', '=', $tahun)
                                 ->where('semester', '=', $sksngam)->get();
 
                         }
-                
-            }
-        }else{
-             $kurikulum = [];
-        $nguli = [];
-        $ngambil = [];
+                    }else{
+                          if ($p->maksks == 1) {
+                                $ngambil = [];
+                                $sksnext = $p->maksks;
+                                    $kurikulum = Kurikulum::where('jurusan', '=', $jurusan)
+                                ->where('tahun', '=', $tahun)
+                                ->where('semester', '=', $sksnext)->get();
+                            }else{
+                                $sksnext = $p->maksks + 1;
+                                    $kurikulum = Kurikulum::where('jurusan', '=', $jurusan)
+                                ->where('tahun', '=', $tahun)
+                                ->where('semester', '=', $sksnext)->get();
+
+                            $sksngam = $p->maksks + 2;
+                                    $ngambil = Kurikulum::where('jurusan', '=', $jurusan)
+                                ->where('tahun', '=', $tahun)
+                                ->where('semester', '=', $sksngam)->get();
+                            }
+                        }   
+
+
+                 }  
             
+            }
+            // dd($p->maksks);
+            if ($p->maksks == null) {
+                // if($numero_uno == '1'){
+                  
+                // }
+                                $kurikulum = [];
+                    $ngambil = [];
+            }else{
+                $sksnext = $p->maksks + 1;
+                  $kurikulum = Kurikulum::where('jurusan', '=', $jurusan)
+                                ->where('tahun', '=', $tahun)
+                                ->where('semester', '=', $p->maksks)->get();
+            }
         }
-        
+
+
+
         $data = [
             'mhs' => Mahasiswa::where('nim', '=', $nim)->first(),
             'krm' => $kurikulum,
@@ -93,6 +127,7 @@ class PerubahanController extends Controller
     }
 
     public function store(Request $request){
+
         $kur = Kurikulum::all();
         foreach ($kur as $kuri) {
             $kurikulums[$kuri->kode]['semester']=$kuri->semester;
@@ -101,21 +136,44 @@ class PerubahanController extends Controller
             $kurikulums[$kuri->kode]['sks']=$kuri->sks;
         }
 
-        foreach($request->id[0] as $value){
-            // dd($key);
-            // dd($request->id[0]);
-                $data = Perwalian::where($kurikulums[$value]);
-                $data->nim = Auth::guard('mahasiswa')->user()->nim;
-                $data->nama = Auth::guard('mahasiswa')->user()->nama;
-                $data->jurusan = Auth::guard('mahasiswa')->user()->jurusan;
-                $data->semester = $kurikulums[$value]['semester'];
-                $data->kode = $kurikulums[$value]['kode'];
-                $data->matakuliah = $kurikulums[$value]['matakuliah'];
-                $data->sks = $kurikulums[$value]['sks'];
-                $data->save();
+
+        foreach($request->id[0] as $del){
+            $data = Perwalian::where($kurikulums[$del]);
+            $data->delete();
+        }
+
+        foreach($request->id[0] as $value){   
+        // dd($key);
+            // dd($request->id[0]);        
+                $data1 =  new Perwalian;
+                $data1->nim = Auth::guard('mahasiswa')->user()->nim;
+                $data1->nama = Auth::guard('mahasiswa')->user()->nama;
+                $data1->jurusan = Auth::guard('mahasiswa')->user()->jurusan;
+                $data1->semester = $kurikulums[$value]['semester'];
+                $data1->kode = $kurikulums[$value]['kode'];
+                $data1->matakuliah = $kurikulums[$value]['matakuliah'];
+                $data1->sks = $kurikulums[$value]['sks'];
+                $data1->atas = '0';
+                $data1->save();
+        }
+
+        foreach($request->id[1] as $value){   
+        // dd($key);
+            // dd($request->id[0]);        
+                $data2 =  new Perwalian;
+                $data2->nim = Auth::guard('mahasiswa')->user()->nim;
+                $data2->nama = Auth::guard('mahasiswa')->user()->nama;
+                $data2->jurusan = Auth::guard('mahasiswa')->user()->jurusan;
+                $data2->semester = $kurikulums[$value]['semester'];
+                $data2->kode = $kurikulums[$value]['kode'];
+                $data2->matakuliah = $kurikulums[$value]['matakuliah'];
+                $data2->sks = $kurikulums[$value]['sks'];
+                $data2->atas = '1';
+                $data2->save();
         }
 
         return back()->with('sukses','Data Jadwal berhasil ditambah');
+
     }
 
 }

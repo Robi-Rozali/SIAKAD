@@ -151,7 +151,7 @@
                                 <td>{{ $bil->sks }}</td>
                                 <td>
                                    <div class="form-check text-center">
-                                        <input class="form-check-input" type="checkbox" value="{{ $bil->kode }}" name="id[0][{{ $bil->kode }}]" id="id_{{ $bil->kode }}">
+                                        <input class="form-check-input" type="checkbox" value="{{ $bil->kode }}" name="id[1][{{ $bil->kode }}]" id="id_{{ $bil->kode }}">
                                     </div>
                                 </td>
                                 </tr>

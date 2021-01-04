@@ -150,8 +150,9 @@
                                 <td>{{ $bil->matakuliah }}</td>
                                 <td>{{ $bil->sks }}</td>
                                 <td>
+                                    <input type="text" name="id[1][0]" value="0">
                                    <div class="form-check text-center">
-                                        <input class="form-check-input" type="checkbox" value="{{ $bil->id }}" name="id[0][{{ $bil->id }}]" id="id_{{ $bil->id }}">
+                                        <input class="form-check-input" type="checkbox" value="{{ $bil->id }}" name="id[1][{{ $bil->id }}]" id="id_{{ $bil->id }}">
                                     </div>
                                 </td>
                                 </tr>
