@@ -55,10 +55,10 @@
                 <div class="form-group text-left">
                     <input type="password" class="form-control form-control-user mt-4" id="exampleInputPassword" placeholder="Masukan Password Anda" name="password">
                 </div>
-                <div class="rememberpass text-left">
+                {{-- <div class="rememberpass text-left">
                   <input type="checkbox" name="rememberusername" id="rememberusername" value="1"  />
                   <label for="rememberusername">Remember username</label>
-                </div>
+                </div> --}}
                   <button type="submit" class="btn btn-primary btn-block" id="loginbtn">Log in</button>
                 </div>
               </form>
