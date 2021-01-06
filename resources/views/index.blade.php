@@ -31,7 +31,17 @@
         </ul>
       </div>
     </nav>
-    <div class="container section1">
+
+{{-- <style>
+  .tukang{
+    background-image: url('{{ asset('img/asoy.jpg')  }}') !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 450px; /* setting */
+  }
+</style> --}}
+
+    <div class="container section1 tukang">
       <div class="row">
         <div class="col-md-7">
           <div class="col-md-0 mb-3 order-md-1 mt-5">

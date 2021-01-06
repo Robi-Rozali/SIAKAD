@@ -35,7 +35,10 @@ class PerubahanController extends Controller
         if (count($perwalian) > 0) {
             foreach ($perwalian as $p) {
                 if ($p->maksks != 1) {
-                        $sksprev = $p->maksks - 1;
+
+                        $sksprev = $p->maksks - 2;
+                        // dd($sksprev);
+
                         $ngulang = Nilai::where('nim','=',$nim)
                         ->where('semester','=',$sksprev)
                     ->where('grade','=','D')
@@ -157,20 +160,25 @@ class PerubahanController extends Controller
                 $data1->save();
         }
 
-        foreach($request->id[1] as $value){   
-        // dd($key);
-            // dd($request->id[0]);        
-                $data2 =  new Perwalian;
-                $data2->nim = Auth::guard('mahasiswa')->user()->nim;
-                $data2->nama = Auth::guard('mahasiswa')->user()->nama;
-                $data2->jurusan = Auth::guard('mahasiswa')->user()->jurusan;
-                $data2->semester = $kurikulums[$value]['semester'];
-                $data2->kode = $kurikulums[$value]['kode'];
-                $data2->matakuliah = $kurikulums[$value]['matakuliah'];
-                $data2->sks = $kurikulums[$value]['sks'];
-                $data2->atas = '1';
-                $data2->save();
+    if (isset($request->atas[0])) {
+        foreach($request->atas[0] as $del){
+            $dele = Perwalian::where($kurikulums[$del]);
+            $dele->delete();
         }
+
+        foreach($request->atas[0] as $value){
+                $data1 = new Perwalian;
+                $data1->nim = Auth::guard('mahasiswa')->user()->nim;
+                $data1->nama = Auth::guard('mahasiswa')->user()->nama;
+                $data1->jurusan = Auth::guard('mahasiswa')->user()->jurusan;
+                $data1->semester = $kurikulums[$value]['semester'];
+                $data1->kode = $kurikulums[$value]['kode'];
+                $data1->matakuliah = $kurikulums[$value]['matakuliah'];
+                $data1->sks = $kurikulums[$value]['sks'];
+                $data1->atas = '1';
+                $data1->save();
+        }
+    }
 
         return back()->with('sukses','Data Jadwal berhasil ditambah');
 
