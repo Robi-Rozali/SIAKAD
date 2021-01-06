@@ -82,7 +82,7 @@
   $no = 1;
   $jdw = json_encode($jadwal);
 @endphp
-{{-- {{ dd($jadwal[0]) }} --}}
+{{-- {{ dd($jadwal) }} --}}
   @for ($i = 0; $i < count($jadwal) ; $i++)
     @for ($j = 0; $j < count($jadwal[$i]) ; $j++)
                           <tr id="tr{{ $jadwal[$i][$j]->id }}" class='tr-semester'>
@@ -94,11 +94,16 @@
                             <td>{{ $jadwal[$i][$j]->hari }}</td>
                             <td>{{ $jadwal[$i][$j]->jam }}</td>
                             <td>{{ $jadwal[$i][$j]->namadosen }}</td>
-                            <td>{{ $jadwal[$i][$j]->namadosen }}</td>
-                            <td>{{ $jadwal[$i][$j]->namadosen }}</td>
+                            <td>{{ $jadwal[$i][$j]->kuota }}</td>
+                      @if ($jadwal[$i][$j]->kelas == $isi[$i][$j]->kelas)
+                        <td>{{ $jadwal[$i][$j]->kuota - $isi[$i][$j]->eusi }}</td>
+                      @else
+                        <td>{{ $jadwal[$i][$j]->kuota }}</td>
+                      @endif
+                            
                             <td>
                               <div class="form-check text-center">
-                                <input class="form-check-input" type="radio" value="" name="id[0][{{ $jadwal[$i][$j]->kode }}]" id="id_{{ $jadwal[$i][$j]->id }}">
+                                <input class="form-check-input" type="radio" value="{{ $jadwal[$i][$j]->id }}" name="id[0][{{ $jadwal[$i][$j]->kode }}]" id="id_{{ $jadwal[$i][$j]->id }}">
                               </div>
                             </td>
                           </tr>
