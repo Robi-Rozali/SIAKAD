@@ -124,7 +124,7 @@
       var nim = $('#nim').val();
       var d = document.getElementById('display');
       var rt = document.getElementById('row_table');
-      var jumlah_sks = 0;
+      var jumlah_sks = 0; 
       var nilai = 0;
       var mutu = 0;
       $('.tr-semester').remove();

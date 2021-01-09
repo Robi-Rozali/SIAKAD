@@ -25,6 +25,7 @@ class KhsadmController extends Controller
         //})->paginate(2);
         $data = [
             'nilai' => Nilai::all(),
+            'semester' => Nilai::select('semester')->groupBy('semester')->get(),
         ];
         return view('Prodi.khs.Khsadm')->with($data);
     }
@@ -97,19 +98,35 @@ class KhsadmController extends Controller
 
     public function cari($id){
 
-        $nilai = Nilai::where('nim', '=', $id)->orWhere('nama', '=', $id)->get();
+        $nilai = Nilai::where('nim', '=', $id)->orWhere('nama', '=', $id)
+                ->select('nim','nama','jurusan','semester')
+                ->groupBy('nim','nama','jurusan','semester')->get();
 
         return response()->json([
             'data' =>$nilai,
         ]);
     }
 
+       public function nilai($semester,$nim){
+        $nilai = Nilai::where('semester','=',$semester)
+                        ->where('nim', '=', $nim)->get();
+        return response()->json([
+            'data' => $nilai,
+        ]);
+    }
+
     public function cetak(Request $request){
-        $id = $request->input('id');
+        $id = $request->input('idnim');
+        $semester = $request->input('oioi');
         $data = [
-            'mhs' => Nilai::where('nim','=', $id)->first(),
-            'nilai' => Nilai::where('nim','=', $id)->get(),
+            'mhs' => Nilai::where('nim','=', $id)
+                        ->where('semester','=',$semester)->first(),
+
+            'nilai' => Nilai::where('nim','=', $id)->where('semester', '=', $semester)
+                        ->select('semester','kode','matakuliah','sks','grade')->groupBy('semester','kode','matakuliah','sks','grade')->get(),
         ];
+
+
         $pdf = PDF::loadview('Prodi.Khs.cetak',$data);
         return $pdf->stream('Nilai.pdf'); 
         // return view('prodi.khs.cetak')->with($data);

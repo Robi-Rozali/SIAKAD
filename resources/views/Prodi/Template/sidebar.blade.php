@@ -30,11 +30,16 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
+          <a class="nav-link" href="\kurikulum">
+            <i class="fas fa-book"></i>
+            <span>Kurikulum</span></a>
+        </li>
+      <li class="nav-item">
         <a class="nav-link" href="\inputjadwal">
           <i class="fas fa-calendar-alt"></i>
           <span>Jadwal Kuliah</span></a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link" href="\khsadm">
             <i class="fas fa-sticky-note"></i>
             <span>KHS</span></a>
@@ -43,34 +48,29 @@
           <a class="nav-link" href="\perwalianadm">
             <i class="fas fa-sticky-note"></i>
             <span>Disposisi (KRS)</span></a>
-        </li>
+        </li> --}}
+        
         <li class="nav-item">
-          <a class="nav-link" href="\kurikulum">
-            <i class="fas fa-book"></i>
-            <span>Kurikulum</span></a>
-        </li>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Disposisi</span>
+        </a>
+        
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Perwalian :</h6>
+            <a class="collapse-item" href="\perwalianadm">Perwalian</a>
+            <a class="collapse-item" href="\inputjadwal">Pilih Kelas</a>
+            <a class="collapse-item" href="\khsadm">Kartu Hasil Studi</a>
+          </div>
+        </div> 
+      </li>
         <li class="nav-item">
           <a class="nav-link" href="\nilai">
             <i class="fas fa-calculator"></i>
             <span>Nilai</span></a>
         </li>
-      <!--<li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Akademik</span>
-        </a>
-        
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="\inputjadwal">Jadwal Kuliah</a>
-            <a class="collapse-item" href="\khsadm">KHS</a>
-            <a class="collapse-item" href="\perwalianadm">KRS</a>
-            <a class="collapse-item" href="\kurikulum">Kurikulum</a>
-            <a class="collapse-item" href="\nilai">Nilai</a>
-          </div>
-        </div> -->
-      </li>
+
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <!-- Nav Item - Pages Collapse Menu -->

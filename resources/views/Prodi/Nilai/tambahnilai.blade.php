@@ -21,7 +21,12 @@
                       <div class="form-group row ">
                         <label for="" class="col-sm-3 col-form-label text-right">NIM</label>
                         <div class="col-sm-9">
-                          <input type="text" name="nim" class="form-control @error('nim') is-invalid @enderror" value="{{ old('nim') }}">
+                          <div class="input-group">
+                            <input type="text" name="nim" id="inputmhs" class="form-control @error('nim') is-invalid @enderror" value="{{ old('nim') }}">
+                            <div class="input-group-append">
+                              <button class="btn btn-primary" type="button" id="button-nim" onclick="Tambahmhs()"><i class="fas fa-search"></i></button>
+                            </div>
+                          </div>
                           @error('nim') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -43,7 +48,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Nama</label>
                         <div class="col-sm-9">
-                          <input type="text" id="nama" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
+                          <input type="text" id="nama" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}" readonly>
                           @error('nama') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -53,7 +58,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Jurusan</label>
                         <div class="col-sm-9">
-                          <input type="text" id="jurusan" name="jurusan" class="form-control @error('jurusan') is-invalid @enderror" value="{{ old('jurusan') }}">
+                          <input type="text" id="jurusan" name="jurusan" class="form-control @error('jurusan') is-invalid @enderror" value="{{ old('jurusan') }}" readonly>
                           @error('jurusan') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -63,7 +68,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Semester</label>
                         <div class="col-sm-9">
-                          <input type="text" id="semester" name="semester" class="form-control @error('semester') is-invalid @enderror" value="{{ old('semester') }}">
+                          <input type="text" id="semester" name="semester" class="form-control @error('semester') is-invalid @enderror" value="{{ old('semester') }}" readonly>
                           @error('semester') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -73,17 +78,23 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Tahun Akademik</label>
                         <div class="col-sm-9">
-                          <input type="text" id="tahun" name="tahun" class="form-control @error('tahun') is-invalid @enderror" value="{{ old('tahun') }}">
+                          <input type="text" id="tahun" name="tahun" class="form-control @error('tahun') is-invalid @enderror" value="{{ old('tahun') }}" readonly>
                           @error('tahun') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
                         </div>
                       </div>
   
-                      <div class="form-group row">
+
+                      <div class="form-group row ">
                         <label for="" class="col-sm-3 col-form-label text-right">Kode Mata Kuliah</label>
                         <div class="col-sm-9">
-                          <input type="text" name="kode" class="form-control @error('kode') is-invalid @enderror" value="{{ old('kode') }}">
+                          <div class="input-group">
+                            <input type="text" name="kode" id="inputmatkul" class="form-control @error('kode') is-invalid @enderror" value="{{ old('kode') }}">
+                            <div class="input-group-append">
+                              <button class="btn btn-primary" type="button" id="button-kode" onclick="Tambahmatkul()"><i class="fas fa-search"></i></button>
+                            </div>
+                          </div>
                           @error('kode') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -93,7 +104,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">Mata Kuliah</label>
                         <div class="col-sm-9">
-                          <input type="text" name="matakuliah" class="form-control @error('matakuliah') is-invalid @enderror" value="{{ old('matakuliah') }}">
+                          <input type="text" id="matakuliah" name="matakuliah" class="form-control @error('matakuliah') is-invalid @enderror" value="{{ old('matakuliah') }}" readonly>
                           @error('matakuliah') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -103,7 +114,7 @@
                       <div class="form-group row">
                         <label for="" class="col-sm-3 col-form-label text-right">SKS</label>
                         <div class="col-sm-9">
-                          <input type="text" name="sks" class="form-control @error('sks') is-invalid @enderror" value="{{ old('sks') }}">
+                          <input type="text" id="sks" name="sks" class="form-control @error('sks') is-invalid @enderror" value="{{ old('sks') }}" readonly>
                           @error('sks') 
                               <small class="text-danger">{{ $message }}</small>
                           @enderror
@@ -190,19 +201,23 @@
     function Tambahmhs(){
       var id = $('#inputmhs').val();
         $.get('/tambahnilai/'+id,function(data){
-          var jrs = data.data[0].jurusan;
-          var smtr = data.data[0].semester;
-          $('#id').val(data.data[0].nim);
-          $('#nama').val(data.data[0].nama);
+          var jrs = data.data.jurusan;
+          var smtr = data.data.semester;
+          $('#id').val(data.data.nim);
+          $('#nama').val(data.data.nama);
           $('#jurusan').val(jrs.replace('_',' '));
-          $('#semester').val(jrs.replace('_',' '));
-          $('#tahun').val(data.data[0].tahun);
-
-          // for (var i = 0; i < data.data.length; i++) {
-          //   var smtr = data.data[i].semester;
-          //    $('#semester').append(`<option value="${smtr}">${smtr.replace('_',' ')}</option>`);
-          // }
-        
+          $('#semester').val(data.data.smt);
+          $('#tahun').val(data.data.tahun);
+        });
+    }
+    </script>
+    <script type="text/javascript">
+    function Tambahmatkul(){
+      var kode = $('#inputmatkul').val();
+        $.get('/tambahkode/'+kode,function(data){
+          $('#kode').val(data.data[0].kode);
+          $('#matakuliah').val(data.data[0].matakuliah);
+          $('#sks').val(data.data[0].sks);
         });
     }
     </script>

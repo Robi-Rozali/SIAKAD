@@ -80,8 +80,10 @@ Route::get('/datanilai/{semester}/{nim}', [NilaiController::class, 'nilai'])->mi
 Route::get('/editnilai/{kode}', [NilaiController::class, 'nilaimhs'])->middleware('auth:prodi');
 Route::post('/editnilai/', [NilaiController::class, 'update'])->middleware('auth:prodi');
 Route::get('/tambahnilai/{nim}', [NilaiController::class, 'tambahmhs'])->middleware('auth:prodi');
+Route::get('/tambahkode/{kode}', [NilaiController::class, 'Tambahmatkul'])->middleware('auth:prodi');
 Route::get('/khsadm/{id}', [KhsadmController::class, 'cari'])->middleware('auth:prodi');
 Route::post('/khsadm/cetak/pdf', [KhsadmController::class, 'cetak'])->middleware('auth:prodi');
+Route::get('/data/{semester}/{nim}', [KhsadmController::class, 'nilai'])->middleware('auth:prodi');
 Route::resource('/inputjadwal', InputjadwalController::class)->middleware('auth:prodi');
 Route::get('/inputjadwal/{prodi}/{smtr}/{tahun}', [InputjadwalController::class, 'matkul'])->middleware('auth:prodi');
 Route::get('/inputjadwal/detail/{id}', [InputjadwalController::class, 'detail'])->middleware('auth:prodi');

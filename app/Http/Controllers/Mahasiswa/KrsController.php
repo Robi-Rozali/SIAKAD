@@ -101,7 +101,7 @@ class KrsController extends Controller
                         ->select('kode','matakuliah','sks')->groupBy('kode','matakuliah','sks')->get();
         return response()->json([
             'data' => $krs,
-        ]);
+        ]); 
     }
 
     public function cetakkrs(Request $request){

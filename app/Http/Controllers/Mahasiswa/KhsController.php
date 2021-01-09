@@ -16,7 +16,7 @@ class KhsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() 
     {
         $nim = Auth::guard('mahasiswa')->user()->nim;
         $data = [

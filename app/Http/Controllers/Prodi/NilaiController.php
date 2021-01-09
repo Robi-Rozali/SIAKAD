@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Prodi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Nilai;
 use App\Models\Mahasiswa;
 use App\Models\Prodi;
+use App\Models\Perwalian;
+use App\Models\Kurikulum;
 use App\Exports\NilaiExport;
 use App\Imports\NilaiImport;
 
@@ -189,13 +192,23 @@ class NilaiController extends Controller
     }
     public function tambahmhs($nim){
 
-        $mahasiswa = Mahasiswa::where('nim', '=', $nim)
-                ->select('nama','jurusan','semester','tahun')->get();
+        $perwalian = Mahasiswa::where('mahasiswa.nim', '=', $nim)
+                    ->join('perwalian','mahasiswa.nim','=','perwalian.nim')
+                    ->select('mahasiswa.nama','mahasiswa.jurusan','mahasiswa.tahun',DB::raw('max(perwalian.semester) as smt'))->groupBy('mahasiswa.nama','mahasiswa.jurusan','mahasiswa.tahun')->first();
 
         return response()->json([
-            'data' =>$mahasiswa,
+            'data' =>$perwalian,
         ]);
     }
+    public function tambahmatkul($kode){
+
+        $kurikulum = Kurikulum::where('kode', '=', $kode)->get();
+
+        return response()->json([
+            'data' => $kurikulum,
+        ]);
+    }
+
     public function importcsv(Request $request){
         $validatedData = $request->validate([
             'file' => 'required',

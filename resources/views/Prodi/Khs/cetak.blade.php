@@ -150,11 +150,11 @@
     <thead>
       <tr style="background-color: #eee">
 				<th>NO</th>
-                <th>Kode</th>
-                <th>Mata Kuliah</th>
-                <th>SKS</th>
-                <th>Nilai</th>
-                <th>Keterangan</th>
+        <th>Kode</th>
+        <th>Mata Kuliah</th>
+        <th>SKS</th>
+        <th>Nilai</th>
+        <th>Keterangan</th>
 			</tr>
 		</thead>
 		<tbody>
