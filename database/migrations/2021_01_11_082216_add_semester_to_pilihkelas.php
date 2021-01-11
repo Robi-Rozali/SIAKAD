@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusSmtToNilai extends Migration
+class AddSemesterToPilihkelas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddStatusSmtToNilai extends Migration
      */
     public function up()
     {
-        Schema::table('nilai', function (Blueprint $table) {
-            $table->integer('status_smt')->after('semester');
+        Schema::table('pilihkelas', function (Blueprint $table) {
+            $table->integer('semester')->after('matakuliah');
         });
     }
 
@@ -25,8 +25,8 @@ class AddStatusSmtToNilai extends Migration
      */
     public function down()
     {
-        Schema::table('nilai', function (Blueprint $table) {
-           $table->dropColumn('status_smt');
+        Schema::table('pilihkelas', function (Blueprint $table) {
+            $table->dropColumn('semester');
         });
     }
 }
