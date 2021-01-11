@@ -34,7 +34,7 @@
 
 <style>
   .tukang{
-    background-image: url('{{ asset('img/asoy.jpg')  }}') !important;
+    background-image: url('{{ asset('img/dd.jpg')  }}') !important;
     background-size: cover;
     background-repeat: no-repeat;
     height: 450px; /* setting */

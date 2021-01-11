@@ -60,7 +60,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Perwalian :</h6>
             <a class="collapse-item" href="\perwalianadm">Perwalian</a>
-            <a class="collapse-item" href="\inputjadwal">Pilih Kelas</a>
+            <a class="collapse-item" href="\pilihkelasprodi">Pilih Kelas</a>
             <a class="collapse-item" href="\khsadm">Kartu Hasil Studi</a>
           </div>
         </div> 

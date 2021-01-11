@@ -41,6 +41,7 @@ use App\Http\Controllers\Prodi\InputjadwalController;
 use App\Http\Controllers\Prodi\KhsadmController;
 use App\Http\Controllers\Prodi\PerwalianadmController;
 use App\Http\Controllers\Prodi\KurikulumController;
+use App\Http\Controllers\Prodi\PilihkelasprodiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,8 +72,6 @@ Route::resource('/keu', KeuController::class)->middleware('auth:admin');
 
 //Prodi
 Route::get('/disposisi/{nim}', [PerwalianadmController::class,'disposisi'])->middleware('auth:prodi');
-
-
 Route::get('/prodi', [JurusanController::class, 'index'])->middleware('auth:prodi');
 Route::resource('/nilai', NilaiController::class)->middleware('auth:prodi');
 Route::get('/datanilai/{nim}', [NilaiController::class, 'carimhs'])->middleware('auth:prodi');
@@ -98,7 +97,8 @@ Route::get('/kurikulum/export/csv', [KurikulumController::class, 'exportcsv'])->
 Route::post('/nilai/import/csv', [NilaiController::class, 'importcsv'])->middleware('auth:prodi');
 Route::get('/exportnilai', [NilaiController::class, 'exportcsv'])->middleware('auth:prodi');
 
-
+Route::get('/pilihkelasprodi', [PilihkelasprodiController::class, 'index'])->middleware('auth:prodi');
+Route::post('/pilihkelasprodi', [PilihkelasprodiController::class, 'store'])->middleware('auth:prodi');
 
 
 
