@@ -14,7 +14,7 @@
                       NIM
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                      A3.1700040
+                      {{ Auth::guard('mahasiswa')->user()->nim }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -23,7 +23,7 @@
                       Nama
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                      ROBI ROZALI
+                      {{ Auth::guard('mahasiswa')->user()->nama }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -32,7 +32,7 @@
                       Jurusan / Prog
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                     Sistem Informasi / S1
+                     {{ Auth::guard('mahasiswa')->user()->jurusan }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -41,7 +41,7 @@
                       Tahun Akademik / Per
                     </label>
                     <div class="col-sm-5 teks-hitam">
-                     2020/2021 / 1
+                     {{ Auth::guard('mahasiswa')->user()->tahun }}
                     </div>
                     <div class="col-sm-4"></div>
                   </div>
@@ -54,19 +54,24 @@
                             <tr>
                               <th>No</th>
                               <th>Kode</th>
-                              <th>Mata Kuliah | SKS</th>
+                              <th>Mata Kuliah</th>
                               <th>Kelas | Ruang</th>
                               <th>Hari | Jam</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>1</td>
-                              <td>SI1044</td>
-                              <td>Kerja Praktek | 2</td>
-                              <td>B | R8</td>
-                              <td>Rabu | 15.30 - 17.10</td>
+                            @php
+                              $no=1;
+                            @endphp
+                        @foreach ($jadwal as $j)
+                          <tr>
+                              <td>{{ $no++ }}</td>
+                              <td>{{ $j->kode }}</td>
+                              <td>{{ $j->matakuliah }}</td>
+                              <td>{{ $j->kelas }} | {{ $j->ruang }}</td>
+                              <td>{{ $j->hari }} | {{ $j->jam }}</td>
                             </tr>
+                        @endforeach
                           </tbody>
                         </table>
                       </div>

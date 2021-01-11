@@ -67,6 +67,7 @@
                             <th>No</th>
                             <th>Kode MatKul</th>
                             <th>Mata Kuliah</th>
+                            <th>Semester</th>
                             <th>Kelas</th>
                             <th>Ruang</th>
                             <th>hari</th>
@@ -77,37 +78,41 @@
                             <th>Pilih</th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="table_nilai">
 @php
   $no = 1;
   $jdw = json_encode($jadwal);
 @endphp
-{{-- {{ dd($jadwal) }} --}}
-  @for ($i = 0; $i < count($jadwal) ; $i++)
+{{-- {{ dd($isi) }} --}}
+ @for ($i = 0; $i < count($jadwal) ; $i++)
     @for ($j = 0; $j < count($jadwal[$i]) ; $j++)
                           <tr id="tr{{ $jadwal[$i][$j]->id }}" class='tr-semester'>
+
                             <td>{{ $no++ }}</td>
                             <td>{{ $jadwal[$i][$j]->kode }}</td>
                             <td>{{ $jadwal[$i][$j]->matakuliah }}</td>
+                            <td>{{ $jadwal[$i][$j]->semester }}</td>
                             <td>{{ $jadwal[$i][$j]->kelas }}</td>
                             <td>{{ $jadwal[$i][$j]->ruang }}</td>
                             <td>{{ $jadwal[$i][$j]->hari }}</td>
                             <td>{{ $jadwal[$i][$j]->jam }}</td>
                             <td>{{ $jadwal[$i][$j]->namadosen }}</td>
                             <td>{{ $jadwal[$i][$j]->kuota }}</td>
-                      @if ($jadwal[$i][$j]->kelas == $isi[$i][$j]->kelas)
+                     {{--  @if ($jadwal[$i][$j]->kelas == $isi[$i][$j]->kelas)
                         <td>{{ $jadwal[$i][$j]->kuota - $isi[$i][$j]->eusi }}</td>
-                      @else
+                      @else --}}
                         <td>{{ $jadwal[$i][$j]->kuota }}</td>
-                      @endif
+                      {{-- @endif --}}
                             
                             <td>
                               <div class="form-check text-center">
+                                <input class="form-check-input" type="radio" value="" name="id[0][{{ $jadwal[$i][$j]->kode }}]" id="id_{{ $jadwal[$i][$j]->id }}">
                                 <input class="form-check-input" type="radio" value="{{ $jadwal[$i][$j]->id }}" name="id[0][{{ $jadwal[$i][$j]->kode }}]" id="id_{{ $jadwal[$i][$j]->id }}">
                               </div>
                             </td>
                           </tr>
-      @endfor
+      
+@endfor
 @endfor
 
                         </tbody>
@@ -131,21 +136,78 @@
 @endsection
 
 @section('script')
-<script>
-  function Pilih(id){
-    // console.log(id)
-    var tr = $(`.tr${id}`);
-    var radio = $(`.id_${id}`);
-    // console.log(radio)
-    console.log(tr)
+{{-- <script>
+  $(document).ready(function(){
+    var arr =  @php
+      echo json_encode($jadwal);
+    @endphp ;
+    var isi =  @php
+      echo json_encode($isi);
+    @endphp ;
+      // $.each(arr, function(i, value){
+        // console.log(arr)
+        var n = 1;
+        var h = 0;
+        // for(var i = 0, length1 = arr.length; i < length1; i++){
+        $.each(arr, function(j, val){
+          for(var i = 0, length1 = isi.length; i < length1; i++){
+            if(val.id == isi[i].id_jadwal){
+              h =  val.kuota - isi[i].eusi;
+            }
+            console.log(h)
+          }
+         
+          var form = `
+            <tr id="tr" class='tr-semester'>
+              <td>${n++}</td>
+              <td>${val.kode}</td>
+              <td>${val.matakuliah}</td>
+              <td>${val.kelas}</td>
+              <td>${val.ruang}</td>
+              <td>${val.hari}</td>
+              <td>${val.jam}</td>
+              <td>${val.namadosen}</td>
+              <td>${val.kuota}</td>
+              <td>${h}</td>
+              <td>
+                <div class="form-check text-center">
+                  <input class="form-check-input" type="radio" value="${val.id}" name="id[0][${val.kode}]" id="id_${val.id}">
+                </div>
+              </td>
+            </tr>`;
+            
+          $('#table_nilai').append(form);
+        })
+     
+  })
+    
+       
+   
 
-    var tr_smt = $(`.tr-semester`);
-    // console.log(tr_smt)
-    tr_smt.style.backgroundColor = '#fff';
 
-    if (radio.checked = true) {
-      tr.style.backgroundColor = '#d4edda';
-    }
-  }
-</script>
+
+
+
+
+
+
+
+
+
+  // function Pilih(id){
+  //   // console.log(id)
+  //   var tr = $(`.tr${id}`);
+  //   var radio = $(`.id_${id}`);
+  //   // console.log(radio)
+  //   console.log(tr)
+
+  //   var tr_smt = $(`.tr-semester`);
+  //   // console.log(tr_smt)
+  //   tr_smt.style.backgroundColor = '#fff';
+
+  //   if (radio.checked = true) {
+  //     tr.style.backgroundColor = '#d4edda';
+  //   }
+  // }
+</script> --}}
 @endsection

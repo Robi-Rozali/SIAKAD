@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\Pilihkelas;
+use App\Models\Perwalian;
 
 class JadwalkuliahController extends Controller
 {
@@ -14,7 +19,16 @@ class JadwalkuliahController extends Controller
      */
     public function index()
     {
-        return view('Mahasiswa.jadwal.jadwalkuliah');
+        $nim = Auth::guard('mahasiswa')->user()->nim;
+
+        $sms = Perwalian::where('nim','=',$nim)
+                        ->select(DB::raw('max(semester) as maksks'))->first();
+
+        $data = [
+            'jadwal' => Pilihkelas::where('nim','=',$nim)
+                    ->where('semester','=',$sms->maksks)->get(),
+        ];
+        return view('Mahasiswa.jadwal.jadwalkuliah')->with($data);
     }
 
     /**

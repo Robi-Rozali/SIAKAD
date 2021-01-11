@@ -50,21 +50,42 @@ class PilihkelasController extends Controller
                             $nunu->where('pilihkelas.nim','=',Auth::guard('mahasiswa')->user()->nim);
                             })
                             ->whereNull('pilihkelas.kode')
-                            ->select('jadwal.id','jadwal.kode','jadwal.matakuliah','jadwal.kelas','jadwal.ruang','jadwal.hari','jadwal.jam','jadwal.namadosen','kelas.kuota')->get();
+                            ->select('jadwal.semester','jadwal.id','jadwal.kode','jadwal.matakuliah','jadwal.kelas','jadwal.ruang','jadwal.hari','jadwal.jam','jadwal.namadosen','kelas.kuota')
+                            ->groupBy('jadwal.semester','jadwal.id','jadwal.kode','jadwal.matakuliah','jadwal.kelas','jadwal.ruang','jadwal.hari','jadwal.jam','jadwal.namadosen','kelas.kuota')->get();
 
             $isi[] = pilihkelas::where('pilihkelas.kode','=',$kd[$i])
                  ->join('kelas','pilihkelas.kelas','=','kelas.kelas')
-                ->select('kelas.kelas',DB::raw('count(pilihkelas.kode) as eusi'))
-                ->groupBy('kelas.kelas')->get();
+                ->select('pilihkelas.id_jadwal','pilihkelas.kode','kelas.kelas',DB::raw('count(pilihkelas.kode) as eusi'))
+                ->groupBy('pilihkelas.id_jadwal','pilihkelas.kode','kelas.kelas')->get();
 
         }
 
+        for ($i = 0; $i < count($jadwal) ; $i++){
+                // $isian[] = $isi[$i][$j];
+                // break;
+            foreach ($isi[$i] as $key) {
+                    $kela[] = $key;
+            }
+
+            // foreach ($jadwal[$i] as $k => $value) {
+            //     $jangar[] = $value;
+            // }
+        }
+
+
+// dd($jangar);
+        // dd($kela);
         // dd($isi);
+        // foreach ($isi as $key => $value) {
+        //     dd($value);
+        // }
+        // $arr = array_column($isian, 'eusi');
+        // dd($arr);
 
         $data = [
             'krs' => Perwalian::where('nim', '=', $nim)->first(),
-            'jadwal' => $jadwal,  
-            'isi' => $isi,  
+            'jadwal' => $jadwal,
+            'isi' => $kela,
         ];
         return view('mahasiswa.perwalian.pilihkelas')->with($data);
     }
@@ -92,6 +113,7 @@ class PilihkelasController extends Controller
             $jadwals[$jdwl->id]['id']=$jdwl->id;
             $jadwals[$jdwl->id]['kode']=$jdwl->kode;
             $jadwals[$jdwl->id]['matakuliah']=$jdwl->matakuliah;
+            $jadwals[$jdwl->id]['semester']=$jdwl->semester;
             $jadwals[$jdwl->id]['kelas']=$jdwl->kelas;
             $jadwals[$jdwl->id]['ruang']=$jdwl->ruang;
             $jadwals[$jdwl->id]['hari']=$jdwl->hari;
@@ -109,6 +131,7 @@ class PilihkelasController extends Controller
                 $data->tahun = $jadwals[$value]['tahun'];
                 $data->kode = $jadwals[$value]['kode'];
                 $data->matakuliah = $jadwals[$value]['matakuliah'];
+                $data->semester = $jadwals[$value]['semester'];
                 $data->kelas = $jadwals[$value]['kelas'];
                 $data->ruang = $jadwals[$value]['ruang'];
                 $data->hari = $jadwals[$value]['hari'];
