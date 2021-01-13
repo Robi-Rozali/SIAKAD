@@ -8,15 +8,15 @@
               <div class="card shadow">
                 <div class="card-header">Pilih Kelas</div>
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row"> 
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <label for="" class="col-sm-3 col-form-label">NIM</label>
                                 <div class="col-sm-5">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="nim" id="nim" aria-describedby="button-nim" value="{{-- {{ ($mhs->nim == '') ? '' : $mhs->nim }} --}}">
+                                        <input type="text" name="nim" id="carimhs" class="form-control @error('nim') is-invalid @enderror" value="{{ old('nim') }}">
                                         <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="button" id="button-nim" onclick="Cari()"><i class="fas fa-search"></i></button>
+                                          <button class="btn btn-primary" type="button" id="button-nim" onclick="Caridata()"><i class="fas fa-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +136,18 @@
         </div>
       <!-- End of Main Content -->
 @endsection
-
+@section('script')
+<script type="text/javascript">
+    function Caridata(){
+      var id = $('#carimhs').val();
+        $.get('/pilihkelasprodi/'+id,function(data){
+          var jrs = data.data.jurusan;
+          $('#id').val(data.data.nim);
+          $('#nama').val(data.data.nama);
+          $('#jurusan').val(jrs.replace('_',' '));
+          $('#semester').val(data.data.smt);
+          $('#tahun').val(data.data.tahun);
+@endsection
 {{-- @section('script')
 <script>
   function Pilih(id){

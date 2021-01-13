@@ -12,7 +12,7 @@ use App\Models\Kelas;
 use App\Models\Inputjadwal;
 use App\Models\Pilihkelas;
 use App\Models\Perwalian;
-use App\Models\Mahasiswa;
+use App\Models\Mahasiswa; 
 
 class PilihkelasprodiController extends Controller
 {
@@ -160,5 +160,14 @@ class PilihkelasprodiController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function pilihkelasprodi($nim){
+
+        $mahasiswa = Mahasiswa::where('nim', '=', $nim)
+                ->select('nama','jurusan','semester','tahun')->groupBy('nama','jurusan','semester','tahun')->get();
+
+        return response()->json([
+            'data' =>$mahasiswa,
+        ]);
     }
 }
