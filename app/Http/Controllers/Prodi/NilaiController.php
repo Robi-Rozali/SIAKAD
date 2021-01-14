@@ -56,6 +56,10 @@ class NilaiController extends Controller
      */
     public function store(Request $request)
     {
+         $maks = Perwalian::where('nim','=',$request->input('nim'))
+                     ->where('atas','=','0')
+                        ->select(DB::raw('max(semester) as maksks'))->first();
+
          $request->validate([
             'nim'           => 'required',
             'nama'          => 'required',
@@ -88,6 +92,7 @@ class NilaiController extends Controller
         $nilai->uas         = $request->input('uas');
         $nilai->jumlah      = $request->input('jumlah');
         $nilai->grade       = $request->input('grade');
+        $nilai->status_smt  = $maks->maksks;
         $nilai->save();
 
         return redirect('/nilai')->with('sukses','Data Nilai berhasil ditambah');
@@ -128,6 +133,7 @@ class NilaiController extends Controller
      */
     public function update(Request $request)
     {
+       
         $request->validate([
             'kode'          => 'required',
             'matakuliah'    => 'required',
@@ -191,9 +197,9 @@ class NilaiController extends Controller
         ]);
     }
     public function tambahmhs($nim){
-
         $perwalian = Mahasiswa::where('mahasiswa.nim', '=', $nim)
                     ->join('perwalian','mahasiswa.nim','=','perwalian.nim')
+                     ->where('perwalian.atas','=','0')
                     ->select('mahasiswa.nama','mahasiswa.jurusan','mahasiswa.tahun',DB::raw('max(perwalian.semester) as smt'))->groupBy('mahasiswa.nama','mahasiswa.jurusan','mahasiswa.tahun')->first();
 
         return response()->json([

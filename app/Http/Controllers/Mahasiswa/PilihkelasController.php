@@ -60,7 +60,7 @@ class PilihkelasController extends Controller
 
         }
 
-$kela=[];
+$kela=[]; 
         for ($i = 0; $i < count($jadwal) ; $i++){
                 // $isian[] = $isi[$i][$j];
                 // break;
