@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Perwalian;
 use App\Models\Mahasiswa;
-use App\Models\Kurikulum;
+use App\Models\Kurikulum; 
 use App\Models\Nilai;
 
 class PerwalianadmController extends Controller

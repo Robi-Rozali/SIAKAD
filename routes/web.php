@@ -89,17 +89,16 @@ Route::get('/inputjadwal/detail/{id}', [InputjadwalController::class, 'detail'])
 Route::get('/khsadm', [KhsadmController::class, 'index']);
 
 Route::resource('/perwalianadm', PerwalianadmController::class)->middleware('auth:prodi');
-
 Route::get('/perwalianadm/{prodi}/{smtr}/{tahun}', [PerwalianadmController::class, 'matakuliah'])->middleware('auth:prodi');
+
 Route::resource('/kurikulum', KurikulumController::class)->middleware('auth:prodi');
 Route::post('/kurikulum/import/csv', [KurikulumController::class, 'importcsv'])->middleware('auth:prodi');
 Route::get('/kurikulum/export/csv', [KurikulumController::class, 'exportcsv'])->middleware('auth:prodi');
 Route::post('/nilai/import/csv', [NilaiController::class, 'importcsv'])->middleware('auth:prodi');
 Route::get('/exportnilai', [NilaiController::class, 'exportcsv'])->middleware('auth:prodi');
 
-Route::get('/pilihkelasprodi', [PilihkelasprodiController::class, 'index'])->middleware('auth:prodi');
-Route::post('/pilihkelasprodi', [PilihkelasprodiController::class, 'store'])->middleware('auth:prodi');
-
+Route::resource('/pilihkelasprodi', PilihkelasprodiController::class)->middleware('auth:prodi');
+Route::get('/anjay/{nim}', [PilihkelasprodiController::class,'pilihkelasprodi'])->middleware('auth:prodi');
 
 
 

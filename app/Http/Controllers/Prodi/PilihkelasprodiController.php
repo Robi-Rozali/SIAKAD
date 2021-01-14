@@ -12,7 +12,7 @@ use App\Models\Kelas;
 use App\Models\Inputjadwal;
 use App\Models\Pilihkelas;
 use App\Models\Perwalian;
-use App\Models\Mahasiswa;
+use App\Models\Mahasiswa; 
 
 class PilihkelasprodiController extends Controller
 {
@@ -160,5 +160,18 @@ class PilihkelasprodiController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function pilihkelasprodi($nim){
+
+        $mahasiswa = Mahasiswa::where('mahasiswa.nim', '=', $nim)
+                    ->join('perwalian','mahasiswa.nim','=','perwalian.nim')
+                    ->select('mahasiswa.nama','mahasiswa.jurusan','mahasiswa.tahun',DB::raw('max(perwalian.semester) as smt'))->groupBy('mahasiswa.nama','mahasiswa.jurusan','mahasiswa.tahun')->first();
+
+        // $mahasiswa = Mahasiswa::where('nim', '=', $nim)
+        //         ->select('nim','nama','jurusan','tahun')->get();
+
+        return response()->json([
+            'data' =>$mahasiswa,
+        ]);
     }
 }
