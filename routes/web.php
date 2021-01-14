@@ -98,7 +98,7 @@ Route::post('/nilai/import/csv', [NilaiController::class, 'importcsv'])->middlew
 Route::get('/exportnilai', [NilaiController::class, 'exportcsv'])->middleware('auth:prodi');
 
 Route::resource('/pilihkelasprodi', PilihkelasprodiController::class)->middleware('auth:prodi');
-Route::get('/pilihkelasprodi/{nim}', [PilihkelasprodiController::class,'pilihkelasprodi'])->middleware('auth:prodi');
+Route::get('/anjay/{nim}', [PilihkelasprodiController::class,'pilihkelasprodi'])->middleware('auth:prodi');
 
 
 

@@ -163,8 +163,12 @@ class PilihkelasprodiController extends Controller
     }
     public function pilihkelasprodi($nim){
 
-        $mahasiswa = Mahasiswa::where('nim', '=', $nim)
-                ->select('nama','jurusan','semester','tahun')->groupBy('nama','jurusan','semester','tahun')->get();
+        $mahasiswa = Mahasiswa::where('mahasiswa.nim', '=', $nim)
+                    ->join('perwalian','mahasiswa.nim','=','perwalian.nim')
+                    ->select('mahasiswa.nama','mahasiswa.jurusan','mahasiswa.tahun',DB::raw('max(perwalian.semester) as smt'))->groupBy('mahasiswa.nama','mahasiswa.jurusan','mahasiswa.tahun')->first();
+
+        // $mahasiswa = Mahasiswa::where('nim', '=', $nim)
+        //         ->select('nim','nama','jurusan','tahun')->get();
 
         return response()->json([
             'data' =>$mahasiswa,

@@ -14,9 +14,9 @@
                                 <label for="" class="col-sm-3 col-form-label">NIM</label>
                                 <div class="col-sm-5">
                                     <div class="input-group">
-                                        <input type="text" name="nim" id="carimhs" class="form-control @error('nim') is-invalid @enderror" value="{{ old('nim') }}">
+                                        <input type="text" class="form-control" id="carimhs" placeholder="Cari Mahasiswa" value="" name="nim">
                                         <div class="input-group-append">
-                                          <button class="btn btn-primary" type="button" id="button-nim" onclick="Caridata()"><i class="fas fa-search"></i></button>
+                                            <button class="btn btn-primary" type="button" id="carimhs" onclick="Caridata()"><i class="fas fa-search"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -140,30 +140,45 @@
 <script type="text/javascript">
     function Caridata(){
       var id = $('#carimhs').val();
-        $.get('/pilihkelasprodi/'+id,function(data){
+        $.get('/anjay/'+id,function(data){
           var jrs = data.data.jurusan;
+          var smtr = data.data.semester;
           $('#id').val(data.data.nim);
           $('#nama').val(data.data.nama);
           $('#jurusan').val(jrs.replace('_',' '));
           $('#semester').val(data.data.smt);
           $('#tahun').val(data.data.tahun);
-@endsection
-{{-- @section('script')
-<script>
-  function Pilih(id){
-    // console.log(id)
-    var tr = $(`.tr${id}`);
-    var radio = $(`.id_${id}`);
-    // console.log(radio)
-    console.log(tr)
-
-    var tr_smt = $(`.tr-semester`);
-    // console.log(tr_smt)
-    tr_smt.style.backgroundColor = '#fff';
-
-    if (radio.checked = true) {
-      tr.style.backgroundColor = '#d4edda';
+        });
     }
-  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // function Pilih(id){
+  //   // console.log(id)
+  //   var tr = $(`.tr${id}`);
+  //   var radio = $(`.id_${id}`);
+  //   // console.log(radio)
+  //   console.log(tr)
+
+  //   var tr_smt = $(`.tr-semester`);
+  //   // console.log(tr_smt)
+  //   tr_smt.style.backgroundColor = '#fff';
+
+  //   if (radio.checked = true) {
+  //     tr.style.backgroundColor = '#d4edda';
+  //   }
+  // }
 </script>
-@endsection --}}
+@endsection
