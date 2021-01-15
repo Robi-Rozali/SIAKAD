@@ -3,6 +3,9 @@
 @section('konten')
         <!-- Begin Page Content -->
         <div class="container-fluid mb-5">
+          <form action="/pilihkelasprodi" method="post">
+            @csrf
+            @method('POST')
           <div class="row">
             <div class="col-md-12">
               <div class="card shadow">
@@ -73,9 +76,6 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-12">
-                    <form action="{{-- /pilihkelasprodi --}}" method="post">
-                      {{-- @csrf
-                      @method('POST') --}}
                       <div class="table-responsive">
                       <table class="table">
                         <thead>
@@ -93,29 +93,7 @@
                             <th>Pilih</th>
                           </tr>
                         </thead>
-                        <tbody>
-
-{{-- {{ dd($jadwal) }} --}}
-  
-                          <tr id="" class='tr-semester'>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                      
-                            
-                            <td>
-                              <div class="form-check text-center">
-                                <input class="form-check-input" type="radio" value="" name="" id="">
-                              </div>
-                            </td>
-                          </tr>
-
+                        <tbody id="table_nilai">
 
                         </tbody>
                       </table>
@@ -129,10 +107,10 @@
                   <button type="submit" class="btn btn-primary btn-lg">Simpan</button>
                 </div> --}}
               </div>
-              </form>
             </div>
 
           </div>
+          </form>
         </div>
       <!-- End of Main Content -->
 @endsection
@@ -148,37 +126,35 @@
           $('#jurusan').val(jrs.replace('_',' '));
           $('#semester').val(data.data.smt);
           $('#tahun').val(data.data.tahun);
-        });
+
+          // $.each(data.jadwal, function(i, val){
+          var n = 1;
+      for(var i = 0, length1 = data.jadwal.length; i < length1; i++){
+        console.log(data.jadwal[0].kode)
+          var form = `
+            <tr id="tr" class='tr-semester'>
+              <td>${n++}</td>
+              <td>${data.jadwal[i].kode}</td>
+              <td>${data.jadwal[i].matakuliah}</td>
+              <td>${data.jadwal[i].kelas}</td>
+              <td>${data.jadwal[i].ruang}</td>
+              <td>${data.jadwal[i].hari}</td>
+              <td>${data.jadwal[i].jam}</td>
+              <td>${data.jadwal[i].namadosen}</td>
+              <td>${data.jadwal[i].kuota}</td>
+              <td>${data.jadwal[i].kuota}</td>
+              <td>
+                <div class="form-check text-center">
+                  <input class="form-check-input" type="radio" value="${data.jadwal[i].id}" name="id[0][${data.jadwal[i].kode}]" id="id_${data.jadwal[i].id}">
+                </div>
+              </td>
+            </tr>`;
+            
+          $('#table_nilai').append(form);
+        }
+      })
+
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // function Pilih(id){
-  //   // console.log(id)
-  //   var tr = $(`.tr${id}`);
-  //   var radio = $(`.id_${id}`);
-  //   // console.log(radio)
-  //   console.log(tr)
-
-  //   var tr_smt = $(`.tr-semester`);
-  //   // console.log(tr_smt)
-  //   tr_smt.style.backgroundColor = '#fff';
-
-  //   if (radio.checked = true) {
-  //     tr.style.backgroundColor = '#d4edda';
-  //   }
-  // }
 </script>
 @endsection
