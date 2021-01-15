@@ -13,7 +13,7 @@ use App\Models\Inputjadwal;
 use App\Models\Pilihkelas;
 use App\Models\Perwalian;
 use App\Models\Mahasiswa; 
-
+ 
 class PilihkelasprodiController extends Controller
 {
     /**
@@ -23,6 +23,7 @@ class PilihkelasprodiController extends Controller
      */
     public function index()
     {
+<<<<<<< Updated upstream
         // $maks = Perwalian::where('nim','=',$mahasiswa->nim)
         //                 ->select(DB::raw('max(semester) as maksks'))->first();
 
@@ -62,6 +63,55 @@ class PilihkelasprodiController extends Controller
         //     'jadwal' => $jadwal,  
         //     'isi' => $isi,  
         // ];
+=======
+        $maks = Perwalian::where('nim','=',$nim)
+                        ->select(DB::raw('max(semester) as maksks'))->first();
+
+        $perwalian = Perwalian::where('nim','=',$nim)
+                        ->where('semester','=',$maks->maksks)
+                        ->select('kode','semester')->groupBy('kode','semester')->get();
+        
+
+        foreach($perwalian as $p){
+            $kd[] = $p->kode;
+            $sms[] = $p->semester;
+        }
+
+        for ($i=0; $i < count($kd) ; $i++) { 
+            // dd($kd[$i]);
+            $jadwal[] = Inputjadwal::where('jadwal.kode','=',$kd[$i])
+                            ->where('jadwal.semester','=',$sms[$i])
+                            ->join('kelas','jadwal.kelas','=','kelas.kelas')
+                            ->leftjoin('pilihkelas',function($nunu){
+                            $nunu->on('jadwal.kode','=','pilihkelas.kode');
+                            $nunu->where('pilihkelas.nim','=',Auth::guard('mahasiswa')->user()->nim);
+                            })
+                            ->whereNull('pilihkelas.kode')
+                            ->select('jadwal.id','jadwal.kode','jadwal.matakuliah','jadwal.kelas','jadwal.ruang','jadwal.hari','jadwal.jam','jadwal.namadosen','kelas.kuota')->get();
+
+            $isi[] = pilihkelas::where('pilihkelas.kode','=',$kd[$i])
+                 ->join('kelas','pilihkelas.kelas','=','kelas.kelas')
+                ->select('kelas.kelas',DB::raw('count(pilihkelas.kode) as eusi'))
+                ->groupBy('kelas.kelas')->get();
+
+        }
+        $kela=[]; 
+        for ($i = 0; $i < count($jadwal) ; $i++){
+            foreach ($isi[$i] as $key) {
+                    $kela[] = $key;
+            }
+
+        }
+
+
+        // dd($isi);
+
+        $data = [
+            'krs' => Perwalian::where('nim', '=', $nim)->first(),
+            'jadwal' => $jadwal,  
+            'isi' => $isi,  
+        ];
+>>>>>>> Stashed changes
         // return view('mahasiswa.perwalian.pilihkelas')->with($data);
         return view('prodi.pilihkelas.pilihkelasprodi');
     }
@@ -84,12 +134,19 @@ class PilihkelasprodiController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< Updated upstream
        $jadwal = Inputjadwal::all();
+=======
+        $jadwal = Inputjadwal::all();
+>>>>>>> Stashed changes
         foreach ($jadwal as $jdwl) {            
             $jadwals[$jdwl->id]['id']=$jdwl->id;
             $jadwals[$jdwl->id]['kode']=$jdwl->kode;
             $jadwals[$jdwl->id]['matakuliah']=$jdwl->matakuliah;
+<<<<<<< Updated upstream
             $jadwals[$jdwl->id]['semester']=$jdwl->semester;
+=======
+>>>>>>> Stashed changes
             $jadwals[$jdwl->id]['kelas']=$jdwl->kelas;
             $jadwals[$jdwl->id]['ruang']=$jdwl->ruang;
             $jadwals[$jdwl->id]['hari']=$jdwl->hari;
@@ -101,6 +158,7 @@ class PilihkelasprodiController extends Controller
         foreach($request->id[0] as $key => $value){
             // dd($request->id);
                 $data = new Pilihkelas;
+<<<<<<< Updated upstream
                 $data->nim = $request->nim;
                 $data->nama = $request->nama;
                 $data->jurusan = $request->jurusan;
@@ -108,6 +166,14 @@ class PilihkelasprodiController extends Controller
                 $data->kode = $jadwals[$value]['kode'];
                 $data->matakuliah = $jadwals[$value]['matakuliah'];
                 $data->semester = $jadwals[$value]['semester'];
+=======
+                $data->nim = $request->input('nim');
+                $data->nama = $request->input('nama');
+                $data->jurusan = str_replace(' ', '_', $request->input('jurusan'));
+                $data->tahun = $jadwals[$value]['tahun'];
+                $data->kode = $jadwals[$value]['kode'];
+                $data->matakuliah = $jadwals[$value]['matakuliah'];
+>>>>>>> Stashed changes
                 $data->kelas = $jadwals[$value]['kelas'];
                 $data->ruang = $jadwals[$value]['ruang'];
                 $data->hari = $jadwals[$value]['hari'];

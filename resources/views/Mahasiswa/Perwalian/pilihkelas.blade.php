@@ -56,7 +56,7 @@
                 <div class="card-header">Kelas Yang Dipilih :</div>
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12"> 
                     <form action="/pilihkelas" method="post">
                       @csrf
                       @method('POST')

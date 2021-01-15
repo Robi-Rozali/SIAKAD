@@ -12,7 +12,7 @@
                 <div class="card-header">Pilih Kelas</div>
                 <div class="card-body">
                     <div class="row"> 
-                        <div class="col-md-6">
+                        <div class="col-md-6"> 
                             <div class="form-group row">
                                 <label for="" class="col-sm-3 col-form-label">NIM</label>
                                 <div class="col-sm-5">

@@ -13,7 +13,7 @@ use App\Models\Ruang;
 use App\Models\Kelas;
 
 class AdminController extends Controller
-{
+{ 
     
     public function index(){
     	$data = [

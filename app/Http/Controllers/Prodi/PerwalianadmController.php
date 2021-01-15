@@ -63,6 +63,7 @@ class PerwalianadmController extends Controller
                 $data->kode = $kurikulums[$value]['kode'];
                 $data->matakuliah = $kurikulums[$value]['matakuliah'];
                 $data->sks = $kurikulums[$value]['sks'];
+                $data->atas = '0';
                 $data->save();
         }
 

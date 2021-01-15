@@ -4,6 +4,9 @@ namespace App\Http\Controllers\prodi;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\Kurikulum;
 
 class JurusanController extends Controller
 {
@@ -14,6 +17,12 @@ class JurusanController extends Controller
      */
     public function index()
     {
+        $data = [
+            'jumatkul' => Kurikulum::select(DB::raw('COUNT(id) as total'))->get(),
+            // 'jumdos' => Dosen::select(DB::raw('COUNT(nidn) as total'))->get(),
+            // 'jumruang' => Ruang::select(DB::raw('COUNT(id) as total'))->get(),
+            // 'jumkelas' => Kelas::select(DB::raw('COUNT(id) as total'))->get(),
+        ];
         return view('prodi.index');
     }
 
