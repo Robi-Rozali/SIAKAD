@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Kurikulum;
+use App\Models\Mahasiswa;
+use App\Models\Dosen;
 
 class JurusanController extends Controller
 {
@@ -19,11 +21,11 @@ class JurusanController extends Controller
     {
         $data = [
             'jumatkul' => Kurikulum::select(DB::raw('COUNT(id) as total'))->get(),
-            // 'jumdos' => Dosen::select(DB::raw('COUNT(nidn) as total'))->get(),
-            // 'jumruang' => Ruang::select(DB::raw('COUNT(id) as total'))->get(),
+            'jumlah' => Mahasiswa::select(DB::raw('COUNT(nim) as total'))->first(),
+            'jumdos' => Dosen::select(DB::raw('COUNT(nidn) as total'))->first(),
             // 'jumkelas' => Kelas::select(DB::raw('COUNT(id) as total'))->get(),
         ];
-        return view('prodi.index');
+        return view('prodi.index')->with($data);
     }
 
     /**

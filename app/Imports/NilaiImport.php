@@ -21,6 +21,7 @@ class NilaiImport implements ToModel,WithHeadingRow
             'nama'          => $row['nama'],
             'jurusan'       => $row['jurusan'],
             'semester'       => $row['semester'],
+            'status_smt'       => $row['semester'],
             'tahun'       => $row['tahun'],
             'kode'       => $row['kode'],
             'matakuliah'       => $row['matakuliah'],

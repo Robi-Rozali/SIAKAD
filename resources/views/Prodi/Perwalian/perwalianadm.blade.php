@@ -164,7 +164,7 @@
             var form = `
                 <tr id="tr" class='tr-semester'>
                     <td>${n++}</td>
-                    <td>${data['krm'][i].id}</td>
+                    <td>${data['krm'][i].kode}</td>
                     <td>${data['krm'][i].matakuliah}</td>
                     <td>${data['krm'][i].sks}</td>
                     <td>
