@@ -63,9 +63,10 @@
                         <label for="" class="col-sm-3 col-form-label text-right">Jurusan</label>
                         <div class="col-sm-9">
                           <select class="form-control @error('jurusan') is-invalid @enderror" name="jurusan">
-                            <option value="{{ $kurikulum->jurusan }}">{{$kurikulum->jurusan}}</option>
+                            <option value="{{ $kurikulum->jurusan }}">{{ str_replace('_', ' ', $kurikulum->jurusan) }}</option>
+                            <option disabled=""></option>
                             @foreach ($prodi as $p)
-                            <option value="{{$p->prodi}}">{{$p->prodi}}</option>
+                            <option value="{{$p->prodi}}">{{ str_replace('_', ' ', $p->prodi)}}</option>
                             @endforeach
                           </select>
                           @error('jurusan') 
