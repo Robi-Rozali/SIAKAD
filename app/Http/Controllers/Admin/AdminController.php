@@ -20,7 +20,7 @@ class AdminController extends Controller
     		'jumlah' => Mahasiswa::select(DB::raw('COUNT(nim) as total'))->get(),
     		'jumdos' => Dosen::select(DB::raw('COUNT(nidn) as total'))->get(),
     		'jumruang' => Ruang::select(DB::raw('COUNT(id) as total'))->get(),
-            'jumkelas' => Kelas::select(DB::raw('COUNT(id) as total'))->get(),
+            'jumkelas' => Kelas::select(DB::raw('COUNT(kelas) as total'))->get(),
     	];
     	// dd($data);
     	

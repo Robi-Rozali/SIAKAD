@@ -35,6 +35,9 @@ class PilihkelasController extends Controller
                         ->select('kode','semester')->groupBy('kode','semester')->get();
         
 
+        $kd = [];
+        $sms = [];
+        $jadwal = [];
         foreach($perwalian as $p){
             $kd[] = $p->kode;
             $sms[] = $p->semester;
