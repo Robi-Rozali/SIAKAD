@@ -12,6 +12,6 @@ class DummyClass implements FromCollection
     */
     public function collection()
     {
-        return DummyModelClass::all();
+        return DummyModelClass::all(); 
     }
 }
