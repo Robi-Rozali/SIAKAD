@@ -6,13 +6,13 @@
 ## Kebutuhan
 
 - PHP Version >= 7.3
-- [Composer](https://getcomposer.org/download/)
+- Composer
 - Apache (Web Server)
 - Mysql (Database)
 
 ## Installasi
 
-- [unduh project](https://github.com/Robi-Rozali/SIAKAD/archive/main.zip) kemudian extract atau bisa dengan mengclone ke laptop Anda.
+- unduh project kemudian extract atau bisa dengan mengclone ke laptop Anda.
 - buka terminal dan arahkan ke directory project tersebut.
 - untuk mempersiapkan database terdapat 2 cara, pertama dengan mengimportkan file .sql (siakad.sql) yang terdapat pada project dan yang kedua dengan menggunakan perintah <code>php artisan migrate</code> pada terminal.
 - ubah file .env untuk mengkonfigurasikan database.
