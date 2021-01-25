@@ -16,7 +16,6 @@
 - buka terminal dan arahkan ke directory project tersebut.
 - untuk mempersiapkan database terdapat 2 cara, pertama dengan mengimportkan file .sql (siakad.sql) yang terdapat pada project dan yang kedua dengan menggunakan perintah <code>php artisan migrate</code> pada terminal.
 - ubah file .env untuk mengkonfigurasikan database.
-- jalankan perintah <code>php artisan storage:link</code> untuk membuat symbolic link agar file dapat diakses oleh public. Jika Anda lupa menjalankan perintah ini
-maka <b>foto</b> dan <b>ktp</b> peserta menjadi tidak bisa ditampilkan.
+- jalankan perintah <code>php artisan storage:link</code> untuk membuat symbolic link agar file dapat diakses oleh public.
 - untuk menjalankan project gunakan perintah <code>php artisan serve</code> pada terminal.
 - kemudian akses http://127.0.0.1:8000 atau http://localhost:8000 pada browser Anda.
