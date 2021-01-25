@@ -19,15 +19,4 @@
 - jalankan perintah <code>php artisan storage:link</code> untuk membuat symbolic link agar file dapat diakses oleh public.
 - untuk menjalankan project gunakan perintah <code>php artisan serve</code> pada terminal.
 - kemudian akses http://127.0.0.1:8000 atau http://localhost:8000 pada browser Anda.
-- untuk masuk gunakan :</br> 
-Mahasiswa</br>
-U : a31700040</br>
-P : A3.1700040</br>
-</br>
-Prodi : </br>
-U : prodi</br>
-P : prodi</br>
-</br>
-Admin</br>
-U : admin</br>
-P : admin</br>
+- untuk masuk kedalam sistem buka file username & password.txt untuk hak aksesnya.
